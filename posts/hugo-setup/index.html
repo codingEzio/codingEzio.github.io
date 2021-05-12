@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Mensch" />
-  <meta property="og:url" content="https://codingezio.github.io/posts/my-first-post/" />
-  <link rel="canonical" href="https://codingezio.github.io/posts/my-first-post/" /><link rel="alternate" type="application/atom+xml" href="https://codingezio.github.io/index.xml" title="Hey there!">
+  <meta property="og:url" content="https://codingezio.github.io/posts/hugo-setup/" />
+  <link rel="canonical" href="https://codingezio.github.io/posts/hugo-setup/" /><link rel="alternate" type="application/atom+xml" href="https://codingezio.github.io/index.xml" title="Hey there!">
 
   <script type="application/ld+json">
   {
@@ -19,9 +19,9 @@
            "@id": "https:\/\/codingezio.github.io\/"
       },
       "articleSection" : "posts",
-      "name" : "My ft Post",
-      "headline" : "My ft Post",
-      "description" : "Oh My God This is amazing, isn\u0026rsquo;t it 😄? 今天天氣真好啊！ Here\u0026rsquo;s a Python snippet def loop(l): n = [] while True: n.append(l.value) if l.next is None: break l = l.next return n",
+      "name" : "Hugo Setup",
+      "headline" : "Hugo Setup",
+      "description" : "Preparation  Download hugo  The binary Move the binary into your existing $PATH or append your path to it   Create repositories  To make things easy, make sure all the default branches are master\n  One for storing the code (e.g. BLOG) One for hosting provided by Github Pages (name: GH_USERNAME.github.io)    Basic Setup  Linking your code repository with Github hugo new site HUGO_LOCAL_DIRNAME_WHATEVER git remote add origin https:\/\/github.",
       "inLanguage" : "en-US",
       "author" : "Mensch",
       "creator" : "Mensch",
@@ -29,17 +29,19 @@
       "accountablePerson" : "Mensch",
       "copyrightHolder" : "Mensch",
       "copyrightYear" : "2021",
-      "datePublished": "2021-05-12 14:13:38 \u002b0800 CST",
-      "dateModified" : "2021-05-12 14:13:38 \u002b0800 CST",
-      "url" : "https:\/\/codingezio.github.io\/posts\/my-first-post\/",
+      "datePublished": "2021-05-12 15:50:37 \u002b0800 CST",
+      "dateModified" : "2021-05-12 15:50:37 \u002b0800 CST",
+      "url" : "https:\/\/codingezio.github.io\/posts\/hugo-setup\/",
       "keywords" : [  ]
   }
 </script>
-<title>My ft Post</title>
-  <meta property="og:title" content="My ft Post" />
+<title>Hugo Setup</title>
+  <meta property="og:title" content="Hugo Setup" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="Oh My God This is amazing, isn&amp;rsquo;t it 😄? 今天天氣真好啊！ Here&amp;rsquo;s a Python snippet def loop(l): n = [] while True: n.append(l.value) if l.next is None: break l = l.next return n" />
-  <meta name="description" content="Oh My God This is amazing, isn&amp;rsquo;t it 😄? 今天天氣真好啊！ Here&amp;rsquo;s a Python snippet def loop(l): n = [] while True: n.append(l.value) if l.next is None: break l = l.next return n" />
+  <meta property="og:description" content="Preparation  Download hugo  The binary Move the binary into your existing $PATH or append your path to it   Create repositories  To make things easy, make sure all the default branches are master
+  One for storing the code (e.g. BLOG) One for hosting provided by Github Pages (name: GH_USERNAME.github.io)    Basic Setup  Linking your code repository with Github hugo new site HUGO_LOCAL_DIRNAME_WHATEVER git remote add origin https://github." />
+  <meta name="description" content="Preparation  Download hugo  The binary Move the binary into your existing $PATH or append your path to it   Create repositories  To make things easy, make sure all the default branches are master
+  One for storing the code (e.g. BLOG) One for hosting provided by Github Pages (name: GH_USERNAME.github.io)    Basic Setup  Linking your code repository with Github hugo new site HUGO_LOCAL_DIRNAME_WHATEVER git remote add origin https://github." />
   <meta property="og:locale" content="en-us" />
 
   
@@ -96,12 +98,12 @@
 
         </div>
         <header class="post-header">
-          <h1 class="post-title">My ft Post</h1>
+          <h1 class="post-title">Hugo Setup</h1>
           
           <div class="row post-desc">
             <div class="col-xs-6">
               
-              <time class="post-date" datetime="2021-05-12 14:13:38 CST">
+              <time class="post-date" datetime="2021-05-12 15:50:37 CST">
                 12 May 2021
               </time>
               
@@ -119,25 +121,110 @@
 
         <div class="post-content markdown-body">
           
-          <h3 id="oh-my-god">Oh My God</h3>
+          <h3 id="preparation">Preparation</h3>
+<ul>
+<li>Download <a href="https://gohugo.io"><em>hugo</em></a>
+<ul>
+<li>The <a href="https://github.com/gohugoio/hugo/releases">binary</a></li>
+<li>Move the binary into your existing <code>$PATH</code> or append your path to it</li>
+</ul>
+</li>
+<li>Create <a href="https://github.com/new">repositories</a>
 <blockquote>
-<p>This is amazing, isn&rsquo;t it 😄?</p>
+<p>To make things easy, make sure all the default branches are <code>master</code></p>
 </blockquote>
 <ul>
-<li>今天天氣真好啊！</li>
-<li>Here&rsquo;s a Python snippet
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">loop</span>(l):
-    n <span style="color:#f92672">=</span> []
+<li>One for <em>storing the code</em> <small>(e.g. BLOG)</small></li>
+<li>One for <em>hosting</em> provided by Github Pages <small>(name: <code>GH_USERNAME.github.io</code>)</small></li>
+</ul>
+</li>
+</ul>
+<h3 id="basic-setup">Basic Setup</h3>
+<ul>
+<li>Linking your <em>code</em> repository with Github
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site           HUGO_LOCAL_DIRNAME_WHATEVER
 
-    <span style="color:#66d9ef">while</span> True:
-        n<span style="color:#f92672">.</span>append(l<span style="color:#f92672">.</span>value)
+git remote add origin   https://github.com/GH_USERNAME/BLOG
+git push -u origin master
+</code></pre></div></li>
+<li>Try it out
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new posts/TITLE.md
 
-        <span style="color:#66d9ef">if</span> l<span style="color:#f92672">.</span>next <span style="color:#f92672">is</span> None:
-            <span style="color:#66d9ef">break</span>
+<span style="color:#75715e"># assuming you want &#39;write -&gt; build -&gt; publish&#39;</span>
+<span style="color:#75715e"># change &#39;draft: false&#39; to &#39;draft: true&#39; in the TITLE.md</span>
+</code></pre></div></li>
+</ul>
+<h3 id="my-own-configuration">My Own Configuration</h3>
+<blockquote>
+<p>the theme I&rsquo;m using: <a href="https://github.com/joway/hugo-theme-yinyang"><em>yinyang</em></a></p>
+</blockquote>
+<ol>
+<li>Adding theme
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd HUGO_LOCAL_DIRNAME_WHATEVER
+git clone https://github.com/joway/hugo-theme-yinyang themes/yinyang
+</code></pre></div></li>
+<li>Tweaking <em>hugo</em>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#34;en-us&#34;</span>
+<span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Hey there!&#34;</span>
+<span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;yinyang&#34;</span>
+<span style="color:#a6e22e">enableEmoji</span> = <span style="color:#66d9ef">true</span>                          <span style="color:#75715e"># convert 😄 into emoji</span>
+<span style="color:#a6e22e">disableHugoGeneratorInject</span> = <span style="color:#66d9ef">true</span>           <span style="color:#75715e"># remove hugo from &lt;meta&gt;</span>
+<span style="color:#a6e22e">paginate</span> = <span style="color:#ae81ff">25</span>
+<span style="color:#a6e22e">hasCJKLanguage</span> = <span style="color:#66d9ef">true</span>
 
-        l <span style="color:#f92672">=</span> l<span style="color:#f92672">.</span>next
+</code></pre></div></li>
+<li>Tweaking <em>theme</em>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">author</span>]
+    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Mensch&#34;</span>
+    <span style="color:#a6e22e">homepage</span> = <span style="color:#e6db74">&#34;https://codingezio.github.io/&#34;</span>
 
-    <span style="color:#66d9ef">return</span> n
+[<span style="color:#a6e22e">markup</span>]
+[<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">goldmark</span>]
+[<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">goldmark</span>.<span style="color:#a6e22e">renderer</span>]
+    <span style="color:#a6e22e">unsafe</span> = <span style="color:#66d9ef">true</span>
+[<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">highlight</span>]
+    <span style="color:#a6e22e">guessSyntax</span> = <span style="color:#66d9ef">true</span>
+    <span style="color:#a6e22e">tabWidth</span> = <span style="color:#ae81ff">4</span>
+
+[<span style="color:#a6e22e">params</span>]
+    <span style="color:#a6e22e">mainSections</span> = [<span style="color:#e6db74">&#34;posts&#34;</span>]
+    <span style="color:#a6e22e">headTitle</span> = <span style="color:#e6db74">&#34;Mensch&#34;</span>
+[[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">socials</span>]]
+    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;About Me&#34;</span>
+    <span style="color:#a6e22e">link</span> = <span style="color:#e6db74">&#34;https://codingezio.github.io&#34;</span>
+[[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">socials</span>]]
+    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Github&#34;</span>
+    <span style="color:#a6e22e">link</span> = <span style="color:#e6db74">&#34;https://github.com/codingezio&#34;</span>
+</code></pre></div></li>
+</ol>
+<h3 id="prepare-for-deployment">Prepare for Deployment</h3>
+<ul>
+<li>The repository for <em>hosting</em>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ROOT</span>
+<span style="color:#75715e"># - HUGO_LOCAL_DIRNAME_WHATEVER/    created by `hugo new site` and linked</span>
+<span style="color:#75715e"># - GH_USERNAME.github.io/          receive build files in the future</span>
+git clone https://github.com/GH_USERNAME/GH_USERNAME.github.io
+
+
+<span style="color:#75715e"># change config in HUGO_LOCAL_DIRNAME_WHATEVER/config.toml</span>
+publishDir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;../codingezio.github.io&#34;</span>      <span style="color:#75715e"># default: &#39;./public&#39;</span>
+
+
+<span style="color:#75715e"># build</span>
+hugo --buildDrafts
+</code></pre></div></li>
+<li>Commit workflow
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># repo :: code</span>
+hugo new posts/TITLE.md
+hugo --buildDrafts
+
+git add . <span style="color:#f92672">&amp;&amp;</span> git commit -m <span style="color:#e6db74">&#34;hmm&#34;</span>
+git push -u origin master
+
+
+<span style="color:#75715e"># repo :: hosting</span>
+git add . <span style="color:#f92672">&amp;&amp;</span> git commit -m <span style="color:#e6db74">&#34;hmm&#34;</span>
+git push -u origin master
 </code></pre></div></li>
 </ul>
 
