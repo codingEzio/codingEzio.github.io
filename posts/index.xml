@@ -13,7 +13,7 @@
       <pubDate>Wed, 12 May 2021 15:50:37 +0800</pubDate>
       
       <guid>https://codingezio.github.io/posts/hugo-setup/</guid>
-      <description>Preparation  Download hugo  The binary Move the binary into your existing $PATH or append your path to it   Create repositories  To make things easy, make sure all the default branches are master
+      <description>Preparation  Download hugo  The binary Move the binary into your existing $PATH or append your path to it   Create repositories  To make things easier, make sure all your branches are on master
   One for storing the code (e.g. BLOG) One for hosting provided by Github Pages (name: GH_USERNAME.github.io)    Basic Setup  Linking your code repository with Github hugo new site HUGO_LOCAL_DIRNAME_WHATEVER git remote add origin https://github.</description>
     </item>
     
