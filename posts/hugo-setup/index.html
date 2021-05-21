@@ -22,6 +22,7 @@
 <link rel="canonical" href="https://codingezio.github.io/posts/hugo-setup/">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+<link rel="stylesheet" href="/css/mobile.2ab74aa64785dcab8114959e76ca140cf76207cd85989bc6d4fc3b12f734a09e.css" media="screen">
 <link rel="stylesheet" href="/css/styles.934ca64e1cd8b39bd18393dc4fa4788aab68ce041fa7830964c671eed3da2b40.css">
 <link rel="stylesheet" href="/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
 
@@ -47,7 +48,9 @@
 </script>
 
 <script src="/js/script-early.min.3b0e641814c87f6a1d6ffa5e7d597f29faa8ce11482541e8801dc34013817c91.js"></script>
+<script defer src="/js/lib/jquery.slim.min.bbb7b9921ca2b61948753a6edb63c78443663dc45d1621d18e102e1dcb34e512.js"></script>
 <script defer src="/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/js/mobile.min.abb9438113cb72181ecda30b9375cc0771c7ce2e7354414a7c1296b45cf47135.js"></script>
 <script defer src="/js/script.min.a71d161caff0970fa29a345da3bd9b444f629eccf1e4922585879b44f8f30160.js"></script>
 
 
@@ -56,7 +59,7 @@
 <body class="single-page">
 <div class="page layout__page layout__sidebar-second">
 <header class="header layout__header">
-<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+
 <h1 class="header__site-name">
 <a href="/" title="Home" class="header__site-link" rel="home"><span>Hey there!</span></a>
 </h1>
@@ -76,7 +79,10 @@
 <main class="main layout__main">
 <article class="section-posts single-view">
 <header>
-<h1 class="title ">Hugo Setup</h1>
+<h1 class="title title-submitted">Hugo Setup</h1>
+<div class="submitted">
+<time class="created-date" datetime="2021-05-12T15:50:37&#43;08:00">2021-05-12T15:50:37&#43;0800</time>
+</div>
 </header>
 <div class="content">
 <h3 id="preparation">Preparation</h3>
@@ -234,20 +240,46 @@ git push -u origin master
 </ul>
 
 
+<aside class="related layout__related">
+</aside>
 <p class="content-dates">
-Updated: 14 May, 2021<br>
-Created: 12 May, 2021
+Updated: 2021-05-14T11:54:02&#43;0800<br>
+Created: 2021-05-12T15:50:37&#43;0800
 </p>
 </div>
 </article>
 </main>
 
 
+<aside class="sidebar layout__second-sidebar">
+<section>
+<h4 class="menu"><a href="/posts/" class="active" aria-current="page">Posts</a></h4>
+<ul class="menu">
+<li><a href="/posts/hugo-setup/" class="active" aria-current="page">Hugo Setup</a></li>
+</ul>
+</section>
+</aside>
 <footer class="footer layout__footer">
-<p><span>© Hey there!</span></p>
-
+<p>🤪 Copyright.. Use Whatever the Fuck You Want 🤪</p>
+<p>😘</p>
 
 </footer>
+</div>
+<div class="mobile-nav" dir="ltr">
+  <div class="mobile-nav__cover"></div>
+  <a href="#navigation" class="mobile-nav__toggle" aria-haspopup="true" role="button">Menu</a>
+  <div class="mobile-nav__sheet">
+    <div class="mobile-nav__region">
+    
+    </div>
+    <nav class="mobile-nav__main-menu">
+    <h2 class="visually-hidden">Main menu</h2>
+    <ul class="mobile-nav__navbar">
+    <li><a href="/">Home</a></li>
+    <li><a href="/posts/" class="active" aria-current="page">Posts</a></li>
+    </ul>
+    </nav>
+  </div>
 </div>
 </body>
 </html>
