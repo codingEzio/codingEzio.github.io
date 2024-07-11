@@ -7,3 +7,4 @@
 - uncategorized quotes
 - ..
 
+> Sent this from Termux, also built via gh-deploy 
