@@ -2,3 +2,4 @@ site_name: Coding Ezio
 nav:
   - Home: index.md
   - About: about.md
+  - Plan: plan.md
