@@ -1,4 +1,11 @@
 
+# Blog Output
 build-output/
 
+# Code Example
+**/.idea
+**/bin
+**/obj
+
+# Hidden File
 *.DS_Store
