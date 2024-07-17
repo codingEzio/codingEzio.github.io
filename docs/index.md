@@ -1,21 +1,20 @@
-# Welcome to MkDocs
+# Welcome
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+> A trashy blog written by a human.
 
-## Commands
+## Available Posts
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+> Built via `mkdocs gh-deploy --site-dir build-output`
+
+### Hands On
+
+- [C# n .NET](./hands-on/c-sharp-n-dotnet.md)
 
 ## Project layout
 
-    mkdocs.yml    # The configuration file.
+    mkdocs.yml              # Blog Configuration.
+    hands-on/               # Bits of code examples.
     docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
-
-## Also
-
-- Go to [./about.md](./about.md)
+        index.md            # Homepage.
+        quotes-n-trivias/   # Quotes and Trivias.
+        hands-on/           # Hands-on documentation.
