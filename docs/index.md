@@ -1,4 +1,4 @@
-# Welcome
+## Welcome
 
 > A trashy blog written by a human.
 
@@ -6,15 +6,14 @@
 
 > Built via `mkdocs gh-deploy --site-dir build-output`
 
-### Hands On
-
-- [C# n .NET](./hands-on/c-sharp-n-dotnet.md)
+- [C# and .NET](./hands-on/core-csharp-n-dotnet.md)
+- [Ext.js](./hands-on/random-extjs-overview.md)
 
 ## Project layout
 
-    mkdocs.yml              # Blog Configuration.
+    mkdocs.yml              # Blog configuration.
     hands-on/               # Bits of code examples.
     docs/
         index.md            # Homepage.
-        quotes-n-trivias/   # Quotes and Trivias.
-        hands-on/           # Hands-on documentation.
+        hands-on/           # Concepts in practice.
+        quotes-n-trivias/   # Random quotes and trivias.
