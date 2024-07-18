@@ -1,5 +1,3 @@
-site_name: Coding Ezio
+site_name: Human
 nav:
   - Home: index.md
-  - About: about.md
-  - Plan: plan.md
