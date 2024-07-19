@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Core csharp n dotnet - Human</title>
+        <title>Core database - Human</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -57,52 +57,126 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>Boxing v Unboxing, Value v Reference Type
-Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.
-Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.
-Value of value type copies over value itself on the stack. Whereas reference types were stored on the heap.
-If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.</p>
-<pre><code class="language-txt">       Value Types
-           |
-    +--------------+
-    |              |
- Boxing         Unboxing
-    |              |
-    ⬇️             ⬆️
-    +--------------+
-           |
-      Reference Types
+<p>full context</p>
+<ul>
+<li>I'm NOT a DB dev</li>
+<li>I rarely operate on DB directly (I use ORM)</li>
+<li>I believe <em>if you didn't type the commands on the existing DB, it was all theory</em></li>
+<li>I wanted to learn more about DB</li>
+<li>It was fun</li>
+</ul>
+<p><strong>renaming a database</strong></p>
+<p>I guess it wasn't normally done. I purely changed it for the sake of learning.</p>
+<p>get the new one created before renaming</p>
+<pre><code class="language-sql">CREATE DATABASE testdb;
 </code></pre>
-<p>Destructors
-<code>~ClassName { clean up }</code>
-<code>: IDisposable + public void Dispose</code>
-<code>using (..) {}  d// auto clean up</code>
-<code>try .. catch .. finally ..</code></p>
-<p>const v readonly
-literally constant, limited val types
-Freer, all kinds of types</p>
-<p>this v base
-base calls mother class’ thingy
-this calls current class’ methods/vars</p>
-<p>generics v overload
-generics ensure uniformity
-overloading get you more than handling different types, but also methods with different length of parameters</p>
-<p>List
-ICollection\&lt;T&gt; 👉 IList\&lt;T&gt; 👉 List
-Each with different set of methods impl_ed</p>
-<p>Copy v Clone
-One is shallow, one is (usually) deep
-One gets a new obj that points to the same memory address of the object you are copying,
-One
-Customizing your DeepCopy would get you more flexibility than <code>IClonable</code> with <code>Clone</code></p>
-<p>Interface v Abstract Class
-interface defines contracts you need to fullfil, and there might be multiple of them
-interface has no fields
-abstract defines a common base class with potentially partial implementation
-abstract has fields as they are classes</p>
-<p>ref v out
-ref variables along with ref would affect the original
-out pouring out a variable to the function-invocation scope</p></div>
+<p>generate the script based on the existing database</p>
+<pre><code class="language-sql">SELECT CONCAT(
+  'RENAME TABLE ','`旧库`','.`',TABLE_NAME,
+  '` TO ','`testdb`.`',TABLE_NAME,'`;'
+)
+FROM information_schema.TABLES
+WHERE table_schema LIKE '旧库';
+</code></pre>
+<p>run the script</p>
+<pre><code class="language-sql">USE `旧库`;
+
+-- the SQL generated from the previous step
+</code></pre>
+<p><strong>table partitioning</strong></p>
+<p>context
+I wasn't in a position to do this in production, but I still wanted to learn about it.
+so I got a local MySQL database in Docker and tried it out.</p>
+<p>firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.</p>
+<pre><code class="language-sql">CREATE TABLE Quotes (
+    row_id INT AUTO_INCREMENT,
+    creator VARCHAR(255),
+    quotes VARCHAR(255),
+    created DATE,
+    PRIMARY KEY (row_id, created)
+)
+PARTITION BY RANGE (YEAR(created)) (
+    PARTITION p2019 VALUES LESS THAN (2020),
+    PARTITION p2020 VALUES LESS THAN (2021),
+    PARTITION p2021 VALUES LESS THAN (2022),
+    PARTITION p2022 VALUES LESS THAN (2023),
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025)
+);
+</code></pre>
+<p>secondly</p>
+<p>making sure it was properly done, logically, in detail</p>
+<pre><code class="language-sql">SELECT * FROM information_schema.PARTITIONS
+WHERE TABLE_SCHEMA = 'testdb' AND TABLE_NAME = 'Quotes';
+</code></pre>
+<p>checking how it was done, physically, in the file system</p>
+<blockquote>
+<p>If you were like me, using MySQL Docker and be able to access the container</p>
+</blockquote>
+<pre><code class="language-sh"># enter the shell
+docker exec -it mysql sh
+
+# testdb is your database name
+# quotes is your table name
+ls /var/lib/mysql/testdb | grep -i quotes
+
+# you are expected to see something like this
+
+# /var/lib/mysql/testdb/
+# ├── Quotes#P#p2019.ibd
+# ├── Quotes#P#p2020.ibd
+# ├── Quotes#P#p2021.ibd
+# ├── Quotes#P#p2022.ibd
+# ├── Quotes#P#p2023.ibd
+# └── Quotes#P#p2024.ibd
+</code></pre>
+<p>issues I've faced when <em>operating on an existing table</em> with complex relations</p>
+<blockquote>
+<p>conclusion: not reading the docs to carefully, should have done it in the design phase</p>
+</blockquote>
+<ul>
+<li>Foreign keys are not yet supported in conjunction with partitioning</li>
+<li>A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).</li>
+<li>..</li>
+</ul>
+<p><strong>get sample data for a table</strong></p>
+<blockquote>
+<p>The last line is the one you need to edit to match your table schema</p>
+</blockquote>
+<pre><code class="language-sql">USE `testdb`;
+
+DELIMITER //
+
+CREATE PROCEDURE GenerateSampleData(IN dbName VARCHAR(255), IN tableName VARCHAR(255))
+BEGIN
+    DECLARE i INT DEFAULT 0;
+    DECLARE randomName VARCHAR(255);
+    DECLARE randomQuote VARCHAR(255);
+    DECLARE randomDate DATE;
+
+    DECLARE nameList VARCHAR(255) DEFAULT 'Alice,Bob,Charlie,David,Eve,Frank,Grace,Hank,Ivy,Jack';
+    DECLARE quoteList VARCHAR(255) DEFAULT 'Sample quote 1.,Sample quote 2.,Sample quote 3.,Sample quote 4.,Sample quote 5.';
+
+    WHILE i &lt; 100000 DO
+        SET randomName = ELT(1 + FLOOR(RAND() * 10), 'Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace', 'Hank', 'Ivy', 'Jack');
+        SET randomQuote = ELT(1 + FLOOR(RAND() * 5), 'Sample quote 1.', 'Sample quote 2.', 'Sample quote 3.', 'Sample quote 4.', 'Sample quote 5.');
+        SET randomDate = DATE_ADD('2019-01-01', INTERVAL FLOOR(RAND() * 1825) DAY); -- Random date between 2019 and 2024
+
+        SET @insertQuery = CONCAT('INSERT INTO ', dbName, '.', tableName, ' (creator, quotes, created) VALUES (''', randomName, ''', ''', randomQuote, ''', ''', randomDate, ''')');
+        PREPARE stmt FROM @insertQuery;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+
+        SET i = i + 1;
+    END WHILE;
+END //
+
+DELIMITER ;
+
+-- the DB wasn't specfial, just run `CREATE DATABASE testdb;` before this
+-- the table definition shall be the same as **table partitioning** section
+CALL GenerateSampleData('testdb', 'Quotes');
+</code></pre></div>
             </div>
         </div>
 
