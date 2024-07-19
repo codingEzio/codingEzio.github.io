@@ -156,3 +156,15 @@ var sampleGrid = Ext.create(
   }
 );
 ```
+
+> Methods seen from `Ext.form.Panel`
+
+```javascript
+// .up
+
+
+// .down
+
+
+// .setDisabled (universal)
+```
