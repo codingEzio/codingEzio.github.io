@@ -52,21 +52,16 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
-            
-            
-            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h3 id="boxing-v-unboxing-value-v-reference-type">Boxing v Unboxing, Value v Reference Type</h3>
-<ul>
-<li>Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.</li>
-<li>Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.</li>
-<li>Value of value type copies over value itself on the stack. Whereas reference types were stored on the heap.</li>
-<li>If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.</li>
-</ul>
+<p>Boxing v Unboxing, Value v Reference Type
+Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.
+Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.
+Value of value type copies over value itself on the stack. Whereas reference types were stored on the heap.
+If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.</p>
 <pre><code class="language-txt">       Value Types
            |
     +--------------+
@@ -78,25 +73,26 @@
            |
       Reference Types
 </code></pre>
-<h3 id="constructors-v-destructors">Constructors v Destructors</h3>
-<ul>
-<li>Finalizing</li>
-<li><code>~ClassName { clean up }</code></li>
-<li><code>: IDisposable + public void Dispose</code></li>
-<li><code>using (..) {}  // auto clean up</code></li>
-<li>
-<p><code>try .. catch .. finally ..</code></p>
-</li>
-<li>
-<p>And
-    &gt; using == IDisposable with Dispose</p>
-</li>
-</ul>
-<h3 id="overload-v-override">Overload v Override</h3>
-<ul>
-<li>Overload adds more param choices</li>
-<li>Override replace/customize sub impl</li>
-</ul></div>
+<p>Destructors
+<code>~ClassName { clean up }</code>
+<code>: IDisposable + public void Dispose</code>
+<code>using (..) {}  d// auto clean up</code>
+<code>try .. catch .. finally ..</code></p>
+<p>const v readonly
+literally constant, limited val types
+Freer, all kinds of types</p>
+<p>this v base
+base calls mother class’ thingy
+this calls current class’ methods/vars</p>
+<p>generics v overload
+generics ensure uniformity
+overloading get you more than handling different types, but also methods with different length of parameters</p>
+<p>List
+ICollection<T> 👉 IList<T> 👉 List
+Each with different set of methods impl_ed</p>
+<p>Copy v Clone
+One shallow, one deep
+One gets a new obj that points to the same memory address of the object you are copying,</p></div>
             </div>
         </div>
 
