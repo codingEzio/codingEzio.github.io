@@ -6,6 +6,7 @@
 
 > Built via `mkdocs gh-deploy --site-dir build-output`
 
+- [Database](./hands-on/core-database.md)
 - [C# and .NET](./hands-on/core-csharp-n-dotnet.md)
 - [Ext.js](./hands-on/random-extjs-overview.md)
 
