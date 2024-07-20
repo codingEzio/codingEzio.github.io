@@ -19,10 +19,10 @@ If we were to use Generics, explicitly declaring the types being stored, we no l
 ```
 
 Destructors
-`~ClassName { clean up }`
-`: IDisposable + public void Dispose`
-`using (..) {}  d// auto clean up`
-`try .. catch .. finally ..`
+
+- `~ClassName { clean up }`
+- `: IDisposable + public void Dispose` (== `using (..) {}`)
+- `try .. catch .. finally ..`
 
 const v readonly
 literally constant, limited val types

@@ -41,6 +41,7 @@ USE `旧库`;
 context
 I wasn't in a position to do this in production, but I still wanted to learn about it.
 so I got a local MySQL database in Docker and tried it out.
+all normal CRUDs would be exactly the same if not considering efficient queries.
 
 firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.
 
