@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Core csharp n dotnet - Human</title>
+        <title>Core operatingsystem - Human</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -57,82 +57,29 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>Boxing v Unboxing, Value v Reference Type</p>
+<p>context</p>
 <ul>
-<li>Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.</li>
-<li>Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.
-Value of value type copies over value itself on the stack. Whereas reference types were stored on the heap.</li>
-<li>If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.</li>
+<li>I used to use full-fledged VMs</li>
+<li>I wanna try running a full Linux OS in/as a Docker container</li>
+<li>Real Linux instead of the macOS :&lt;</li>
+<li>Easier to manage (Docker API)</li>
+<li>Lighter (I don't need the GUI)</li>
 </ul>
-<pre><code class="language-txt">       Value Types
-           |
-    +--------------+
-    |              |
- Boxing         Unboxing
-    |              |
-    ⬇️             ⬆️
-    +--------------+
-           |
-      Reference Types
-</code></pre>
-<p>Destructors</p>
-<blockquote>
-<p><strong>WIP</strong> <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/type-destructor.cs">sample code</a></p>
-</blockquote>
+<p>setup the base environment</p>
 <ul>
-<li><code>~ClassName { clean up }</code></li>
-<li><code>: IDisposable + public void Dispose</code> (== <code>using (..) {}</code>)</li>
-<li><code>try .. catch .. finally ..</code></li>
+<li>choose a distro with proper version</li>
+<li>I'm most familiar with Ubuntu</li>
+<li>I gotta choose a LTS version</li>
+<li>I chose <em>Ubuntu 22.04 LTS</em> (data below is based on this version)<ul>
+<li>Not too new (I got no time to check potential breaking changes on various aspects)</li>
+<li>End of { standard support: 2027/06, life: 2023/04 }</li>
 </ul>
-<p>const v readonly</p>
-<ul>
-<li>literally constant, limited val types</li>
-<li>Freer, all kinds of types</li>
+</li>
+<li>data on the LTS<ul>
+<li>it was based on the first version (cuz there were still Ubuntu 22.04.<em>*</em>)</li>
+<li>list of releases on the <a href="https://wiki.ubuntu.com/Releases">official website</a></li>
 </ul>
-<p>this v base</p>
-<blockquote>
-<p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-base-v-this.cs">sample code</a></p>
-</blockquote>
-<ul>
-<li>base calls mother class’ thingy</li>
-<li>this calls current class’ methods/vars</li>
-</ul>
-<p>generics v overload</p>
-<ul>
-<li>generics ensure uniformity</li>
-<li>overloading get you more than handling different types, but also methods with different length of parameters</li>
-</ul>
-<p>List</p>
-<ul>
-<li>ICollection<T> ➡️ IList<T> ➡️ List</li>
-<li>Each with different set of methods impl_ed</li>
-</ul>
-<p>Copy v Clone</p>
-<blockquote>
-<p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-copy-shallow-v-deep.cs">sample code</a></p>
-</blockquote>
-<ul>
-<li>One is shallow, one is (usually) deep</li>
-<li>One gets a new obj that points to the same memory address of the object you are copying, one gets a completely new object, all built from scratch</li>
-<li>Customizing your DeepCopy would get you more flexibility than <code>IClonable</code> with <code>Clone</code></li>
-</ul>
-<p>Interface v Abstract Class</p>
-<blockquote>
-<p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-interface-v-abstract-class.cs">sample code</a></p>
-</blockquote>
-<ul>
-<li>interface defines contracts you need to fullfil, and there might be multiple of them</li>
-<li>interface has no fields</li>
-<li>abstract defines a common base class with potentially partial implementation</li>
-<li>abstract has fields as they are classes</li>
-</ul>
-<p>ref v out</p>
-<blockquote>
-<p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-ref-v-out.cs">sample code</a></p>
-</blockquote>
-<ul>
-<li>ref variables along with ref would affect the original</li>
-<li>out pouring out a variable to the function-invocation scope</li>
+</li>
 </ul></div>
             </div>
         </div>
