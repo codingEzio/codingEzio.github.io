@@ -57,11 +57,13 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>Boxing v Unboxing, Value v Reference Type
-Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.
-Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.
-Value of value type copies over value itself on the stack. Whereas reference types were stored on the heap.
-If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.</p>
+<p>Boxing v Unboxing, Value v Reference Type</p>
+<ul>
+<li>Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.</li>
+<li>Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.
+Value of value type copies over value itself on the stack. Whereas reference types were stored on the heap.</li>
+<li>If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.</li>
+</ul>
 <pre><code class="language-txt">       Value Types
            |
     +--------------+
@@ -79,31 +81,44 @@ If we were to use Generics, explicitly declaring the types being stored, we no l
 <li><code>: IDisposable + public void Dispose</code> (== <code>using (..) {}</code>)</li>
 <li><code>try .. catch .. finally ..</code></li>
 </ul>
-<p>const v readonly
-literally constant, limited val types
-Freer, all kinds of types</p>
-<p>this v base
-base calls mother class’ thingy
-this calls current class’ methods/vars</p>
-<p>generics v overload
-generics ensure uniformity
-overloading get you more than handling different types, but also methods with different length of parameters</p>
-<p>List
-ICollection\&lt;T&gt; 👉 IList\&lt;T&gt; 👉 List
-Each with different set of methods impl_ed</p>
-<p>Copy v Clone
-One is shallow, one is (usually) deep
-One gets a new obj that points to the same memory address of the object you are copying,
-One
-Customizing your DeepCopy would get you more flexibility than <code>IClonable</code> with <code>Clone</code></p>
-<p>Interface v Abstract Class
-interface defines contracts you need to fullfil, and there might be multiple of them
-interface has no fields
-abstract defines a common base class with potentially partial implementation
-abstract has fields as they are classes</p>
-<p>ref v out
-ref variables along with ref would affect the original
-out pouring out a variable to the function-invocation scope</p></div>
+<p>const v readonly</p>
+<ul>
+<li>literally constant, limited val types</li>
+<li>Freer, all kinds of types</li>
+</ul>
+<p>this v base</p>
+<ul>
+<li>base calls mother class’ thingy</li>
+<li>this calls current class’ methods/vars</li>
+</ul>
+<p>generics v overload</p>
+<ul>
+<li>generics ensure uniformity</li>
+<li>overloading get you more than handling different types, but also methods with different length of parameters</li>
+</ul>
+<p>List</p>
+<ul>
+<li>ICollection\&lt;T&gt; ➡️ IList\&lt;T&gt; ➡️ List</li>
+<li>Each with different set of methods impl_ed</li>
+</ul>
+<p>Copy v Clone</p>
+<ul>
+<li>One is shallow, one is (usually) deep</li>
+<li>One gets a new obj that points to the same memory address of the object you are copying, one gets a completely new object, all built from scratch</li>
+<li>Customizing your DeepCopy would get you more flexibility than <code>IClonable</code> with <code>Clone</code></li>
+</ul>
+<p>Interface v Abstract Class</p>
+<ul>
+<li>interface defines contracts you need to fullfil, and there might be multiple of them</li>
+<li>interface has no fields</li>
+<li>abstract defines a common base class with potentially partial implementation</li>
+<li>abstract has fields as they are classes</li>
+</ul>
+<p>ref v out</p>
+<ul>
+<li>ref variables along with ref would affect the original</li>
+<li>out pouring out a variable to the function-invocation scope</li>
+</ul></div>
             </div>
         </div>
 
