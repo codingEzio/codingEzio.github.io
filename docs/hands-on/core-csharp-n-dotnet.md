@@ -42,7 +42,7 @@ generics v overload
 
 List
 
-- ICollection\<T\> ➡️ IList\<T\> ➡️ List
+- ICollection<T> ➡️ IList<T> ➡️ List
 - Each with different set of methods impl_ed
 
 Copy v Clone

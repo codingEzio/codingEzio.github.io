@@ -15,7 +15,9 @@
       "sub",
       "p",
       "br",
-      "q"
+      "q",
+      "T",
+      "t"
     ]
   },
   "heading-style": {
