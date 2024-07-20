@@ -21,6 +21,8 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 
 Destructors
 
+> **WIP** [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/type-destructor.cs)
+
 - `~ClassName { clean up }`
 - `: IDisposable + public void Dispose` (== `using (..) {}`)
 - `try .. catch .. finally ..`
@@ -31,6 +33,8 @@ const v readonly
 - Freer, all kinds of types
 
 this v base
+
+> [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-base-v-this.cs)
 
 - base calls mother class’ thingy
 - this calls current class’ methods/vars
@@ -47,11 +51,15 @@ List
 
 Copy v Clone
 
+> [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-copy-shallow-v-deep.cs)
+
 - One is shallow, one is (usually) deep
 - One gets a new obj that points to the same memory address of the object you are copying, one gets a completely new object, all built from scratch
 - Customizing your DeepCopy would get you more flexibility than `IClonable` with `Clone`
 
 Interface v Abstract Class
+
+> [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-interface-v-abstract-class.cs)
 
 - interface defines contracts you need to fullfil, and there might be multiple of them
 - interface has no fields
@@ -59,6 +67,8 @@ Interface v Abstract Class
 - abstract has fields as they are classes
 
 ref v out
+
+> [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-ref-v-out.cs)
 
 - ref variables along with ref would affect the original
 - out pouring out a variable to the function-invocation scope
