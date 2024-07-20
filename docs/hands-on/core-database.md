@@ -7,6 +7,8 @@ full context
 - I wanted to learn more about DB
 - It was fun
 
+-----
+
 **renaming a database**
 
 I guess it wasn't normally done. I purely changed it for the sake of learning.

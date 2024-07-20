@@ -7,6 +7,8 @@ context
   - Easier to manage (Docker API)
   - Lighter (I don't need the GUI)
 
+-----
+
 setup the base environment
 
 - choose a distro with proper version

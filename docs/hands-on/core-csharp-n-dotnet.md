@@ -1,4 +1,11 @@
 
+context
+
+- I want to explain all the concepts in an ultra-clear-n-simple way
+- All the sample code along with these were standalone runnable C# script
+
+-----
+
 Boxing v Unboxing, Value v Reference Type
 
 - Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.
