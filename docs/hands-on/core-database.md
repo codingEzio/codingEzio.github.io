@@ -98,7 +98,7 @@ ls /var/lib/mysql/testdb | grep -i quotes
 ```
 
 issues I've faced when *operating on an existing table* with complex relations
-> conclusion: not reading the docs to carefully, should have done it in the design phase
+> conclusion: not reading the docs long/carefully enough; should have done it in the design phase
 
 - Foreign keys are not yet supported in conjunction with partitioning
 - A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).
