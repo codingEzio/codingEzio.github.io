@@ -73,11 +73,12 @@ If we were to use Generics, explicitly declaring the types being stored, we no l
            |
       Reference Types
 </code></pre>
-<p>Destructors
-<code>~ClassName { clean up }</code>
-<code>: IDisposable + public void Dispose</code>
-<code>using (..) {}  d// auto clean up</code>
-<code>try .. catch .. finally ..</code></p>
+<p>Destructors</p>
+<ul>
+<li><code>~ClassName { clean up }</code></li>
+<li><code>: IDisposable + public void Dispose</code> (== <code>using (..) {}</code>)</li>
+<li><code>try .. catch .. finally ..</code></li>
+</ul>
 <p>const v readonly
 literally constant, limited val types
 Freer, all kinds of types</p>
