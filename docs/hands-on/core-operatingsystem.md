@@ -1,5 +1,5 @@
 
-context
+**context**
 
 - I used to use full-fledged VMs
 - I wanna try running a full Linux OS in/as a Docker container
@@ -9,7 +9,7 @@ context
 
 -----
 
-setup the base environment
+**setup the base environment**
 
 - choose a distro with proper version
   - I'm most familiar with Ubuntu

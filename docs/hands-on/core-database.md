@@ -1,5 +1,5 @@
 
-full context
+**full context**
 
 - I'm NOT a DB dev
 - I rarely operate on DB directly (I use ORM)

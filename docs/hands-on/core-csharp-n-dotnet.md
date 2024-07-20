@@ -1,12 +1,12 @@
 
-context
+**context**
 
 - I want to explain all the concepts in an ultra-clear-n-simple way
 - All the sample code along with these were standalone runnable C# script
 
 -----
 
-Boxing v Unboxing, Value v Reference Type
+**Boxing v Unboxing, Value v Reference Type**
 
 - Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.
 - Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.
@@ -26,7 +26,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
       Reference Types
 ```
 
-Destructors
+**Destructors**
 
 > **WIP** [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/type-destructor.cs)
 
@@ -34,29 +34,29 @@ Destructors
 - `: IDisposable + public void Dispose` (== `using (..) {}`)
 - `try .. catch .. finally ..`
 
-const v readonly
+**const v readonly**
 
 - literally constant, limited val types
 - Freer, all kinds of types
 
-this v base
+**this v base**
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-base-v-this.cs)
 
 - base calls mother class’ thingy
 - this calls current class’ methods/vars
 
-generics v overload
+**generics v overload**
 
 - generics ensure uniformity
 - overloading get you more than handling different types, but also methods with different length of parameters
 
-List
+**List**
 
 - ICollection<T> ➡️ IList<T> ➡️ List
 - Each with different set of methods impl_ed
 
-Copy v Clone
+**Copy v Clone**
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-copy-shallow-v-deep.cs)
 
@@ -64,7 +64,7 @@ Copy v Clone
 - One gets a new obj that points to the same memory address of the object you are copying, one gets a completely new object, all built from scratch
 - Customizing your DeepCopy would get you more flexibility than `IClonable` with `Clone`
 
-Interface v Abstract Class
+**Interface v Abstract Class**
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-interface-v-abstract-class.cs)
 
@@ -73,7 +73,7 @@ Interface v Abstract Class
 - abstract defines a common base class with potentially partial implementation
 - abstract has fields as they are classes
 
-ref v out
+**ref v out**
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-ref-v-out.cs)
 
