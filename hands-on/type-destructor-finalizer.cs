@@ -5,6 +5,5 @@ class DestructorDemo
 }
 
 var destructorDemo = new DestructorDemo();
-GC.Collect();
-GC.WaitForPendingFinalizers();
-Console.WriteLine("Whole script ended.");
+
+// Output from the Finalizer is not guaranteed as it's implementation-specific (quote).
