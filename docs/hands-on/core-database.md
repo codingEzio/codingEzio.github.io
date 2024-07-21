@@ -9,6 +9,19 @@
 
 -----
 
+**overview of a database**
+
+transport layer
+
+- accepting n managing incoming requents, like/is an always-running server
+- check the [mock implementation](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-db-transport-layer.py) in Python
+
+query processor
+
+execution engine
+
+storage engine
+
 **renaming a database**
 
 I guess it wasn't normally done. I purely changed it for the sake of learning.
