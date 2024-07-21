@@ -110,3 +110,18 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 - On projects and scripts
   - Gotta use the `public static class XyzExtensions { .. }`
   - Just `public static void MethodName(this ClassName obj) { .. }` for scripts
+
+**partial n sealed class**
+
+> [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-partial-n-sealed-class.cs)
+
+- partial class allow classes be written in seperate places, even files
+- partial class's implementations were merged at compile time
+- sealed class prevents inheritance (the )
+
+**indexer**
+
+> [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/thing-indexer.cs)
+
+- kinda just a syntax sugar for easier accessing/manipulating elements
+- cleaner implementation for getting/setting elements in a class
