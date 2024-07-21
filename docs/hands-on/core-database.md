@@ -18,9 +18,15 @@ transport layer
 
 query processor
 
+> TBD
+
 execution engine
 
+> TBD
+
 storage engine
+
+> TBD
 
 **renaming a database**
 

@@ -1,11 +1,7 @@
 
 **context**
 
-- I used to use full-fledged VMs
-- I wanna try running a full Linux OS in/as a Docker container
-  - Real Linux instead of the macOS
-  - Easier to manage (Docker API)
-  - Lighter (I don't need the GUI)
+> None yet
 
 -----
 
