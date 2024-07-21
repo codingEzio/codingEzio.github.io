@@ -11,12 +11,27 @@
 
 **setup the base environment**
 
-- choose a distro with proper version
-  - I'm most familiar with Ubuntu
-  - I gotta choose a LTS version
-  - I chose *Ubuntu 22.04 LTS* (data below is based on this version)
-    - Not too new (I got no time to check potential breaking changes on various aspects)
-    - End of { standard support: 2027/06, life: 2023/04 }
-  - data on the LTS
-    - it was based on the first version (cuz there were still Ubuntu 22.04.*\**)
-    - list of releases on the [official website](https://wiki.ubuntu.com/Releases)
+```bash
+# Get your own via 'brew install --cask vagrant'
+vagrant init bento/ubuntu-22.04
+vagrant up
+
+mkdir -p ~/VMs && cd ~/VMs
+
+# Intialize the VM
+vagrant init bento/ubuntu-22.04  # you may wanna edit the Vagrantfile
+vagrant up
+```
+
+```ruby
+# If you happen to use VirtualBox and turned on the GUI
+# You could just open the VirtualBox app and stay there from now on
+
+config.vm.provider "virtualbox" do |vb|
+  # Display the VirtualBox GUI when booting the machine
+  vb.gui = true
+
+  # Customize the amount of memory on the VM:
+  vb.memory = "2024"
+end
+```
