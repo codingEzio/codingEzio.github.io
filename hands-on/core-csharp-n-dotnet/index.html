@@ -86,9 +86,42 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <p><strong>WIP</strong> <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/type-destructor.cs">sample code</a></p>
 </blockquote>
 <ul>
-<li><code>~ClassName { clean up }</code></li>
-<li><code>: IDisposable + public void Dispose</code> (== <code>using (..) {}</code>)</li>
-<li><code>try .. catch .. finally ..</code></li>
+<li>
+<p><code>~ClassName { clean up }</code></p>
+</li>
+<li>
+<p>Finalizers are NOT guaranteed to be called</p>
+</li>
+<li>It’s implementation-specific (quote)</li>
+<li>For my case? It means that I won’t get the debugging output from customized finalizers.</li>
+<li>
+<p>For production? We’ll do more testing then</p>
+</li>
+<li>
+<p>References</p>
+<ul>
+<li><a href="https://github.com/dotnet/csharpstandard/issues/291">observations made on this</a></li>
+<li><a href="https://github.com/dotnet/csharpstandard/pull/309">wording changes</a></li>
+<li><a href="https://github.com/dotnet/docs/issues/17463">detailed back-n-forth discussions</a></li>
+</ul>
+</li>
+<li>
+<p><code>: IDisposable + public void Dispose</code> (== <code>using (..) {}</code>)</p>
+</li>
+<li>
+<p><code>using</code> is a syntactic sugar for <code>try .. finally ..</code></p>
+</li>
+<li><code>Dispose</code> is a method that cleans up the resources</li>
+<li>
+<p><code>IDisposable</code> is an interface that defines the <code>Dispose</code> method</p>
+</li>
+<li>
+<p><code>try .. catch .. finally ..</code></p>
+</li>
+<li>
+<p><code>catch</code> acts as built-in exception handling in comparison to others</p>
+</li>
+<li><code>finally</code> block could do the same thing but might not be universal/organized</li>
 </ul>
 <p><strong>const v readonly</strong></p>
 <ul>
@@ -139,6 +172,19 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <ul>
 <li>ref variables along with ref would affect the original</li>
 <li>out pouring out a variable to the function-invocation scope</li>
+</ul>
+<p><strong>extension method</strong></p>
+<blockquote>
+<p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/thing-extension-method.cs">sample code</a></p>
+</blockquote>
+<ul>
+<li><code>this TypeName obj</code> is all that matters, anything else were just conventions</li>
+<li>Loosely attaching customized methods to existing classes</li>
+<li>Built-in types? Yeah!</li>
+<li>Custom classes? Sure!</li>
+<li>On projects and scripts</li>
+<li>Gotta use the <code>public static class XyzExtensions { .. }</code></li>
+<li>Just <code>public static void MethodName(this ClassName obj) { .. }</code> for scripts</li>
 </ul></div>
             </div>
         </div>
