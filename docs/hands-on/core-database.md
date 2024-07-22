@@ -1,5 +1,5 @@
 
-**full context**
+## Context
 
 - I'm NOT a DB dev
 - I rarely operate on DB directly (I use ORM)
@@ -8,75 +8,77 @@
 - It was fun
 - Heavily made use of *LLM*s (alongside StackOverflow n Wikipedia)
 
------
+## Overview of a Database
 
-**overview of a database**
-
-transport layer
+### Transport Layer
 
 - accepting n managing incoming requents, like/is an always-running server
 - check the [mock implementation](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-db-transport-layer.py) in Python
 
-query processor
+### Query Processor
 
 > TBD
 
-execution engine
+### Execution Engine
 
 > TBD
 
-storage engine
+### Storage Engine
 
 > TBD
 
-**what's up with the MVCC**
+## What's Up with the MVCC
 
-- Full form: [*M*ulti*v*ersion *c*oncurrency *c*ontrol](https://en.wikipedia.org/wiki/Multiversion_concurrency_control)
-- Databases are designed to be concurrent
-  - access/update, by users, by transactions and so on
-  - when accessing some record, others might be updating it
-    - action of updating takes time
-    - order of updating matters
-  - we might consider block it after writers are done
-    - the transactions for read/update might be a huge one
-    - this was achieved using locks
-    - this would cause *contention* (subjects fight over something)
-- MVCC is more of an addtional tool helping with concurrency
-  > IMO: in my opinion, haven't tested it manually in a DB
-  - IMO, it was meant to be used in conjunction with locks
-  - It does three main things, IMO
-    > All got a hidden timestamp/transaction id to ensure uniqueness
+> Full form: [*M*ulti*v*ersion *c*oncurrency *c*ontrol](https://en.wikipedia.org/wiki/Multiversion_concurrency_control)
 
-    - Read
-      - get the most recent ver. of the record, no blocking
-      - might not be the latest (someone might be updating it)
-    - Write
-      - current operation creates new ver (with timestamp or transaction ID), no blocking
-      - Older versions are still available for reading
-    - Garbage collection
-      - the older versions [were stored in the undo log](https://mariadb.com/kb/en/innodb-purge/)
-      - for InnoDB in MySQL, it's a process that [runs periodically](https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html)
+### Databases are designed to be concurrent
 
-- For the case explained above, *Isolation Level* came into play
-  - Context
-    - Different types of them for different strictness levels
-    - Categorized by read phenomenon (~=how bad is it)
-    - Scenarios mentioned above were *Snapshot Isolation* (<sup>reference needed</sup>)
-    - Different DB have widely different *default* isolation levels
+- access/update, by users, by transactions and so on
+- when accessing some record, others might be updating it
+  - action of updating takes time
+  - order of updating matters
+- we might consider block it after writers are done
+  - the transactions for read/update might be a huge one
+  - this was achieved using locks
+  - this would cause *contention* (subjects fight over something)
 
-**how a query is done**
+### MVCC is more of an addtional tool helping with concurrency
+
+> IMO: in my opinion, haven't tested it manually in a DB
+
+- IMO, it was meant to be used in conjunction with locks
+- It does three main things, IMO
+  > All got a hidden timestamp/transaction id to ensure uniqueness
+
+- Read
+  - get the most recent ver. of the record, no blocking
+  - might not be the latest (someone might be updating it)
+- Write
+  - current operation creates new ver (with timestamp or transaction ID), no blocking
+  - Older versions are still available for reading
+- Garbage collection
+  - the older versions [were stored in the undo log](https://mariadb.com/kb/en/innodb-purge/)
+  - for InnoDB in MySQL, it's a process that [runs periodically](https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html)
+
+- For the case explained above, *Isolation Level* came into play, context below
+  - Different types of them for different strictness levels
+  - Categorized by read phenomenon (~=how bad is it)
+  - Scenarios mentioned above were *Snapshot Isolation* (<sup>reference needed</sup>)
+  - Different DB have widely different *default* isolation levels
+
+## How a Query is Done
 
 - Suppose we have a query like this
 
-  ```sql
-  SELECT employees.name, COUNT(projects.project_id) as project_count
-  FROM employees
-  JOIN projects ON employees.id = projects.employee_id
-  WHERE employees.salary > 20000
-  GROUP BY employees.name
-  HAVING COUNT(projects.project_id) > 5
-  ORDER BY project_count DESC;
-  ```
+```sql
+SELECT employees.name, COUNT(projects.project_id) as project_count
+FROM employees
+JOIN projects ON employees.id = projects.employee_id
+WHERE employees.salary > 20000
+GROUP BY employees.name
+HAVING COUNT(projects.project_id) > 5
+ORDER BY project_count DESC;
+```
 
 - The process of executing the query is as follows
 
@@ -87,7 +89,7 @@ storage engine
   - `HAVING` `project`s the `employee`s working on is greater than 5
   - `ORDER BY` the number of `project`s the `employee` is working on in descending order
 
-**common index types**
+## Common Index Types
 
 - B+ Tree Index (default for MySQL InnoDB)
   - most common, efficient enough
@@ -100,17 +102,17 @@ storage engine
 - Spatial Index
   - I'll write the notes once I've done the hands-on testing ;P
 
-**renaming a database**
+## Renaming a Database
 
-I guess it wasn't normally done. I purely changed it for the sake of learning.
+> I guess it wasn't normally done. I purely changed it for the sake of learning.
 
-get the new one created before renaming
+- Get the new one created before renaming
 
 ```sql
 CREATE DATABASE testdb;
 ```
 
-generate the script based on the existing database
+- Generate the script based on the existing database
 
 ```sql
 SELECT CONCAT(
@@ -121,7 +123,7 @@ FROM information_schema.TABLES
 WHERE table_schema LIKE '旧库';
 ```
 
-run the script
+- Run the script
 
 ```sql
 USE `旧库`;
@@ -129,14 +131,16 @@ USE `旧库`;
 -- the SQL generated from the previous step
 ```
 
-**table partitioning**
+## Table Partitioning
 
-context
-I wasn't in a position to do this in production, but I still wanted to learn about it.
-so I got a local MySQL database in Docker and tried it out.
+### Context
+
+> I wasn't in a position to do this in production, but I still wanted to learn about it.
+>
+> So I got a local MySQL database in Docker and tried it out.
 all normal CRUDs would be exactly the same if not considering efficient queries.
 
-firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.
+- Firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.
 
 ```sql
 CREATE TABLE Quotes (
@@ -156,18 +160,18 @@ PARTITION BY RANGE (YEAR(created)) (
 );
 ```
 
-secondly
+- Secondly
 
-making sure it was properly done, logically, in detail
+  > making sure it was properly done, logically, in detail
 
 ```sql
 SELECT * FROM information_schema.PARTITIONS
 WHERE TABLE_SCHEMA = 'testdb' AND TABLE_NAME = 'Quotes';
 ```
 
-checking how it was done, physically, in the file system
+- Checking how it was done, physically, in the file system
 
-> If you were like me, using MySQL Docker and be able to access the container
+  > If you were like me, using MySQL Docker and be able to access the container
 
 ```sh
 # enter the shell
@@ -188,14 +192,15 @@ ls /var/lib/mysql/testdb | grep -i quotes
 # └── Quotes#P#p2024.ibd
 ```
 
-issues I've faced when *operating on an existing table* with complex relations
-> conclusion: not reading the docs long/carefully enough; should have done it in the design phase
+- issues I've faced when *operating on an existing table* with complex relations
+
+  > conclusion: not reading the docs long/carefully enough; should have done it in the design phase
 
 - Foreign keys are not yet supported in conjunction with partitioning
 - A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).
 - ..
 
-**get sample data for a table**
+## Get Sample Data for a Table
 
 > The last line is the one you need to edit to match your table schema
 
