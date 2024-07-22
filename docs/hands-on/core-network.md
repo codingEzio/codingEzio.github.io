@@ -22,29 +22,29 @@
 
 - in practice, different types of the cookie simply differs in different keys
 
-  ```javascript
-  // Session Cookie
-  document.cookie = "sessionToken=ABC123; path=/; SameSite=Lax";
+```js
+// Session Cookie
+document.cookie = "sessionToken=ABC123; path=/; SameSite=Lax";
 
-  // Persistent Cookie for 7 days
-  var date = new Date();
-  date.setTime(date.getTime() + (7*24*60*60*1000)); // 7 days from now
-  var expires = "expires=" + date.toUTCString();
-  document.cookie = "persistentToken=XYZ456; path=/; " + expires + "; SameSite=Lax";
+// Persistent Cookie for 7 days
+var date = new Date();
+date.setTime(date.getTime() + (7*24*60*60*1000)); // 7 days from now
+var expires = "expires=" + date.toUTCString();
+document.cookie = "persistentToken=XYZ456; path=/; " + expires + "; SameSite=Lax";
 
-  // Secure Cookie
-  document.cookie = "secureToken=DEF789; path=/; Secure; SameSite=Lax";
+// Secure Cookie
+document.cookie = "secureToken=DEF789; path=/; Secure; SameSite=Lax";
 
-  // HttpOnly Cookie (must be set via server)
+// HttpOnly Cookie (must be set via server)
 
-  // SameSite Cookies
-  document.cookie = "sameSiteToken=LaxValue; path=/; SameSite=Lax";
-  document.cookie = "sameSiteToken2=StrictValue; path=/; SameSite=Strict";
-  document.cookie = "sameSiteToken3=NoneValue; path=/; SameSite=None; Secure";
+// SameSite Cookies
+document.cookie = "sameSiteToken=LaxValue; path=/; SameSite=Lax";
+document.cookie = "sameSiteToken2=StrictValue; path=/; SameSite=Strict";
+document.cookie = "sameSiteToken3=NoneValue; path=/; SameSite=None; Secure";
 
-  // Viewing all cookies
-  console.log(document.cookie);
-  ```
+// Viewing all cookies
+console.log(document.cookie);
+```
 
 - lastly, in case you wanna know the types of them
   - by expiration time, *session cookie* n *persistent cookie* (physically exists)
