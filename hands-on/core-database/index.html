@@ -52,12 +52,52 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#context" class="nav-link">Context</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#overview-of-a-database" class="nav-link">Overview of a Database</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#whats-up-with-the-mvcc" class="nav-link">What's Up with the MVCC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#how-a-query-is-done" class="nav-link">How a Query is Done</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#common-index-types" class="nav-link">Common Index Types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#renaming-a-database" class="nav-link">Renaming a Database</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#table-partitioning" class="nav-link">Table Partitioning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#get-sample-data-for-a-table" class="nav-link">Get Sample Data for a Table</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p><strong>full context</strong></p>
+<h2 id="context">Context</h2>
 <ul>
 <li>I'm NOT a DB dev</li>
 <li>I rarely operate on DB directly (I use ORM)</li>
@@ -66,51 +106,54 @@
 <li>It was fun</li>
 <li>Heavily made use of <em>LLM</em>s (alongside StackOverflow n Wikipedia)</li>
 </ul>
-<hr />
-<p><strong>overview of a database</strong></p>
-<p>transport layer</p>
+<h2 id="overview-of-a-database">Overview of a Database</h2>
+<h3 id="transport-layer">Transport Layer</h3>
 <ul>
 <li>accepting n managing incoming requents, like/is an always-running server</li>
 <li>check the <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-db-transport-layer.py">mock implementation</a> in Python</li>
 </ul>
-<p>query processor</p>
+<h3 id="query-processor">Query Processor</h3>
 <blockquote>
 <p>TBD</p>
 </blockquote>
-<p>execution engine</p>
+<h3 id="execution-engine">Execution Engine</h3>
 <blockquote>
 <p>TBD</p>
 </blockquote>
-<p>storage engine</p>
+<h3 id="storage-engine">Storage Engine</h3>
 <blockquote>
 <p>TBD</p>
 </blockquote>
-<p><strong>what's up with the MVCC</strong></p>
+<h2 id="whats-up-with-the-mvcc">What's Up with the MVCC</h2>
+<blockquote>
+<p>Full form: <a href="https://en.wikipedia.org/wiki/Multiversion_concurrency_control"><em>M</em>ulti<em>v</em>ersion <em>c</em>oncurrency <em>c</em>ontrol</a></p>
+</blockquote>
+<h3 id="databases-are-designed-to-be-concurrent">Databases are designed to be concurrent</h3>
 <ul>
-<li>Full form: <a href="https://en.wikipedia.org/wiki/Multiversion_concurrency_control"><em>M</em>ulti<em>v</em>ersion <em>c</em>oncurrency <em>c</em>ontrol</a></li>
-<li>Databases are designed to be concurrent</li>
 <li>access/update, by users, by transactions and so on</li>
-<li>when accessing some record, others might be updating it<ul>
+<li>when accessing some record, others might be updating it</li>
 <li>action of updating takes time</li>
 <li>order of updating matters</li>
-</ul>
-</li>
-<li>we might consider block it after writers are done<ul>
+<li>we might consider block it after writers are done</li>
 <li>the transactions for read/update might be a huge one</li>
 <li>this was achieved using locks</li>
 <li>this would cause <em>contention</em> (subjects fight over something)</li>
 </ul>
-</li>
-<li>MVCC is more of an addtional tool helping with concurrency<blockquote>
+<h3 id="mvcc-is-more-of-an-addtional-tool-helping-with-concurrency">MVCC is more of an addtional tool helping with concurrency</h3>
+<blockquote>
 <p>IMO: in my opinion, haven't tested it manually in a DB</p>
 </blockquote>
-</li>
+<ul>
 <li>IMO, it was meant to be used in conjunction with locks</li>
 <li>
-<p>It does three main things, IMO
-    &gt; All got a hidden timestamp/transaction id to ensure uniqueness</p>
-<ul>
-<li>Read</li>
+<p>It does three main things, IMO</p>
+<blockquote>
+<p>All got a hidden timestamp/transaction id to ensure uniqueness</p>
+</blockquote>
+</li>
+<li>
+<p>Read</p>
+</li>
 <li>get the most recent ver. of the record, no blocking</li>
 <li>might not be the latest (someone might be updating it)</li>
 <li>Write</li>
@@ -118,32 +161,29 @@
 <li>Older versions are still available for reading</li>
 <li>Garbage collection</li>
 <li>the older versions <a href="https://mariadb.com/kb/en/innodb-purge/">were stored in the undo log</a></li>
-<li>for InnoDB in MySQL, it's a process that <a href="https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html">runs periodically</a></li>
-</ul>
+<li>
+<p>for InnoDB in MySQL, it's a process that <a href="https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html">runs periodically</a></p>
 </li>
 <li>
-<p>For the case explained above, <em>Isolation Level</em> came into play</p>
+<p>For the case explained above, <em>Isolation Level</em> came into play, context below</p>
 </li>
-<li>Context<ul>
 <li>Different types of them for different strictness levels</li>
 <li>Categorized by read phenomenon (~=how bad is it)</li>
 <li>Scenarios mentioned above were <em>Snapshot Isolation</em> (<sup>reference needed</sup>)</li>
 <li>Different DB have widely different <em>default</em> isolation levels</li>
 </ul>
-</li>
-</ul>
-<p><strong>how a query is done</strong></p>
+<h2 id="how-a-query-is-done">How a Query is Done</h2>
 <ul>
 <li>Suppose we have a query like this</li>
 </ul>
-<p><code>sql
-  SELECT employees.name, COUNT(projects.project_id) as project_count
-  FROM employees
-  JOIN projects ON employees.id = projects.employee_id
-  WHERE employees.salary &gt; 20000
-  GROUP BY employees.name
-  HAVING COUNT(projects.project_id) &gt; 5
-  ORDER BY project_count DESC;</code></p>
+<pre><code class="language-sql">SELECT employees.name, COUNT(projects.project_id) as project_count
+FROM employees
+JOIN projects ON employees.id = projects.employee_id
+WHERE employees.salary &gt; 20000
+GROUP BY employees.name
+HAVING COUNT(projects.project_id) &gt; 5
+ORDER BY project_count DESC;
+</code></pre>
 <ul>
 <li>
 <p>The process of executing the query is as follows</p>
@@ -157,7 +197,7 @@
 <li><code>HAVING</code> <code>project</code>s the <code>employee</code>s working on is greater than 5</li>
 <li><code>ORDER BY</code> the number of <code>project</code>s the <code>employee</code> is working on in descending order</li>
 </ul>
-<p><strong>common index types</strong></p>
+<h2 id="common-index-types">Common Index Types</h2>
 <ul>
 <li>B+ Tree Index (default for MySQL InnoDB)</li>
 <li>most common, efficient enough</li>
@@ -170,12 +210,18 @@
 <li>Spatial Index</li>
 <li>I'll write the notes once I've done the hands-on testing ;P</li>
 </ul>
-<p><strong>renaming a database</strong></p>
+<h2 id="renaming-a-database">Renaming a Database</h2>
+<blockquote>
 <p>I guess it wasn't normally done. I purely changed it for the sake of learning.</p>
-<p>get the new one created before renaming</p>
+</blockquote>
+<ul>
+<li>Get the new one created before renaming</li>
+</ul>
 <pre><code class="language-sql">CREATE DATABASE testdb;
 </code></pre>
-<p>generate the script based on the existing database</p>
+<ul>
+<li>Generate the script based on the existing database</li>
+</ul>
 <pre><code class="language-sql">SELECT CONCAT(
   'RENAME TABLE ','`旧库`','.`',TABLE_NAME,
   '` TO ','`testdb`.`',TABLE_NAME,'`;'
@@ -183,17 +229,23 @@
 FROM information_schema.TABLES
 WHERE table_schema LIKE '旧库';
 </code></pre>
-<p>run the script</p>
+<ul>
+<li>Run the script</li>
+</ul>
 <pre><code class="language-sql">USE `旧库`;
 
 -- the SQL generated from the previous step
 </code></pre>
-<p><strong>table partitioning</strong></p>
-<p>context
-I wasn't in a position to do this in production, but I still wanted to learn about it.
-so I got a local MySQL database in Docker and tried it out.
+<h2 id="table-partitioning">Table Partitioning</h2>
+<h3 id="context_1">Context</h3>
+<blockquote>
+<p>I wasn't in a position to do this in production, but I still wanted to learn about it.</p>
+<p>So I got a local MySQL database in Docker and tried it out.
 all normal CRUDs would be exactly the same if not considering efficient queries.</p>
-<p>firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.</p>
+</blockquote>
+<ul>
+<li>Firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.</li>
+</ul>
 <pre><code class="language-sql">CREATE TABLE Quotes (
     row_id INT AUTO_INCREMENT,
     creator VARCHAR(255),
@@ -210,12 +262,18 @@ PARTITION BY RANGE (YEAR(created)) (
     PARTITION p2024 VALUES LESS THAN (2025)
 );
 </code></pre>
-<p>secondly</p>
+<ul>
+<li>Secondly</li>
+</ul>
+<blockquote>
 <p>making sure it was properly done, logically, in detail</p>
+</blockquote>
 <pre><code class="language-sql">SELECT * FROM information_schema.PARTITIONS
 WHERE TABLE_SCHEMA = 'testdb' AND TABLE_NAME = 'Quotes';
 </code></pre>
-<p>checking how it was done, physically, in the file system</p>
+<ul>
+<li>Checking how it was done, physically, in the file system</li>
+</ul>
 <blockquote>
 <p>If you were like me, using MySQL Docker and be able to access the container</p>
 </blockquote>
@@ -236,7 +294,9 @@ ls /var/lib/mysql/testdb | grep -i quotes
 # ├── Quotes#P#p2023.ibd
 # └── Quotes#P#p2024.ibd
 </code></pre>
-<p>issues I've faced when <em>operating on an existing table</em> with complex relations</p>
+<ul>
+<li>issues I've faced when <em>operating on an existing table</em> with complex relations</li>
+</ul>
 <blockquote>
 <p>conclusion: not reading the docs long/carefully enough; should have done it in the design phase</p>
 </blockquote>
@@ -245,7 +305,7 @@ ls /var/lib/mysql/testdb | grep -i quotes
 <li>A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).</li>
 <li>..</li>
 </ul>
-<p><strong>get sample data for a table</strong></p>
+<h2 id="get-sample-data-for-a-table">Get Sample Data for a Table</h2>
 <blockquote>
 <p>The last line is the one you need to edit to match your table schema</p>
 </blockquote>
