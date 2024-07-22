@@ -10,6 +10,7 @@
 
 > Built via `mkdocs gh-deploy --site-dir build-output`
 
+- [Network](./hands-on/core-network.md)
 - [Operating System](./hands-on/core-operatingsystem.md)
 - [Database](./hands-on/core-database.md)
 - [C# and .NET](./hands-on/core-csharp-n-dotnet.md)
