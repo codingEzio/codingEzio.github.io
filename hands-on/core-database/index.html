@@ -84,6 +84,53 @@
 <blockquote>
 <p>TBD</p>
 </blockquote>
+<p><strong>what's up with the MVCC</strong></p>
+<ul>
+<li>Full form: <a href="https://en.wikipedia.org/wiki/Multiversion_concurrency_control"><em>M</em>ulti<em>v</em>ersion <em>c</em>oncurrency <em>c</em>ontrol</a></li>
+<li>Databases are designed to be concurrent</li>
+<li>access/update, by users, by transactions and so on</li>
+<li>when accessing some record, others might be updating it<ul>
+<li>action of updating takes time</li>
+<li>order of updating matters</li>
+</ul>
+</li>
+<li>we might consider block it after writers are done<ul>
+<li>the transactions for read/update might be a huge one</li>
+<li>this was achieved using locks</li>
+<li>this would cause <em>contention</em> (subjects fight over something)</li>
+</ul>
+</li>
+<li>MVCC is more of an addtional tool helping with concurrency<blockquote>
+<p>IMO: in my opinion, haven't tested it manually in a DB</p>
+</blockquote>
+</li>
+<li>IMO, it was meant to be used in conjunction with locks</li>
+<li>
+<p>It does three main things, IMO
+    &gt; All got a hidden timestamp/transaction id to ensure uniqueness</p>
+<ul>
+<li>Read</li>
+<li>get the most recent ver. of the record, no blocking</li>
+<li>might not be the latest (someone might be updating it)</li>
+<li>Write</li>
+<li>current operation creates new ver (with timestamp or transaction ID), no blocking</li>
+<li>Older versions are still available for reading</li>
+<li>Garbage collection</li>
+<li>the older versions <a href="https://mariadb.com/kb/en/innodb-purge/">were stored in the undo log</a></li>
+<li>for InnoDB in MySQL, it's a process that <a href="https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html">runs periodically</a></li>
+</ul>
+</li>
+<li>
+<p>For the case explained above, <em>Isolation Level</em> came into play</p>
+</li>
+<li>Context<ul>
+<li>Different types of them for different strictness levels</li>
+<li>Categorized by read phenomenon (~=how bad is it)</li>
+<li>Scenarios mentioned above were <em>Snapshot Isolation</em></li>
+<li>Different DB have widely different <em>default</em> isolation levels</li>
+</ul>
+</li>
+</ul>
 <p><strong>renaming a database</strong></p>
 <p>I guess it wasn't normally done. I purely changed it for the sake of learning.</p>
 <p>get the new one created before renaming</p>
