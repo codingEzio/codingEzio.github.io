@@ -91,24 +91,28 @@
 <p>in practice, different types of the cookie simply differs in different keys</p>
 </li>
 </ul>
-<p>```javascript
-  // Session Cookie
-  document.cookie = "sessionToken=ABC123; path=/; SameSite=Lax";</p>
-<p>// Persistent Cookie for 7 days
-  var date = new Date();
-  date.setTime(date.getTime() + (7<em>24</em>60<em>60</em>1000)); // 7 days from now
-  var expires = "expires=" + date.toUTCString();
-  document.cookie = "persistentToken=XYZ456; path=/; " + expires + "; SameSite=Lax";</p>
-<p>// Secure Cookie
-  document.cookie = "secureToken=DEF789; path=/; Secure; SameSite=Lax";</p>
-<p>// HttpOnly Cookie (must be set via server)</p>
-<p>// SameSite Cookies
-  document.cookie = "sameSiteToken=LaxValue; path=/; SameSite=Lax";
-  document.cookie = "sameSiteToken2=StrictValue; path=/; SameSite=Strict";
-  document.cookie = "sameSiteToken3=NoneValue; path=/; SameSite=None; Secure";</p>
-<p>// Viewing all cookies
-  console.log(document.cookie);
-  ```</p>
+<pre><code class="language-js">// Session Cookie
+document.cookie = &quot;sessionToken=ABC123; path=/; SameSite=Lax&quot;;
+
+// Persistent Cookie for 7 days
+var date = new Date();
+date.setTime(date.getTime() + (7*24*60*60*1000)); // 7 days from now
+var expires = &quot;expires=&quot; + date.toUTCString();
+document.cookie = &quot;persistentToken=XYZ456; path=/; &quot; + expires + &quot;; SameSite=Lax&quot;;
+
+// Secure Cookie
+document.cookie = &quot;secureToken=DEF789; path=/; Secure; SameSite=Lax&quot;;
+
+// HttpOnly Cookie (must be set via server)
+
+// SameSite Cookies
+document.cookie = &quot;sameSiteToken=LaxValue; path=/; SameSite=Lax&quot;;
+document.cookie = &quot;sameSiteToken2=StrictValue; path=/; SameSite=Strict&quot;;
+document.cookie = &quot;sameSiteToken3=NoneValue; path=/; SameSite=None; Secure&quot;;
+
+// Viewing all cookies
+console.log(document.cookie);
+</code></pre>
 <ul>
 <li>lastly, in case you wanna know the types of them</li>
 <li>by expiration time, <em>session cookie</em> n <em>persistent cookie</em> (physically exists)</li>
