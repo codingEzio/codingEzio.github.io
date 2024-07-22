@@ -4,27 +4,27 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Human</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/fontawesome.min.css" rel="stylesheet">
-        <link href="css/brands.min.css" rel="stylesheet">
-        <link href="css/solid.min.css" rel="stylesheet">
-        <link href="css/v4-font-face.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Core network - Human</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">Human</a>
+                <a class="navbar-brand" href="../..">Human</a>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -52,58 +52,91 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
-            
-            <li class="nav-item" data-bs-level="2"><a href="#welcome" class="nav-link">Welcome</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#note" class="nav-link">Note</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#available-posts" class="nav-link">Available Posts</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#project-layout" class="nav-link">Project layout</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="welcome">Welcome</h2>
-<blockquote>
-<p>A trashy blog written by a biased, incompetent and lazy human 🤣.</p>
-</blockquote>
-<h2 id="note">Note</h2>
-<blockquote>
-<p>This blog was completed revamped and rebuilt from scratch on 2024-07-07. The original blog with 200+ posts were either distilled, expanded or simply removed because of the even higher standard for the quality of the posts. (此博客启用于 2024 年 7 月 7 日，原博客 200 余篇文章已经被精简、扩展或移除。新博客对于博文的要求更为严格。)</p>
-</blockquote>
-<h2 id="available-posts">Available Posts</h2>
-<blockquote>
-<p>Built via <code>mkdocs gh-deploy --site-dir build-output</code></p>
-</blockquote>
+<p><strong>full context</strong></p>
 <ul>
-<li><a href="hands-on/core-network/">Network</a></li>
-<li><a href="hands-on/core-operatingsystem/">Operating System</a></li>
-<li><a href="hands-on/core-database/">Database</a></li>
-<li><a href="hands-on/core-csharp-n-dotnet/">C# and .NET</a></li>
-<li><a href="hands-on/random-extjs-overview/">Ext.js</a></li>
+<li>I believe <em>如果你对于概念的解释无法让一个外行听懂，那么你根本就不懂</em> (either the context you've set up, origin of the concept, or any other aspects)</li>
+<li>I wanted to get hands dirty with networking</li>
+<li>It was fun</li>
+<li>Heavily made use of <em>LLM</em>s (alongside StackOverflow n Wikipedia)</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml              # Blog configuration.
-hands-on/               # Bits of code examples.
-docs/
-    index.md            # Homepage.
-    hands-on/           # Concepts in practice.
-    quotes-n-trivias/   # Random quotes and trivias.
-</code></pre></div>
+<hr />
+<p><strong>cookie v session</strong></p>
+<ul>
+<li>cookie</li>
+<li>stored in the browser</li>
+<li>got check via <code>document.cookie</code> in the browser console</li>
+<li>types allowed: text only (key value pairs)</li>
+<li>limited size, commonly less than <a href="https://stackoverflow.com/a/4604212/6273859">4093 bytes</a> <strong>under a domain</strong></li>
+<li>limited number of cookies per domain, <a href="https://docs.devexpress.com/AspNet/11912/common-concepts/cookies-support">ranged from 60 to 600</a> (data might be stable, as I had NOT tested it myself)</li>
+<li>the spec <a href="https://www.ietf.org/rfc/rfc2109.txt"><em>HTTP State Management Mechanism</em></a> did NOT specify the size limit <small>(search for <code>6.3</code>)</small></li>
+<li>the exact size limit is implementation-specific, test your own <a href="http://browsercookielimits.iain.guru/">here</a></li>
+<li>
+<p>in practice, different types of the cookie simply differs in different keys</p>
+<p>```javascript
+// Session Cookie
+document.cookie = "sessionToken=ABC123; path=/; SameSite=Lax";</p>
+<p>// Persistent Cookie for 7 days
+var date = new Date();
+date.setTime(date.getTime() + (7<em>24</em>60<em>60</em>1000)); // 7 days from now
+var expires = "expires=" + date.toUTCString();
+document.cookie = "persistentToken=XYZ456; path=/; " + expires + "; SameSite=Lax";</p>
+<p>// Secure Cookie
+document.cookie = "secureToken=DEF789; path=/; Secure; SameSite=Lax";</p>
+<p>// HttpOnly Cookie (must be set via server)</p>
+<p>// SameSite Cookies
+document.cookie = "sameSiteToken=LaxValue; path=/; SameSite=Lax";
+document.cookie = "sameSiteToken2=StrictValue; path=/; SameSite=Strict";
+document.cookie = "sameSiteToken3=NoneValue; path=/; SameSite=None; Secure";</p>
+<p>// Viewing all cookies
+console.log(document.cookie);
+```</p>
+</li>
+<li>
+<p>lastly, in case you wanna know the types of them</p>
+<ul>
+<li>by expiration time, <em>session cookie</em> n <em>persistent cookie</em> (physically exists)</li>
+<li>by origin, <em>first-party cookie</em> n <em>third-party cookie</em></li>
+<li>by feature</li>
+<li><em>essential</em> (like products in cart)</li>
+<li><em>analytics</em> (like Google Analytics or ADs)</li>
+<li><em>functional</em> (like language choice)</li>
+</ul>
+</li>
+<li>
+<p>session</p>
+</li>
+<li>stored in the server</li>
+<li>gotta have your own way to see the session data</li>
+<li>types allowed: any types, any ways you wanna save (depends on the language)</li>
+<li>"unlimited" size<ul>
+<li>think of it as putting a small box in a warehouse</li>
+<li>it could fill up, but normally it wouldn't be the one that fills up</li>
+</ul>
+</li>
+<li>
+<p>in practice, sessions were stored and interpreted however you want</p>
+<blockquote>
+<p>After all, it's just a way for you to identify the user with handful of stuff in the data</p>
+</blockquote>
+</li>
+<li>
+<p>lastly, in case you wanna know the types of them</p>
+<ul>
+<li>by storage type</li>
+<li>server-side session (client's cookie got a session ID matching with server)</li>
+<li>client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)</li>
+<li>by implementation</li>
+<li>via cookie: a session ID in the cookie matching with the server-side session</li>
+<li>via URL: <code>https://example.com/login?sessionId=ABC123</code> (~= <em>via cookie</em>)</li>
+<li>via database: almost the same thing as <em>via cookie</em>, but being persisted</li>
+</ul>
+</li>
+</ul></div>
             </div>
         </div>
 
@@ -111,13 +144,13 @@ docs/
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
         <script>
-            var base_url = ".",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -182,8 +215,3 @@ docs/
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.6.0
-Build Date UTC : 2024-07-22 13:54:51.301958+00:00
--->
