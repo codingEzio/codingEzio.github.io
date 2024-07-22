@@ -6,6 +6,7 @@
 - I believe *if you didn't type the commands on the existing DB, it was all theory*
 - I wanted to learn more about DB
 - It was fun
+- Heavily made use of *LLM*s (alongside StackOverflow n Wikipedia)
 
 -----
 
@@ -60,8 +61,44 @@ storage engine
   - Context
     - Different types of them for different strictness levels
     - Categorized by read phenomenon (~=how bad is it)
-    - Scenarios mentioned above were *Snapshot Isolation*
+    - Scenarios mentioned above were *Snapshot Isolation* (<sup>reference needed</sup>)
     - Different DB have widely different *default* isolation levels
+
+**how a query is done**
+
+- Suppose we have a query like this
+
+  ```sql
+  SELECT employees.name, COUNT(projects.project_id) as project_count
+  FROM employees
+  JOIN projects ON employees.id = projects.employee_id
+  WHERE employees.salary > 20000
+  GROUP BY employees.name
+  HAVING COUNT(projects.project_id) > 5
+  ORDER BY project_count DESC;
+  ```
+
+- The process of executing the query is as follows
+
+  - `FROM` the `employee` table
+  - With `JOIN`ing the `projects` table `ON` `employee_id` column
+  - Filter `WHERE` the `salary` is greater than 20000
+  - `GROUP BY` the `employee`'s `name`
+  - `HAVING` `project`s the `employee`s working on is greater than 5
+  - `ORDER BY` the number of `project`s the `employee` is working on in descending order
+
+**common index types**
+
+- B+ Tree Index (default for MySQL InnoDB)
+  - most common, efficient enough
+  - support both exact and range queries
+- Hash Index
+  - only avialable for *Memory* tables
+  - only support exact lookups (`=`, `IN`)
+- Full-Text Index
+  - I'll write the notes once I've done the hands-on testing ;P
+- Spatial Index
+  - I'll write the notes once I've done the hands-on testing ;P
 
 **renaming a database**
 
