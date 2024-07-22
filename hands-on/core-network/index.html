@@ -52,12 +52,22 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#context" class="nav-link">Context</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#cookie-v-session" class="nav-link">Cookie v Session</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p><strong>full context</strong></p>
+<h2 id="context">Context</h2>
 <ul>
 <li>I believe <em>如果你对于概念的解释无法让一个外行听懂，那么你根本就不懂</em> (either the context you've set up, origin of the concept, or any other aspects)</li>
 <li>I wanted to get hands dirty with networking</li>
@@ -65,72 +75,72 @@
 <li>Heavily made use of <em>LLM</em>s (alongside StackOverflow n Wikipedia)</li>
 </ul>
 <hr />
-<p><strong>cookie v session</strong></p>
+<h2 id="cookie-v-session">Cookie v Session</h2>
+<h3 id="cookie">Cookie</h3>
 <ul>
-<li>cookie</li>
 <li>stored in the browser</li>
 <li>got check via <code>document.cookie</code> in the browser console</li>
 <li>types allowed: text only (key value pairs)</li>
 <li>limited size, commonly less than <a href="https://stackoverflow.com/a/4604212/6273859">4093 bytes</a> <strong>under a domain</strong></li>
 <li>limited number of cookies per domain, <a href="https://docs.devexpress.com/AspNet/11912/common-concepts/cookies-support">ranged from 60 to 600</a> (data might be stable, as I had NOT tested it myself)</li>
 <li>the spec <a href="https://www.ietf.org/rfc/rfc2109.txt"><em>HTTP State Management Mechanism</em></a> did NOT specify the size limit <small>(search for <code>6.3</code>)</small></li>
-<li>the exact size limit is implementation-specific, test your own <a href="http://browsercookielimits.iain.guru/">here</a></li>
 <li>
-<p>in practice, different types of the cookie simply differs in different keys</p>
-<p>```javascript
-// Session Cookie
-document.cookie = "sessionToken=ABC123; path=/; SameSite=Lax";</p>
-<p>// Persistent Cookie for 7 days
-var date = new Date();
-date.setTime(date.getTime() + (7<em>24</em>60<em>60</em>1000)); // 7 days from now
-var expires = "expires=" + date.toUTCString();
-document.cookie = "persistentToken=XYZ456; path=/; " + expires + "; SameSite=Lax";</p>
-<p>// Secure Cookie
-document.cookie = "secureToken=DEF789; path=/; Secure; SameSite=Lax";</p>
-<p>// HttpOnly Cookie (must be set via server)</p>
-<p>// SameSite Cookies
-document.cookie = "sameSiteToken=LaxValue; path=/; SameSite=Lax";
-document.cookie = "sameSiteToken2=StrictValue; path=/; SameSite=Strict";
-document.cookie = "sameSiteToken3=NoneValue; path=/; SameSite=None; Secure";</p>
-<p>// Viewing all cookies
-console.log(document.cookie);
-```</p>
+<p>the exact size limit is implementation-specific, test your own <a href="http://browsercookielimits.iain.guru/">here</a></p>
 </li>
 <li>
-<p>lastly, in case you wanna know the types of them</p>
+<p>in practice, different types of the cookie simply differs in different keys</p>
+</li>
+</ul>
+<p>```javascript
+  // Session Cookie
+  document.cookie = "sessionToken=ABC123; path=/; SameSite=Lax";</p>
+<p>// Persistent Cookie for 7 days
+  var date = new Date();
+  date.setTime(date.getTime() + (7<em>24</em>60<em>60</em>1000)); // 7 days from now
+  var expires = "expires=" + date.toUTCString();
+  document.cookie = "persistentToken=XYZ456; path=/; " + expires + "; SameSite=Lax";</p>
+<p>// Secure Cookie
+  document.cookie = "secureToken=DEF789; path=/; Secure; SameSite=Lax";</p>
+<p>// HttpOnly Cookie (must be set via server)</p>
+<p>// SameSite Cookies
+  document.cookie = "sameSiteToken=LaxValue; path=/; SameSite=Lax";
+  document.cookie = "sameSiteToken2=StrictValue; path=/; SameSite=Strict";
+  document.cookie = "sameSiteToken3=NoneValue; path=/; SameSite=None; Secure";</p>
+<p>// Viewing all cookies
+  console.log(document.cookie);
+  ```</p>
 <ul>
+<li>lastly, in case you wanna know the types of them</li>
 <li>by expiration time, <em>session cookie</em> n <em>persistent cookie</em> (physically exists)</li>
 <li>by origin, <em>first-party cookie</em> n <em>third-party cookie</em></li>
-<li>by feature</li>
+<li>by feature<ul>
 <li><em>essential</em> (like products in cart)</li>
 <li><em>analytics</em> (like Google Analytics or ADs)</li>
 <li><em>functional</em> (like language choice)</li>
 </ul>
 </li>
-<li>
-<p>session</p>
-</li>
+</ul>
+<h3 id="session">Session</h3>
+<ul>
 <li>stored in the server</li>
 <li>gotta have your own way to see the session data</li>
 <li>types allowed: any types, any ways you wanna save (depends on the language)</li>
-<li>"unlimited" size<ul>
+<li>"unlimited" size</li>
 <li>think of it as putting a small box in a warehouse</li>
 <li>it could fill up, but normally it wouldn't be the one that fills up</li>
+<li>in practice, sessions were stored and interpreted however you want</li>
 </ul>
-</li>
-<li>
-<p>in practice, sessions were stored and interpreted however you want</p>
 <blockquote>
 <p>After all, it's just a way for you to identify the user with handful of stuff in the data</p>
 </blockquote>
-</li>
-<li>
-<p>lastly, in case you wanna know the types of them</p>
 <ul>
-<li>by storage type</li>
+<li>lastly, in case you wanna know the types of them</li>
+<li>by storage type<ul>
 <li>server-side session (client's cookie got a session ID matching with server)</li>
 <li>client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)</li>
-<li>by implementation</li>
+</ul>
+</li>
+<li>by implementation<ul>
 <li>via cookie: a session ID in the cookie matching with the server-side session</li>
 <li>via URL: <code>https://example.com/login?sessionId=ABC123</code> (~= <em>via cookie</em>)</li>
 <li>via database: almost the same thing as <em>via cookie</em>, but being persisted</li>
