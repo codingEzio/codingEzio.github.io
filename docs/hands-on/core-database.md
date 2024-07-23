@@ -44,8 +44,6 @@
 
 ### MVCC is more of an addtional tool helping with concurrency
 
-> IMO: in my opinion, haven't tested it manually in a DB
-
 - IMO, it was meant to be used in conjunction with locks
 - It does three main things, IMO
     > All got a hidden timestamp/transaction id to ensure uniqueness
@@ -63,7 +61,7 @@
 - For the case explained above, *Isolation Level* came into play, context below
     - Different types of them for different strictness levels
     - Categorized by read phenomenon (~=how bad is it)
-    - Scenarios mentioned above were *Snapshot Isolation* (<sup>reference needed</sup>)
+    - Scenarios mentioned above were *Snapshot Isolation* <sup>reference needed</sup>
     - Different DB have widely different *default* isolation levels
 
 ## How a Query is Done
@@ -144,19 +142,19 @@ all normal CRUDs would be exactly the same if not considering efficient queries.
 
 ```sql
 CREATE TABLE Quotes (
-        row_id INT AUTO_INCREMENT,
-        creator VARCHAR(255),
-        quotes VARCHAR(255),
-        created DATE,
-        PRIMARY KEY (row_id, created)
+    row_id INT AUTO_INCREMENT,
+    creator VARCHAR(255),
+    quotes VARCHAR(255),
+    created DATE,
+    PRIMARY KEY (row_id, created)
 )
 PARTITION BY RANGE (YEAR(created)) (
-        PARTITION p2019 VALUES LESS THAN (2020),
-        PARTITION p2020 VALUES LESS THAN (2021),
-        PARTITION p2021 VALUES LESS THAN (2022),
-        PARTITION p2022 VALUES LESS THAN (2023),
-        PARTITION p2023 VALUES LESS THAN (2024),
-        PARTITION p2024 VALUES LESS THAN (2025)
+    PARTITION p2019 VALUES LESS THAN (2020),
+    PARTITION p2020 VALUES LESS THAN (2021),
+    PARTITION p2021 VALUES LESS THAN (2022),
+    PARTITION p2022 VALUES LESS THAN (2023),
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025)
 );
 ```
 
@@ -211,26 +209,26 @@ DELIMITER //
 
 CREATE PROCEDURE GenerateSampleData(IN dbName VARCHAR(255), IN tableName VARCHAR(255))
 BEGIN
-        DECLARE i INT DEFAULT 0;
-        DECLARE randomName VARCHAR(255);
-        DECLARE randomQuote VARCHAR(255);
-        DECLARE randomDate DATE;
+    DECLARE i INT DEFAULT 0;
+    DECLARE randomName VARCHAR(255);
+    DECLARE randomQuote VARCHAR(255);
+    DECLARE randomDate DATE;
 
-        DECLARE nameList VARCHAR(255) DEFAULT 'Alice,Bob,Charlie,David,Eve,Frank,Grace,Hank,Ivy,Jack';
-        DECLARE quoteList VARCHAR(255) DEFAULT 'Sample quote 1.,Sample quote 2.,Sample quote 3.,Sample quote 4.,Sample quote 5.';
+    DECLARE nameList VARCHAR(255) DEFAULT 'Alice,Bob,Charlie,David,Eve,Frank,Grace,Hank,Ivy,Jack';
+    DECLARE quoteList VARCHAR(255) DEFAULT 'Sample quote 1.,Sample quote 2.,Sample quote 3.,Sample quote 4.,Sample quote 5.';
 
-        WHILE i < 100000 DO
-                SET randomName = ELT(1 + FLOOR(RAND() * 10), 'Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace', 'Hank', 'Ivy', 'Jack');
-                SET randomQuote = ELT(1 + FLOOR(RAND() * 5), 'Sample quote 1.', 'Sample quote 2.', 'Sample quote 3.', 'Sample quote 4.', 'Sample quote 5.');
-                SET randomDate = DATE_ADD('2019-01-01', INTERVAL FLOOR(RAND() * 1825) DAY); -- Random date between 2019 and 2024
+    WHILE i < 100000 DO
+        SET randomName = ELT(1 + FLOOR(RAND() * 10), 'Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace', 'Hank', 'Ivy', 'Jack');
+        SET randomQuote = ELT(1 + FLOOR(RAND() * 5), 'Sample quote 1.', 'Sample quote 2.', 'Sample quote 3.', 'Sample quote 4.', 'Sample quote 5.');
+        SET randomDate = DATE_ADD('2019-01-01', INTERVAL FLOOR(RAND() * 1825) DAY); -- Random date between 2019 and 2024
 
-                SET @insertQuery = CONCAT('INSERT INTO ', dbName, '.', tableName, ' (creator, quotes, created) VALUES (''', randomName, ''', ''', randomQuote, ''', ''', randomDate, ''')');
-                PREPARE stmt FROM @insertQuery;
-                EXECUTE stmt;
-                DEALLOCATE PREPARE stmt;
+        SET @insertQuery = CONCAT('INSERT INTO ', dbName, '.', tableName, ' (creator, quotes, created) VALUES (''', randomName, ''', ''', randomQuote, ''', ''', randomDate, ''')');
+        PREPARE stmt FROM @insertQuery;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
 
-                SET i = i + 1;
-        END WHILE;
+        SET i = i + 1;
+    END WHILE;
 END //
 
 DELIMITER ;

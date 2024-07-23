@@ -14,16 +14,16 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 - If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.
 
 ```txt
-             Value Types
-                     |
-        +--------------+
-        |                            |
- Boxing                 Unboxing
-        |                            |
-        ⬇️                         ⬆️
-        +--------------+
-                     |
-            Reference Types
+       Value Types
+           |
+    +--------------+
+    |              |
+ Boxing         Unboxing
+    |              |
+    ⬇️              ⬆️
+    +--------------+
+           |
+      Reference Types
 ```
 
 **Destructors**

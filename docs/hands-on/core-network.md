@@ -15,7 +15,7 @@
 - types allowed: text only (key value pairs)
 - limited size, commonly less than [4093 bytes](https://stackoverflow.com/a/4604212/6273859) **under a domain**
 - limited number of cookies per domain, [ranged from 60 to 600](https://docs.devexpress.com/AspNet/11912/common-concepts/cookies-support) (data might be stable, as I had NOT tested it myself)
-- the spec [*HTTP State Management Mechanism*](https://www.ietf.org/rfc/rfc2109.txt) did NOT specify the size limit <small>(search for `6.3`)</small>
+- the spec [*HTTP State Management Mechanism*](https://www.ietf.org/rfc/rfc2109.txt) did NOT specify the size limit <sup>search for `6.3`</sup>
 - the exact size limit is implementation-specific, test your own [here](http://browsercookielimits.iain.guru/)
 
 - in practice, different types of the cookie simply differs in different keys
@@ -45,12 +45,12 @@ console.log(document.cookie);
 ```
 
 - lastly, in case you wanna know the types of them
-    - by expiration time, *session cookie* n *persistent cookie* (physically exists)
-    - by origin, *first-party cookie* n *third-party cookie*
-    - by feature
-        - *essential* (like products in cart)
-        - *analytics* (like Google Analytics or ADs)
-        - *functional* (like language choice)
+- by expiration time, *session cookie* n *persistent cookie* (physically exists)
+- by origin, *first-party cookie* n *third-party cookie*
+- by feature
+    - *essential* (like products in cart)
+    - *analytics* (like Google Analytics or ADs)
+    - *functional* (like language choice)
 
 ### Session
 
@@ -65,10 +65,10 @@ console.log(document.cookie);
     > After all, it's just a way for you to identify the user with handful of stuff in the data
 
 - lastly, in case you wanna know the types of them
-    - by storage type
-        - server-side session (client's cookie got a session ID matching with server)
-        - client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)
-    - by implementation
-        - via cookie: a session ID in the cookie matching with the server-side session
-        - via URL: `https://example.com/login?sessionId=ABC123` (~= *via cookie*)
-        - via database: almost the same thing as *via cookie*, but being persisted
+- by storage type
+    - server-side session (client's cookie got a session ID matching with server)
+    - client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)
+- by implementation
+    - via cookie: a session ID in the cookie matching with the server-side session
+    - via URL: `https://example.com/login?sessionId=ABC123` (~= *via cookie*)
+    - via database: almost the same thing as *via cookie*, but being persisted
