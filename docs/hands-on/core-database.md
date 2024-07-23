@@ -68,15 +68,15 @@
 
 - Suppose we have a query like this
 
-    ```sql
-    SELECT employees.name, COUNT(projects.project_id) as project_count
-    FROM employees
-    JOIN projects ON employees.id = projects.employee_id
-    WHERE employees.salary > 20000
-    GROUP BY employees.name
-    HAVING COUNT(projects.project_id) > 5
-    ORDER BY project_count DESC;
-    ```
+```sql
+SELECT employees.name, COUNT(projects.project_id) as project_count
+FROM employees
+JOIN projects ON employees.id = projects.employee_id
+WHERE employees.salary > 20000
+GROUP BY employees.name
+HAVING COUNT(projects.project_id) > 5
+ORDER BY project_count DESC;
+```
 
 - The process of executing the query is as follows
 
@@ -106,20 +106,20 @@
 
 - Get the new one created before renaming
 
-    ```sql
-    CREATE DATABASE testdb;
-    ```
+```sql
+CREATE DATABASE testdb;
+```
 
 - Generate the script based on the existing database
 
-    ```sql
-    SELECT CONCAT(
-        'RENAME TABLE ','`旧库`','.`',TABLE_NAME,
-        '` TO ','`testdb`.`',TABLE_NAME,'`;'
-    )
-    FROM information_schema.TABLES
-    WHERE table_schema LIKE '旧库';
-    ```
+```sql
+SELECT CONCAT(
+    'RENAME TABLE ','`旧库`','.`',TABLE_NAME,
+    '` TO ','`testdb`.`',TABLE_NAME,'`;'
+)
+FROM information_schema.TABLES
+WHERE table_schema LIKE '旧库';
+```
 
 - Run the script
 
@@ -140,55 +140,55 @@ all normal CRUDs would be exactly the same if not considering efficient queries.
 
 - Firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.
 
-    ```sql
-    CREATE TABLE Quotes (
-        row_id INT AUTO_INCREMENT,
-        creator VARCHAR(255),
-        quotes VARCHAR(255),
-        created DATE,
-        PRIMARY KEY (row_id, created)
-    )
-    PARTITION BY RANGE (YEAR(created)) (
-        PARTITION p2019 VALUES LESS THAN (2020),
-        PARTITION p2020 VALUES LESS THAN (2021),
-        PARTITION p2021 VALUES LESS THAN (2022),
-        PARTITION p2022 VALUES LESS THAN (2023),
-        PARTITION p2023 VALUES LESS THAN (2024),
-        PARTITION p2024 VALUES LESS THAN (2025)
-    );
-    ```
+```sql
+CREATE TABLE Quotes (
+    row_id INT AUTO_INCREMENT,
+    creator VARCHAR(255),
+    quotes VARCHAR(255),
+    created DATE,
+    PRIMARY KEY (row_id, created)
+)
+PARTITION BY RANGE (YEAR(created)) (
+    PARTITION p2019 VALUES LESS THAN (2020),
+    PARTITION p2020 VALUES LESS THAN (2021),
+    PARTITION p2021 VALUES LESS THAN (2022),
+    PARTITION p2022 VALUES LESS THAN (2023),
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025)
+);
+```
 
 - Secondly
 
     > making sure it was properly done, logically, in detail
 
-    ```sql
-    SELECT * FROM information_schema.PARTITIONS
-    WHERE TABLE_SCHEMA = 'testdb' AND TABLE_NAME = 'Quotes';
-    ```
+```sql
+SELECT * FROM information_schema.PARTITIONS
+WHERE TABLE_SCHEMA = 'testdb' AND TABLE_NAME = 'Quotes';
+```
 
 - Checking how it was done, physically, in the file system
 
     > If you were like me, using MySQL Docker and be able to access the container
 
-    ```sh
-    # enter the shell
-    docker exec -it mysql sh
+```sh
+# enter the shell
+docker exec -it mysql sh
 
-    # testdb is your database name
-    # quotes is your table name
-    ls /var/lib/mysql/testdb | grep -i quotes
+# testdb is your database name
+# quotes is your table name
+ls /var/lib/mysql/testdb | grep -i quotes
 
-    # you are expected to see something like this
+# you are expected to see something like this
 
-    # /var/lib/mysql/testdb/
-    # ├── Quotes#P#p2019.ibd
-    # ├── Quotes#P#p2020.ibd
-    # ├── Quotes#P#p2021.ibd
-    # ├── Quotes#P#p2022.ibd
-    # ├── Quotes#P#p2023.ibd
-    # └── Quotes#P#p2024.ibd
-    ```
+# /var/lib/mysql/testdb/
+# ├── Quotes#P#p2019.ibd
+# ├── Quotes#P#p2020.ibd
+# ├── Quotes#P#p2021.ibd
+# ├── Quotes#P#p2022.ibd
+# ├── Quotes#P#p2023.ibd
+# └── Quotes#P#p2024.ibd
+```
 
 - issues I've faced when *operating on an existing table* with complex relations (conclusion: not reading the docs long/carefully enough; should have done it in the design phase)
     - Foreign keys are not yet supported in conjunction with partitioning
