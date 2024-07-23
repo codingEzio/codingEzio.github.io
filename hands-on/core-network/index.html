@@ -69,8 +69,6 @@
 
 <h2 id="context">Context</h2>
 <ul>
-<li>I believe <em>如果你对于概念的解释无法让一个外行听懂，那么你根本就不懂</em> (either the context you've set up, origin of the concept, or any other aspects)</li>
-<li>I wanted to get hands dirty with networking</li>
 <li>It was fun</li>
 <li>Heavily made use of <em>LLM</em>s (alongside StackOverflow n Wikipedia)</li>
 </ul>
@@ -114,7 +112,7 @@ document.cookie = &quot;sameSiteToken3=NoneValue; path=/; SameSite=None; Secure&
 console.log(document.cookie);
 </code></pre>
 <ul>
-<li>lastly, in case you wanna know the types of them</li>
+<li>lastly, in case you wanna know the types of them<ul>
 <li>by expiration time, <em>session cookie</em> n <em>persistent cookie</em> (physically exists)</li>
 <li>by origin, <em>first-party cookie</em> n <em>third-party cookie</em></li>
 <li>by feature<ul>
@@ -124,21 +122,27 @@ console.log(document.cookie);
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <h3 id="session">Session</h3>
 <ul>
 <li>stored in the server</li>
 <li>gotta have your own way to see the session data</li>
 <li>types allowed: any types, any ways you wanna save (depends on the language)</li>
-<li>"unlimited" size</li>
+<li>"unlimited" size<ul>
 <li>think of it as putting a small box in a warehouse</li>
 <li>it could fill up, but normally it wouldn't be the one that fills up</li>
-<li>in practice, sessions were stored and interpreted however you want</li>
 </ul>
+</li>
+<li>
+<p>in practice, sessions were stored and interpreted however you want</p>
 <blockquote>
 <p>After all, it's just a way for you to identify the user with handful of stuff in the data</p>
 </blockquote>
+</li>
+<li>
+<p>lastly, in case you wanna know the types of them</p>
 <ul>
-<li>lastly, in case you wanna know the types of them</li>
 <li>by storage type<ul>
 <li>server-side session (client's cookie got a session ID matching with server)</li>
 <li>client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)</li>
@@ -148,6 +152,8 @@ console.log(document.cookie);
 <li>via cookie: a session ID in the cookie matching with the server-side session</li>
 <li>via URL: <code>https://example.com/login?sessionId=ABC123</code> (~= <em>via cookie</em>)</li>
 <li>via database: almost the same thing as <em>via cookie</em>, but being persisted</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></div>

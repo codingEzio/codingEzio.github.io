@@ -70,16 +70,16 @@
 Value of value type copies over value itself on the stack. Whereas reference types were stored on the heap.</li>
 <li>If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.</li>
 </ul>
-<pre><code class="language-txt">       Value Types
-           |
-    +--------------+
-    |              |
- Boxing         Unboxing
-    |              |
-    ⬇️             ⬆️
-    +--------------+
-           |
-      Reference Types
+<pre><code class="language-txt">             Value Types
+                     |
+        +--------------+
+        |                            |
+ Boxing                 Unboxing
+        |                            |
+        ⬇️                         ⬆️
+        +--------------+
+                     |
+            Reference Types
 </code></pre>
 <p><strong>Destructors</strong></p>
 <blockquote>
@@ -88,10 +88,8 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <ul>
 <li>
 <p><code>~ClassName { clean up }</code></p>
-</li>
-<li>
-<p>Finalizers are NOT guaranteed to be called</p>
-</li>
+<ul>
+<li>Finalizers are NOT guaranteed to be called</li>
 <li>It’s implementation-specific (quote)</li>
 <li>For my case? It means that I won’t get the debugging output from customized finalizers.</li>
 <li>
@@ -105,23 +103,23 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <li><a href="https://github.com/dotnet/docs/issues/17463">detailed back-n-forth discussions</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>
 <p><code>: IDisposable + public void Dispose</code> (== <code>using (..) {}</code>)</p>
-</li>
-<li>
-<p><code>using</code> is a syntactic sugar for <code>try .. finally ..</code></p>
-</li>
+<ul>
+<li><code>using</code> is a syntactic sugar for <code>try .. finally ..</code></li>
 <li><code>Dispose</code> is a method that cleans up the resources</li>
-<li>
-<p><code>IDisposable</code> is an interface that defines the <code>Dispose</code> method</p>
+<li><code>IDisposable</code> is an interface that defines the <code>Dispose</code> method</li>
+</ul>
 </li>
 <li>
 <p><code>try .. catch .. finally ..</code></p>
-</li>
-<li>
-<p><code>catch</code> acts as built-in exception handling in comparison to others</p>
-</li>
+<ul>
+<li><code>catch</code> acts as built-in exception handling in comparison to others</li>
 <li><code>finally</code> block could do the same thing but might not be universal/organized</li>
+</ul>
+</li>
 </ul>
 <p><strong>const v readonly</strong></p>
 <ul>
@@ -179,12 +177,16 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 </blockquote>
 <ul>
 <li><code>this TypeName obj</code> is all that matters, anything else were just conventions</li>
-<li>Loosely attaching customized methods to existing classes</li>
+<li>Loosely attaching customized methods to existing classes<ul>
 <li>Built-in types? Yeah!</li>
 <li>Custom classes? Sure!</li>
-<li>On projects and scripts</li>
+</ul>
+</li>
+<li>On projects and scripts<ul>
 <li>Gotta use the <code>public static class XyzExtensions { .. }</code></li>
 <li>Just <code>public static void MethodName(this ClassName obj) { .. }</code> for scripts</li>
+</ul>
+</li>
 </ul>
 <p><strong>partial n sealed class</strong></p>
 <blockquote>
