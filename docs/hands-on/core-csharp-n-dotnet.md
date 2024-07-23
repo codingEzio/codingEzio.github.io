@@ -14,16 +14,16 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 - If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.
 
 ```txt
-       Value Types
-           |
-    +--------------+
-    |              |
- Boxing         Unboxing
-    |              |
-    ⬇️             ⬆️
-    +--------------+
-           |
-      Reference Types
+             Value Types
+                     |
+        +--------------+
+        |                            |
+ Boxing                 Unboxing
+        |                            |
+        ⬇️                         ⬆️
+        +--------------+
+                     |
+            Reference Types
 ```
 
 **Destructors**
@@ -32,26 +32,26 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 
 - `~ClassName { clean up }`
 
-  - Finalizers are NOT guaranteed to be called
-  - It’s implementation-specific (quote)
-  - For my case? It means that I won’t get the debugging output from customized finalizers.
-  - For production? We’ll do more testing then
+    - Finalizers are NOT guaranteed to be called
+    - It’s implementation-specific (quote)
+    - For my case? It means that I won’t get the debugging output from customized finalizers.
+    - For production? We’ll do more testing then
 
-  - References
-    - [observations made on this](https://github.com/dotnet/csharpstandard/issues/291)
-    - [wording changes](https://github.com/dotnet/csharpstandard/pull/309)
-    - [detailed back-n-forth discussions](https://github.com/dotnet/docs/issues/17463)
+    - References
+        - [observations made on this](https://github.com/dotnet/csharpstandard/issues/291)
+        - [wording changes](https://github.com/dotnet/csharpstandard/pull/309)
+        - [detailed back-n-forth discussions](https://github.com/dotnet/docs/issues/17463)
 
 - `: IDisposable + public void Dispose` (== `using (..) {}`)
 
-  - `using` is a syntactic sugar for `try .. finally ..`
-  - `Dispose` is a method that cleans up the resources
-  - `IDisposable` is an interface that defines the `Dispose` method
+    - `using` is a syntactic sugar for `try .. finally ..`
+    - `Dispose` is a method that cleans up the resources
+    - `IDisposable` is an interface that defines the `Dispose` method
 
 - `try .. catch .. finally ..`
 
-  - `catch` acts as built-in exception handling in comparison to others
-  - `finally` block could do the same thing but might not be universal/organized
+    - `catch` acts as built-in exception handling in comparison to others
+    - `finally` block could do the same thing but might not be universal/organized
 
 **const v readonly**
 
@@ -105,11 +105,11 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 
 - `this TypeName obj` is all that matters, anything else were just conventions
 - Loosely attaching customized methods to existing classes
-  - Built-in types? Yeah!
-  - Custom classes? Sure!
+    - Built-in types? Yeah!
+    - Custom classes? Sure!
 - On projects and scripts
-  - Gotta use the `public static class XyzExtensions { .. }`
-  - Just `public static void MethodName(this ClassName obj) { .. }` for scripts
+    - Gotta use the `public static class XyzExtensions { .. }`
+    - Just `public static void MethodName(this ClassName obj) { .. }` for scripts
 
 **partial n sealed class**
 

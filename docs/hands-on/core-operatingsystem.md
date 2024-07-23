@@ -5,7 +5,7 @@
 
 -----
 
-**setup the base environment**
+## Setup the Base Environment
 
 ```bash
 # Get your own via 'brew install --cask vagrant'

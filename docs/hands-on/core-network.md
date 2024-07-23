@@ -1,8 +1,6 @@
 
 ## Context
 
-- I believe *如果你对于概念的解释无法让一个外行听懂，那么你根本就不懂* (either the context you've set up, origin of the concept, or any other aspects)
-- I wanted to get hands dirty with networking
 - It was fun
 - Heavily made use of *LLM*s (alongside StackOverflow n Wikipedia)
 
@@ -47,12 +45,12 @@ console.log(document.cookie);
 ```
 
 - lastly, in case you wanna know the types of them
-  - by expiration time, *session cookie* n *persistent cookie* (physically exists)
-  - by origin, *first-party cookie* n *third-party cookie*
-  - by feature
-    - *essential* (like products in cart)
-    - *analytics* (like Google Analytics or ADs)
-    - *functional* (like language choice)
+    - by expiration time, *session cookie* n *persistent cookie* (physically exists)
+    - by origin, *first-party cookie* n *third-party cookie*
+    - by feature
+        - *essential* (like products in cart)
+        - *analytics* (like Google Analytics or ADs)
+        - *functional* (like language choice)
 
 ### Session
 
@@ -60,17 +58,17 @@ console.log(document.cookie);
 - gotta have your own way to see the session data
 - types allowed: any types, any ways you wanna save (depends on the language)
 - "unlimited" size
-  - think of it as putting a small box in a warehouse
-  - it could fill up, but normally it wouldn't be the one that fills up
+    - think of it as putting a small box in a warehouse
+    - it could fill up, but normally it wouldn't be the one that fills up
 - in practice, sessions were stored and interpreted however you want
 
-  > After all, it's just a way for you to identify the user with handful of stuff in the data
+    > After all, it's just a way for you to identify the user with handful of stuff in the data
 
 - lastly, in case you wanna know the types of them
-  - by storage type
-    - server-side session (client's cookie got a session ID matching with server)
-    - client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)
-  - by implementation
-    - via cookie: a session ID in the cookie matching with the server-side session
-    - via URL: `https://example.com/login?sessionId=ABC123` (~= *via cookie*)
-    - via database: almost the same thing as *via cookie*, but being persisted
+    - by storage type
+        - server-side session (client's cookie got a session ID matching with server)
+        - client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)
+    - by implementation
+        - via cookie: a session ID in the cookie matching with the server-side session
+        - via URL: `https://example.com/login?sessionId=ABC123` (~= *via cookie*)
+        - via database: almost the same thing as *via cookie*, but being persisted

@@ -35,12 +35,12 @@
 
 - access/update, by users, by transactions and so on
 - when accessing some record, others might be updating it
-  - action of updating takes time
-  - order of updating matters
+    - action of updating takes time
+    - order of updating matters
 - we might consider block it after writers are done
-  - the transactions for read/update might be a huge one
-  - this was achieved using locks
-  - this would cause *contention* (subjects fight over something)
+    - the transactions for read/update might be a huge one
+    - this was achieved using locks
+    - this would cause *contention* (subjects fight over something)
 
 ### MVCC is more of an addtional tool helping with concurrency
 
@@ -48,23 +48,23 @@
 
 - IMO, it was meant to be used in conjunction with locks
 - It does three main things, IMO
-  > All got a hidden timestamp/transaction id to ensure uniqueness
+    > All got a hidden timestamp/transaction id to ensure uniqueness
 
 - Read
-  - get the most recent ver. of the record, no blocking
-  - might not be the latest (someone might be updating it)
+    - get the most recent ver. of the record, no blocking
+    - might not be the latest (someone might be updating it)
 - Write
-  - current operation creates new ver (with timestamp or transaction ID), no blocking
-  - Older versions are still available for reading
+    - current operation creates new ver (with timestamp or transaction ID), no blocking
+    - Older versions are still available for reading
 - Garbage collection
-  - the older versions [were stored in the undo log](https://mariadb.com/kb/en/innodb-purge/)
-  - for InnoDB in MySQL, it's a process that [runs periodically](https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html)
+    - the older versions [were stored in the undo log](https://mariadb.com/kb/en/innodb-purge/)
+    - for InnoDB in MySQL, it's a process that [runs periodically](https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html)
 
 - For the case explained above, *Isolation Level* came into play, context below
-  - Different types of them for different strictness levels
-  - Categorized by read phenomenon (~=how bad is it)
-  - Scenarios mentioned above were *Snapshot Isolation* (<sup>reference needed</sup>)
-  - Different DB have widely different *default* isolation levels
+    - Different types of them for different strictness levels
+    - Categorized by read phenomenon (~=how bad is it)
+    - Scenarios mentioned above were *Snapshot Isolation* (<sup>reference needed</sup>)
+    - Different DB have widely different *default* isolation levels
 
 ## How a Query is Done
 
@@ -82,25 +82,25 @@ ORDER BY project_count DESC;
 
 - The process of executing the query is as follows
 
-  - `FROM` the `employee` table
-  - With `JOIN`ing the `projects` table `ON` `employee_id` column
-  - Filter `WHERE` the `salary` is greater than 20000
-  - `GROUP BY` the `employee`'s `name`
-  - `HAVING` `project`s the `employee`s working on is greater than 5
-  - `ORDER BY` the number of `project`s the `employee` is working on in descending order
+    - `FROM` the `employee` table
+    - With `JOIN`ing the `projects` table `ON` `employee_id` column
+    - Filter `WHERE` the `salary` is greater than 20000
+    - `GROUP BY` the `employee`'s `name`
+    - `HAVING` `project`s the `employee`s working on is greater than 5
+    - `ORDER BY` the number of `project`s the `employee` is working on in descending order
 
 ## Common Index Types
 
 - B+ Tree Index (default for MySQL InnoDB)
-  - most common, efficient enough
-  - support both exact and range queries
+    - most common, efficient enough
+    - support both exact and range queries
 - Hash Index
-  - only avialable for *Memory* tables
-  - only support exact lookups (`=`, `IN`)
+    - only avialable for *Memory* tables
+    - only support exact lookups (`=`, `IN`)
 - Full-Text Index
-  - I'll write the notes once I've done the hands-on testing ;P
+    - I'll write the notes once I've done the hands-on testing ;P
 - Spatial Index
-  - I'll write the notes once I've done the hands-on testing ;P
+    - I'll write the notes once I've done the hands-on testing ;P
 
 ## Renaming a Database
 
@@ -116,8 +116,8 @@ CREATE DATABASE testdb;
 
 ```sql
 SELECT CONCAT(
-  'RENAME TABLE ','`旧库`','.`',TABLE_NAME,
-  '` TO ','`testdb`.`',TABLE_NAME,'`;'
+    'RENAME TABLE ','`旧库`','.`',TABLE_NAME,
+    '` TO ','`testdb`.`',TABLE_NAME,'`;'
 )
 FROM information_schema.TABLES
 WHERE table_schema LIKE '旧库';
@@ -144,25 +144,25 @@ all normal CRUDs would be exactly the same if not considering efficient queries.
 
 ```sql
 CREATE TABLE Quotes (
-    row_id INT AUTO_INCREMENT,
-    creator VARCHAR(255),
-    quotes VARCHAR(255),
-    created DATE,
-    PRIMARY KEY (row_id, created)
+        row_id INT AUTO_INCREMENT,
+        creator VARCHAR(255),
+        quotes VARCHAR(255),
+        created DATE,
+        PRIMARY KEY (row_id, created)
 )
 PARTITION BY RANGE (YEAR(created)) (
-    PARTITION p2019 VALUES LESS THAN (2020),
-    PARTITION p2020 VALUES LESS THAN (2021),
-    PARTITION p2021 VALUES LESS THAN (2022),
-    PARTITION p2022 VALUES LESS THAN (2023),
-    PARTITION p2023 VALUES LESS THAN (2024),
-    PARTITION p2024 VALUES LESS THAN (2025)
+        PARTITION p2019 VALUES LESS THAN (2020),
+        PARTITION p2020 VALUES LESS THAN (2021),
+        PARTITION p2021 VALUES LESS THAN (2022),
+        PARTITION p2022 VALUES LESS THAN (2023),
+        PARTITION p2023 VALUES LESS THAN (2024),
+        PARTITION p2024 VALUES LESS THAN (2025)
 );
 ```
 
 - Secondly
 
-  > making sure it was properly done, logically, in detail
+    > making sure it was properly done, logically, in detail
 
 ```sql
 SELECT * FROM information_schema.PARTITIONS
@@ -171,7 +171,7 @@ WHERE TABLE_SCHEMA = 'testdb' AND TABLE_NAME = 'Quotes';
 
 - Checking how it was done, physically, in the file system
 
-  > If you were like me, using MySQL Docker and be able to access the container
+    > If you were like me, using MySQL Docker and be able to access the container
 
 ```sh
 # enter the shell
@@ -194,7 +194,7 @@ ls /var/lib/mysql/testdb | grep -i quotes
 
 - issues I've faced when *operating on an existing table* with complex relations
 
-  > conclusion: not reading the docs long/carefully enough; should have done it in the design phase
+    > conclusion: not reading the docs long/carefully enough; should have done it in the design phase
 
 - Foreign keys are not yet supported in conjunction with partitioning
 - A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).
@@ -211,26 +211,26 @@ DELIMITER //
 
 CREATE PROCEDURE GenerateSampleData(IN dbName VARCHAR(255), IN tableName VARCHAR(255))
 BEGIN
-    DECLARE i INT DEFAULT 0;
-    DECLARE randomName VARCHAR(255);
-    DECLARE randomQuote VARCHAR(255);
-    DECLARE randomDate DATE;
+        DECLARE i INT DEFAULT 0;
+        DECLARE randomName VARCHAR(255);
+        DECLARE randomQuote VARCHAR(255);
+        DECLARE randomDate DATE;
 
-    DECLARE nameList VARCHAR(255) DEFAULT 'Alice,Bob,Charlie,David,Eve,Frank,Grace,Hank,Ivy,Jack';
-    DECLARE quoteList VARCHAR(255) DEFAULT 'Sample quote 1.,Sample quote 2.,Sample quote 3.,Sample quote 4.,Sample quote 5.';
+        DECLARE nameList VARCHAR(255) DEFAULT 'Alice,Bob,Charlie,David,Eve,Frank,Grace,Hank,Ivy,Jack';
+        DECLARE quoteList VARCHAR(255) DEFAULT 'Sample quote 1.,Sample quote 2.,Sample quote 3.,Sample quote 4.,Sample quote 5.';
 
-    WHILE i < 100000 DO
-        SET randomName = ELT(1 + FLOOR(RAND() * 10), 'Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace', 'Hank', 'Ivy', 'Jack');
-        SET randomQuote = ELT(1 + FLOOR(RAND() * 5), 'Sample quote 1.', 'Sample quote 2.', 'Sample quote 3.', 'Sample quote 4.', 'Sample quote 5.');
-        SET randomDate = DATE_ADD('2019-01-01', INTERVAL FLOOR(RAND() * 1825) DAY); -- Random date between 2019 and 2024
+        WHILE i < 100000 DO
+                SET randomName = ELT(1 + FLOOR(RAND() * 10), 'Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace', 'Hank', 'Ivy', 'Jack');
+                SET randomQuote = ELT(1 + FLOOR(RAND() * 5), 'Sample quote 1.', 'Sample quote 2.', 'Sample quote 3.', 'Sample quote 4.', 'Sample quote 5.');
+                SET randomDate = DATE_ADD('2019-01-01', INTERVAL FLOOR(RAND() * 1825) DAY); -- Random date between 2019 and 2024
 
-        SET @insertQuery = CONCAT('INSERT INTO ', dbName, '.', tableName, ' (creator, quotes, created) VALUES (''', randomName, ''', ''', randomQuote, ''', ''', randomDate, ''')');
-        PREPARE stmt FROM @insertQuery;
-        EXECUTE stmt;
-        DEALLOCATE PREPARE stmt;
+                SET @insertQuery = CONCAT('INSERT INTO ', dbName, '.', tableName, ' (creator, quotes, created) VALUES (''', randomName, ''', ''', randomQuote, ''', ''', randomDate, ''')');
+                PREPARE stmt FROM @insertQuery;
+                EXECUTE stmt;
+                DEALLOCATE PREPARE stmt;
 
-        SET i = i + 1;
-    END WHILE;
+                SET i = i + 1;
+        END WHILE;
 END //
 
 DELIMITER ;
