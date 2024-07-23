@@ -1,12 +1,14 @@
 
-**context**
+## Context
 
 - I want to explain all the concepts in an ultra-clear-n-simple way
 - All the sample code along with these were standalone runnable C# script
 
 -----
 
-**Boxing v Unboxing, Value v Reference Type**
+## Boxing v Unboxing
+
+> also, Value v Reference Type
 
 - Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.
 - Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.
@@ -26,56 +28,60 @@ Value of value type copies over value itself on the stack. Whereas reference typ
       Reference Types
 ```
 
-**Destructors**
+## Destructors
 
 > **WIP** [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/type-destructor.cs)
 
-- `~ClassName { clean up }`
+### `~ClassName { clean up }`
 
-    - Finalizers are NOT guaranteed to be called
-    - It’s implementation-specific (quote)
-    - For my case? It means that I won’t get the debugging output from customized finalizers.
-    - For production? We’ll do more testing then
+- Finalizers are NOT guaranteed to be called
+- It’s implementation-specific (quote)
+- For my case? It means that I won’t get the debugging output from customized finalizers.
+- For production? We’ll do more testing then
 
-    - References
-        - [observations made on this](https://github.com/dotnet/csharpstandard/issues/291)
-        - [wording changes](https://github.com/dotnet/csharpstandard/pull/309)
-        - [detailed back-n-forth discussions](https://github.com/dotnet/docs/issues/17463)
+- References
+    - [observations made on this](https://github.com/dotnet/csharpstandard/issues/291)
+    - [wording changes](https://github.com/dotnet/csharpstandard/pull/309)
+    - [detailed back-n-forth discussions](https://github.com/dotnet/docs/issues/17463)
 
-- `: IDisposable + public void Dispose` (== `using (..) {}`)
+### `: IDisposable + public void Dispose`
 
-    - `using` is a syntactic sugar for `try .. finally ..`
-    - `Dispose` is a method that cleans up the resources
-    - `IDisposable` is an interface that defines the `Dispose` method
+> == `using (..) {}`
 
-- `try .. catch .. finally ..`
+- `using` is a syntactic sugar for `try .. finally ..`
+- `Dispose` is a method that cleans up the resources
+- `IDisposable` is an interface that defines the `Dispose` method
 
-    - `catch` acts as built-in exception handling in comparison to others
-    - `finally` block could do the same thing but might not be universal/organized
+### `try .. catch .. finally ..`
 
-**const v readonly**
+- `catch` acts as built-in exception handling in comparison to others
+- `finally` block could do the same thing but might not be universal/organized
+
+## `const` v `readonly`
 
 - literally constant, limited val types
 - Freer, all kinds of types
 
-**this v base**
+## `this` v `base`
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-base-v-this.cs)
 
 - base calls mother class’ thingy
 - this calls current class’ methods/vars
 
-**generics v overload**
+## Generics v Overload
 
 - generics ensure uniformity
 - overloading get you more than handling different types, but also methods with different length of parameters
 
-**List**
+## `List`
+
+> **WIP**
 
 - ICollection<T> ➡️ IList<T> ➡️ List
 - Each with different set of methods impl_ed
 
-**Copy v Clone**
+## Copy v Clone
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-copy-shallow-v-deep.cs)
 
@@ -83,7 +89,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 - One gets a new obj that points to the same memory address of the object you are copying, one gets a completely new object, all built from scratch
 - Customizing your DeepCopy would get you more flexibility than `IClonable` with `Clone`
 
-**Interface v Abstract Class**
+## Interface v Abstract Class
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-interface-v-abstract-class.cs)
 
@@ -92,14 +98,14 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 - abstract defines a common base class with potentially partial implementation
 - abstract has fields as they are classes
 
-**ref v out**
+## `ref` v `out`
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-ref-v-out.cs)
 
 - ref variables along with ref would affect the original
 - out pouring out a variable to the function-invocation scope
 
-**extension method**
+## Extension Method
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/thing-extension-method.cs)
 
@@ -111,7 +117,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
     - Gotta use the `public static class XyzExtensions { .. }`
     - Just `public static void MethodName(this ClassName obj) { .. }` for scripts
 
-**partial n sealed class**
+## Partial n Sealed Class
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-partial-n-sealed-class.cs)
 
@@ -119,7 +125,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 - partial class's implementations were merged at compile time
 - sealed class prevents inheritance (the )
 
-**indexer**
+## Indexer
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/thing-indexer.cs)
 

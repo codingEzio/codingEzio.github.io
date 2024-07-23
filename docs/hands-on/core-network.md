@@ -44,10 +44,9 @@ document.cookie = "sameSiteToken3=NoneValue; path=/; SameSite=None; Secure";
 console.log(document.cookie);
 ```
 
-- lastly, in case you wanna know the types of them
-- by expiration time, *session cookie* n *persistent cookie* (physically exists)
-- by origin, *first-party cookie* n *third-party cookie*
-- by feature
+- categorized by expiration time, *session cookie* n *persistent cookie* (physically exists)
+- categorized by origin, *first-party cookie* n *third-party cookie*
+- categorized by feature
     - *essential* (like products in cart)
     - *analytics* (like Google Analytics or ADs)
     - *functional* (like language choice)
@@ -64,11 +63,10 @@ console.log(document.cookie);
 
     > After all, it's just a way for you to identify the user with handful of stuff in the data
 
-- lastly, in case you wanna know the types of them
-- by storage type
+- categorize by storage type
     - server-side session (client's cookie got a session ID matching with server)
     - client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)
-- by implementation
+- categorize by implementation
     - via cookie: a session ID in the cookie matching with the server-side session
     - via URL: `https://example.com/login?sessionId=ABC123` (~= *via cookie*)
     - via database: almost the same thing as *via cookie*, but being persisted
