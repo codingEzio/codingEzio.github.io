@@ -31,5 +31,7 @@
   "ol-prefix": false,
   "no-duplicate-heading": false,
   "no-bare-urls": false,
-  "ul-indent": false
+  "ul-indent": {
+    "indent": 4
+  }
 }
