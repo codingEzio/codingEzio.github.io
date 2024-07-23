@@ -30,5 +30,6 @@
   "no-blanks-blockquote": false,
   "ol-prefix": false,
   "no-duplicate-heading": false,
-  "no-bare-urls": false
+  "no-bare-urls": false,
+  "ul-indent": false
 }
