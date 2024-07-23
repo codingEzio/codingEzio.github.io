@@ -88,8 +88,62 @@
               </ul>
             </li>
             
+            <li class="nav-item" data-bs-level="1"><a href="#enter-the-shell" class="nav-link">enter the shell</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#testdb-is-your-database-name" class="nav-link">testdb is your database name</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#quotes-is-your-table-name" class="nav-link">quotes is your table name</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#you-are-expected-to-see-something-like-this" class="nav-link">you are expected to see something like this</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#varlibmysqltestdb" class="nav-link">/var/lib/mysql/testdb/</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#quotespp2019ibd" class="nav-link">├── Quotes#P#p2019.ibd</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#quotespp2020ibd" class="nav-link">├── Quotes#P#p2020.ibd</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#quotespp2021ibd" class="nav-link">├── Quotes#P#p2021.ibd</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#quotespp2022ibd" class="nav-link">├── Quotes#P#p2022.ibd</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#quotespp2023ibd" class="nav-link">├── Quotes#P#p2023.ibd</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#quotespp2024ibd" class="nav-link">└── Quotes#P#p2024.ibd</a>
+              <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#get-sample-data-for-a-table" class="nav-link">Get Sample Data for a Table</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -181,17 +235,17 @@
 </ul>
 <h2 id="how-a-query-is-done">How a Query is Done</h2>
 <ul>
-<li>Suppose we have a query like this</li>
-</ul>
-<pre><code class="language-sql">SELECT employees.name, COUNT(projects.project_id) as project_count
+<li>
+<p>Suppose we have a query like this</p>
+<p><code>sql
+SELECT employees.name, COUNT(projects.project_id) as project_count
 FROM employees
 JOIN projects ON employees.id = projects.employee_id
 WHERE employees.salary &gt; 20000
 GROUP BY employees.name
 HAVING COUNT(projects.project_id) &gt; 5
-ORDER BY project_count DESC;
-</code></pre>
-<ul>
+ORDER BY project_count DESC;</code></p>
+</li>
 <li>
 <p>The process of executing the query is as follows</p>
 <ul>
@@ -230,22 +284,24 @@ ORDER BY project_count DESC;
 <p>I guess it wasn't normally done. I purely changed it for the sake of learning.</p>
 </blockquote>
 <ul>
-<li>Get the new one created before renaming</li>
-</ul>
-<pre><code class="language-sql">CREATE DATABASE testdb;
-</code></pre>
-<ul>
-<li>Generate the script based on the existing database</li>
-</ul>
-<pre><code class="language-sql">SELECT CONCAT(
+<li>
+<p>Get the new one created before renaming</p>
+<p><code>sql
+CREATE DATABASE testdb;</code></p>
+</li>
+<li>
+<p>Generate the script based on the existing database</p>
+<p><code>sql
+SELECT CONCAT(
     'RENAME TABLE ','`旧库`','.`',TABLE_NAME,
     '` TO ','`testdb`.`',TABLE_NAME,'`;'
 )
 FROM information_schema.TABLES
-WHERE table_schema LIKE '旧库';
-</code></pre>
-<ul>
-<li>Run the script</li>
+WHERE table_schema LIKE '旧库';</code></p>
+</li>
+<li>
+<p>Run the script</p>
+</li>
 </ul>
 <pre><code class="language-sql">USE `旧库`;
 
@@ -259,9 +315,10 @@ WHERE table_schema LIKE '旧库';
 all normal CRUDs would be exactly the same if not considering efficient queries.</p>
 </blockquote>
 <ul>
-<li>Firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.</li>
-</ul>
-<pre><code class="language-sql">CREATE TABLE Quotes (
+<li>
+<p>Firstly, it was normally done in the design phase with the table creation so that it knows which table it was operating on.</p>
+<p><code>sql
+CREATE TABLE Quotes (
     row_id INT AUTO_INCREMENT,
     creator VARCHAR(255),
     quotes VARCHAR(255),
@@ -275,56 +332,46 @@ PARTITION BY RANGE (YEAR(created)) (
     PARTITION p2022 VALUES LESS THAN (2023),
     PARTITION p2023 VALUES LESS THAN (2024),
     PARTITION p2024 VALUES LESS THAN (2025)
-);
-</code></pre>
-<ul>
+);</code></p>
+</li>
 <li>
 <p>Secondly</p>
 <blockquote>
 <p>making sure it was properly done, logically, in detail</p>
 </blockquote>
+<p><code>sql
+SELECT * FROM information_schema.PARTITIONS
+WHERE TABLE_SCHEMA = 'testdb' AND TABLE_NAME = 'Quotes';</code></p>
 </li>
-</ul>
-<pre><code class="language-sql">SELECT * FROM information_schema.PARTITIONS
-WHERE TABLE_SCHEMA = 'testdb' AND TABLE_NAME = 'Quotes';
-</code></pre>
-<ul>
 <li>
 <p>Checking how it was done, physically, in the file system</p>
 <blockquote>
 <p>If you were like me, using MySQL Docker and be able to access the container</p>
 </blockquote>
+<p>```sh</p>
+<h1 id="enter-the-shell">enter the shell</h1>
+<p>docker exec -it mysql sh</p>
+<h1 id="testdb-is-your-database-name">testdb is your database name</h1>
+<h1 id="quotes-is-your-table-name">quotes is your table name</h1>
+<p>ls /var/lib/mysql/testdb | grep -i quotes</p>
+<h1 id="you-are-expected-to-see-something-like-this">you are expected to see something like this</h1>
+<h1 id="varlibmysqltestdb">/var/lib/mysql/testdb/</h1>
+<h1 id="quotespp2019ibd">├── Quotes#P#p2019.ibd</h1>
+<h1 id="quotespp2020ibd">├── Quotes#P#p2020.ibd</h1>
+<h1 id="quotespp2021ibd">├── Quotes#P#p2021.ibd</h1>
+<h1 id="quotespp2022ibd">├── Quotes#P#p2022.ibd</h1>
+<h1 id="quotespp2023ibd">├── Quotes#P#p2023.ibd</h1>
+<h1 id="quotespp2024ibd">└── Quotes#P#p2024.ibd</h1>
+<p>```</p>
 </li>
-</ul>
-<pre><code class="language-sh"># enter the shell
-docker exec -it mysql sh
-
-# testdb is your database name
-# quotes is your table name
-ls /var/lib/mysql/testdb | grep -i quotes
-
-# you are expected to see something like this
-
-# /var/lib/mysql/testdb/
-# ├── Quotes#P#p2019.ibd
-# ├── Quotes#P#p2020.ibd
-# ├── Quotes#P#p2021.ibd
-# ├── Quotes#P#p2022.ibd
-# ├── Quotes#P#p2023.ibd
-# └── Quotes#P#p2024.ibd
-</code></pre>
+<li>
+<p>issues I've faced when <em>operating on an existing table</em> with complex relations (conclusion: not reading the docs long/carefully enough; should have done it in the design phase)</p>
 <ul>
-<li>
-<p>issues I've faced when <em>operating on an existing table</em> with complex relations</p>
-<blockquote>
-<p>conclusion: not reading the docs long/carefully enough; should have done it in the design phase</p>
-</blockquote>
-</li>
-<li>
-<p>Foreign keys are not yet supported in conjunction with partitioning</p>
-</li>
+<li>Foreign keys are not yet supported in conjunction with partitioning</li>
 <li>A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).</li>
 <li>..</li>
+</ul>
+</li>
 </ul>
 <h2 id="get-sample-data-for-a-table">Get Sample Data for a Table</h2>
 <blockquote>

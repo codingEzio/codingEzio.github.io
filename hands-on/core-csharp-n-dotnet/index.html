@@ -52,18 +52,86 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#context" class="nav-link">Context</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#boxing-v-unboxing" class="nav-link">Boxing v Unboxing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#destructors" class="nav-link">Destructors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#const-v-readonly" class="nav-link">const v readonly</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#this-v-base" class="nav-link">this v base</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#generics-v-overload" class="nav-link">Generics v Overload</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#list" class="nav-link">List</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#copy-v-clone" class="nav-link">Copy v Clone</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#interface-v-abstract-class" class="nav-link">Interface v Abstract Class</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#ref-v-out" class="nav-link">ref v out</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#extension-method" class="nav-link">Extension Method</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#partial-n-sealed-class" class="nav-link">Partial n Sealed Class</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#indexer" class="nav-link">Indexer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p><strong>context</strong></p>
+<h2 id="context">Context</h2>
 <ul>
 <li>I want to explain all the concepts in an ultra-clear-n-simple way</li>
 <li>All the sample code along with these were standalone runnable C# script</li>
 </ul>
 <hr />
-<p><strong>Boxing v Unboxing, Value v Reference Type</strong></p>
+<h2 id="boxing-v-unboxing">Boxing v Unboxing</h2>
+<blockquote>
+<p>also, Value v Reference Type</p>
+</blockquote>
 <ul>
 <li>Conversion between value type and reference types, boxing bridging them together to provide a uniform type system that were all derived from Object.</li>
 <li>Sometimes we store value type within reference type variables, we need boxing to put it in, and unboxing it when in need of accessing it.
@@ -81,13 +149,11 @@ Value of value type copies over value itself on the stack. Whereas reference typ
            |
       Reference Types
 </code></pre>
-<p><strong>Destructors</strong></p>
+<h2 id="destructors">Destructors</h2>
 <blockquote>
 <p><strong>WIP</strong> <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/type-destructor.cs">sample code</a></p>
 </blockquote>
-<ul>
-<li>
-<p><code>~ClassName { clean up }</code></p>
+<h3 id="classname-clean-up"><code>~ClassName { clean up }</code></h3>
 <ul>
 <li>Finalizers are NOT guaranteed to be called</li>
 <li>It’s implementation-specific (quote)</li>
@@ -104,29 +170,26 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 </ul>
 </li>
 </ul>
-</li>
-<li>
-<p><code>: IDisposable + public void Dispose</code> (== <code>using (..) {}</code>)</p>
+<h3 id="idisposable-public-void-dispose"><code>: IDisposable + public void Dispose</code></h3>
+<blockquote>
+<p>== <code>using (..) {}</code></p>
+</blockquote>
 <ul>
 <li><code>using</code> is a syntactic sugar for <code>try .. finally ..</code></li>
 <li><code>Dispose</code> is a method that cleans up the resources</li>
 <li><code>IDisposable</code> is an interface that defines the <code>Dispose</code> method</li>
 </ul>
-</li>
-<li>
-<p><code>try .. catch .. finally ..</code></p>
+<h3 id="try-catch-finally"><code>try .. catch .. finally ..</code></h3>
 <ul>
 <li><code>catch</code> acts as built-in exception handling in comparison to others</li>
 <li><code>finally</code> block could do the same thing but might not be universal/organized</li>
 </ul>
-</li>
-</ul>
-<p><strong>const v readonly</strong></p>
+<h2 id="const-v-readonly"><code>const</code> v <code>readonly</code></h2>
 <ul>
 <li>literally constant, limited val types</li>
 <li>Freer, all kinds of types</li>
 </ul>
-<p><strong>this v base</strong></p>
+<h2 id="this-v-base"><code>this</code> v <code>base</code></h2>
 <blockquote>
 <p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-base-v-this.cs">sample code</a></p>
 </blockquote>
@@ -134,17 +197,20 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <li>base calls mother class’ thingy</li>
 <li>this calls current class’ methods/vars</li>
 </ul>
-<p><strong>generics v overload</strong></p>
+<h2 id="generics-v-overload">Generics v Overload</h2>
 <ul>
 <li>generics ensure uniformity</li>
 <li>overloading get you more than handling different types, but also methods with different length of parameters</li>
 </ul>
-<p><strong>List</strong></p>
+<h2 id="list"><code>List</code></h2>
+<blockquote>
+<p><strong>WIP</strong></p>
+</blockquote>
 <ul>
 <li>ICollection<T> ➡️ IList<T> ➡️ List</li>
 <li>Each with different set of methods impl_ed</li>
 </ul>
-<p><strong>Copy v Clone</strong></p>
+<h2 id="copy-v-clone">Copy v Clone</h2>
 <blockquote>
 <p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-copy-shallow-v-deep.cs">sample code</a></p>
 </blockquote>
@@ -153,7 +219,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <li>One gets a new obj that points to the same memory address of the object you are copying, one gets a completely new object, all built from scratch</li>
 <li>Customizing your DeepCopy would get you more flexibility than <code>IClonable</code> with <code>Clone</code></li>
 </ul>
-<p><strong>Interface v Abstract Class</strong></p>
+<h2 id="interface-v-abstract-class">Interface v Abstract Class</h2>
 <blockquote>
 <p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-interface-v-abstract-class.cs">sample code</a></p>
 </blockquote>
@@ -163,7 +229,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <li>abstract defines a common base class with potentially partial implementation</li>
 <li>abstract has fields as they are classes</li>
 </ul>
-<p><strong>ref v out</strong></p>
+<h2 id="ref-v-out"><code>ref</code> v <code>out</code></h2>
 <blockquote>
 <p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-ref-v-out.cs">sample code</a></p>
 </blockquote>
@@ -171,7 +237,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <li>ref variables along with ref would affect the original</li>
 <li>out pouring out a variable to the function-invocation scope</li>
 </ul>
-<p><strong>extension method</strong></p>
+<h2 id="extension-method">Extension Method</h2>
 <blockquote>
 <p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/thing-extension-method.cs">sample code</a></p>
 </blockquote>
@@ -188,7 +254,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 </ul>
 </li>
 </ul>
-<p><strong>partial n sealed class</strong></p>
+<h2 id="partial-n-sealed-class">Partial n Sealed Class</h2>
 <blockquote>
 <p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-partial-n-sealed-class.cs">sample code</a></p>
 </blockquote>
@@ -197,7 +263,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <li>partial class's implementations were merged at compile time</li>
 <li>sealed class prevents inheritance (the )</li>
 </ul>
-<p><strong>indexer</strong></p>
+<h2 id="indexer">Indexer</h2>
 <blockquote>
 <p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/thing-indexer.cs">sample code</a></p>
 </blockquote>

@@ -112,10 +112,9 @@ document.cookie = &quot;sameSiteToken3=NoneValue; path=/; SameSite=None; Secure&
 console.log(document.cookie);
 </code></pre>
 <ul>
-<li>lastly, in case you wanna know the types of them</li>
-<li>by expiration time, <em>session cookie</em> n <em>persistent cookie</em> (physically exists)</li>
-<li>by origin, <em>first-party cookie</em> n <em>third-party cookie</em></li>
-<li>by feature<ul>
+<li>categorized by expiration time, <em>session cookie</em> n <em>persistent cookie</em> (physically exists)</li>
+<li>categorized by origin, <em>first-party cookie</em> n <em>third-party cookie</em></li>
+<li>categorized by feature<ul>
 <li><em>essential</em> (like products in cart)</li>
 <li><em>analytics</em> (like Google Analytics or ADs)</li>
 <li><em>functional</em> (like language choice)</li>
@@ -139,14 +138,13 @@ console.log(document.cookie);
 </blockquote>
 </li>
 <li>
-<p>lastly, in case you wanna know the types of them</p>
-</li>
-<li>by storage type<ul>
+<p>categorize by storage type</p>
+<ul>
 <li>server-side session (client's cookie got a session ID matching with server)</li>
 <li>client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)</li>
 </ul>
 </li>
-<li>by implementation<ul>
+<li>categorize by implementation<ul>
 <li>via cookie: a session ID in the cookie matching with the server-side session</li>
 <li>via URL: <code>https://example.com/login?sessionId=ABC123</code> (~= <em>via cookie</em>)</li>
 <li>via database: almost the same thing as <em>via cookie</em>, but being persisted</li>
