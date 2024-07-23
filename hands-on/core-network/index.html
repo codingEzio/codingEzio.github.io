@@ -81,7 +81,7 @@
 <li>types allowed: text only (key value pairs)</li>
 <li>limited size, commonly less than <a href="https://stackoverflow.com/a/4604212/6273859">4093 bytes</a> <strong>under a domain</strong></li>
 <li>limited number of cookies per domain, <a href="https://docs.devexpress.com/AspNet/11912/common-concepts/cookies-support">ranged from 60 to 600</a> (data might be stable, as I had NOT tested it myself)</li>
-<li>the spec <a href="https://www.ietf.org/rfc/rfc2109.txt"><em>HTTP State Management Mechanism</em></a> did NOT specify the size limit <small>(search for <code>6.3</code>)</small></li>
+<li>the spec <a href="https://www.ietf.org/rfc/rfc2109.txt"><em>HTTP State Management Mechanism</em></a> did NOT specify the size limit <sup>search for <code>6.3</code></sup></li>
 <li>
 <p>the exact size limit is implementation-specific, test your own <a href="http://browsercookielimits.iain.guru/">here</a></p>
 </li>
@@ -112,15 +112,13 @@ document.cookie = &quot;sameSiteToken3=NoneValue; path=/; SameSite=None; Secure&
 console.log(document.cookie);
 </code></pre>
 <ul>
-<li>lastly, in case you wanna know the types of them<ul>
+<li>lastly, in case you wanna know the types of them</li>
 <li>by expiration time, <em>session cookie</em> n <em>persistent cookie</em> (physically exists)</li>
 <li>by origin, <em>first-party cookie</em> n <em>third-party cookie</em></li>
 <li>by feature<ul>
 <li><em>essential</em> (like products in cart)</li>
 <li><em>analytics</em> (like Google Analytics or ADs)</li>
 <li><em>functional</em> (like language choice)</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -142,7 +140,7 @@ console.log(document.cookie);
 </li>
 <li>
 <p>lastly, in case you wanna know the types of them</p>
-<ul>
+</li>
 <li>by storage type<ul>
 <li>server-side session (client's cookie got a session ID matching with server)</li>
 <li>client-side session (you can do it via cookie/LocalStorage, but that defeats the entire purpose of sessions)</li>
@@ -152,8 +150,6 @@ console.log(document.cookie);
 <li>via cookie: a session ID in the cookie matching with the server-side session</li>
 <li>via URL: <code>https://example.com/login?sessionId=ABC123</code> (~= <em>via cookie</em>)</li>
 <li>via database: almost the same thing as <em>via cookie</em>, but being persisted</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul></div>

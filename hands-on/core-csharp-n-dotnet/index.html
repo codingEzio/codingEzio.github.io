@@ -70,16 +70,16 @@
 Value of value type copies over value itself on the stack. Whereas reference types were stored on the heap.</li>
 <li>If we were to use Generics, explicitly declaring the types being stored, we no longer need the boxing/unboxing.</li>
 </ul>
-<pre><code class="language-txt">             Value Types
-                     |
-        +--------------+
-        |                            |
- Boxing                 Unboxing
-        |                            |
-        ⬇️                         ⬆️
-        +--------------+
-                     |
-            Reference Types
+<pre><code class="language-txt">       Value Types
+           |
+    +--------------+
+    |              |
+ Boxing         Unboxing
+    |              |
+    ⬇️              ⬆️
+    +--------------+
+           |
+      Reference Types
 </code></pre>
 <p><strong>Destructors</strong></p>
 <blockquote>
