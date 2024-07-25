@@ -68,7 +68,12 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#how-a-query-is-done" class="nav-link">How a Query is Done</a>
+            <li class="nav-item" data-bs-level="2"><a href="#how-a-database-query-is-done" class="nav-link">How a Database Query is Done</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#how-a-sql-query-is-done" class="nav-link">How a SQL Query is Done</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -179,7 +184,30 @@
 </ul>
 </li>
 </ul>
-<h2 id="how-a-query-is-done">How a Query is Done</h2>
+<h2 id="how-a-database-query-is-done">How a Database Query is Done</h2>
+<ul>
+<li>Supopose we were using MySQL (with the InnoDB storage engine)</li>
+</ul>
+<pre><code class="language-sh">Client
+  │
+  ▼
+MySQL Server
+  │
+  ├─ Parser
+  │
+  ├─ Optimizer
+  │
+  ├─ Execution Engine
+  │    │
+  │    └─ Storage Engine API
+  │         │
+  │         ▼
+  └─ Storage Engine (e.g., InnoDB)
+      │
+      ▼
+    Data Files
+</code></pre>
+<h2 id="how-a-sql-query-is-done">How a SQL Query is Done</h2>
 <ul>
 <li>Suppose we have a query like this</li>
 </ul>
