@@ -10,6 +10,7 @@
 
 > Built via `mkdocs gh-deploy --site-dir build-output`
 
+- [Frontend](./hands-on/core-frontend.md)
 - [Network](./hands-on/core-network.md)
 - [Operating System](./hands-on/core-operatingsystem.md)
 - [Database](./hands-on/core-database.md)

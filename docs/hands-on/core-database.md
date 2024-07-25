@@ -64,7 +64,32 @@
     - Scenarios mentioned above were *Snapshot Isolation* <sup>reference needed</sup>
     - Different DB have widely different *default* isolation levels
 
-## How a Query is Done
+## How a Database Query is Done
+
+- Supopose we were using MySQL (with the InnoDB storage engine)
+
+```sh
+Client
+  │
+  ▼
+MySQL Server
+  │
+  ├─ Parser
+  │
+  ├─ Optimizer
+  │
+  ├─ Execution Engine
+  │    │
+  │    └─ Storage Engine API
+  │         │
+  │         ▼
+  └─ Storage Engine (e.g., InnoDB)
+      │
+      ▼
+    Data Files
+```
+
+## How a SQL Query is Done
 
 - Suppose we have a query like this
 
