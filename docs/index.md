@@ -24,4 +24,4 @@
     docs/
         index.md            # Homepage.
         hands-on/           # Concepts in practice.
-        quotes-n-trivias/   # Random quotes and trivias.
+        facts-n-quotes      # Random facts and quotes.
