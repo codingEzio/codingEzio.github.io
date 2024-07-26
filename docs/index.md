@@ -18,6 +18,7 @@
 ### Facts and Quotes
 
 - [On AI](./facts-n-quotes/facts-n-quotes-on-AI.md)
+- [About Equality](./facts-n-quotes/facts-n-quotes-about-equality.md)
 
 ## Project layout
 
