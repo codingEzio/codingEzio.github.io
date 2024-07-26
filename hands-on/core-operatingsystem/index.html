@@ -58,7 +58,7 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#setup-the-base-environment" class="nav-link">Setup the Base Environment</a>
+            <li class="nav-item" data-bs-level="2"><a href="#signals" class="nav-link">Signals</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -72,28 +72,22 @@
 <p>None yet</p>
 </blockquote>
 <hr />
-<h2 id="setup-the-base-environment">Setup the Base Environment</h2>
-<pre><code class="language-bash"># Get your own via 'brew install --cask vagrant'
-vagrant init bento/ubuntu-22.04
-vagrant up
-
-mkdir -p ~/VMs &amp;&amp; cd ~/VMs
-
-# Intialize the VM
-vagrant init bento/ubuntu-22.04  # you may wanna edit the Vagrantfile
-vagrant up
-</code></pre>
-<pre><code class="language-ruby"># If you happen to use VirtualBox and turned on the GUI
-# You could just open the VirtualBox app and stay there from now on
-
-config.vm.provider &quot;virtualbox&quot; do |vb|
-  # Display the VirtualBox GUI when booting the machine
-  vb.gui = true
-
-  # Customize the amount of memory on the VM:
-  vb.memory = &quot;2024&quot;
-end
-</code></pre></div>
+<h2 id="signals">Signals</h2>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html">Signal Handling (The GNU C Library)</a></li>
+</ul>
+<h3 id="concepts-simplified">Concepts Simplified</h3>
+<blockquote>
+<p><strong>WIP</strong></p>
+</blockquote>
+<ul>
+<li>A form of IPC</li>
+<li>A way to communicate between processes</li>
+<li>A way to setup <strong>listen up, X happens, do Y</strong></li>
+<li>A way to setup <strong>if receives signal X, call function Y</strong></li>
+<li>Mostly used and seen in <em>program termination</em></li>
+</ul></div>
             </div>
         </div>
 
