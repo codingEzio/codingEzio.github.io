@@ -19,6 +19,14 @@
 
 - [About AI](./facts-n-quotes/facts-n-quotes-about-AI.md)
 - [About Equality](./facts-n-quotes/facts-n-quotes-about-equality.md)
+- [About Climate Change](./facts-n-quotes/facts-n-quotes-about-climate-change.md)
+- [About Politics](./facts-n-quotes/facts-n-quotes-about-politics.md)
+- [About Health](./facts-n-quotes/facts-n-quotes-about-health.md)
+- [About Mind](./facts-n-quotes/facts-n-quotes-about-mind.md)
+- [About Finance](./facts-n-quotes/facts-n-quotes-about-finance.md)
+- [About Universe](./facts-n-quotes/facts-n-quotes-about-universe.md)
+- [About Love](./facts-n-quotes/facts-n-quotes-about-love.md)
+- [About Organism](./facts-n-quotes/facts-n-quotes-about-organism.md)
 
 ## Project layout
 
