@@ -10,12 +10,18 @@
 
 > Built via `mkdocs gh-deploy --site-dir build-output`
 
+### Hands-on
+
 - [Frontend](./hands-on/core-frontend.md)
 - [Network](./hands-on/core-network.md)
 - [Operating System](./hands-on/core-operatingsystem.md)
 - [Database](./hands-on/core-database.md)
 - [C# and .NET](./hands-on/core-csharp-n-dotnet.md)
 - [Ext.js](./hands-on/random-extjs-overview.md)
+
+### Facts and Quotes
+
+- [On AI](./facts-n-quotes/facts-n-quotes-on-AI.md)
 
 ## Project layout
 
