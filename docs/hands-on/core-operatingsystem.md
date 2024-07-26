@@ -5,29 +5,18 @@
 
 -----
 
-## Setup the Base Environment
+## Signals
 
-```bash
-# Get your own via 'brew install --cask vagrant'
-vagrant init bento/ubuntu-22.04
-vagrant up
+### Resources
 
-mkdir -p ~/VMs && cd ~/VMs
+- [Signal Handling (The GNU C Library)](https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html)
 
-# Intialize the VM
-vagrant init bento/ubuntu-22.04  # you may wanna edit the Vagrantfile
-vagrant up
-```
+### Concepts Simplified
 
-```ruby
-# If you happen to use VirtualBox and turned on the GUI
-# You could just open the VirtualBox app and stay there from now on
+> **WIP**
 
-config.vm.provider "virtualbox" do |vb|
-  # Display the VirtualBox GUI when booting the machine
-  vb.gui = true
-
-  # Customize the amount of memory on the VM:
-  vb.memory = "2024"
-end
-```
+- A form of IPC
+- A way to communicate between processes
+- A way to setup **listen up, X happens, do Y**
+- A way to setup **if receives signal X, call function Y**
+- Mostly used and seen in *program termination*
