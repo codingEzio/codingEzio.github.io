@@ -131,3 +131,11 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 
 - kinda just a syntax sugar for easier accessing/manipulating elements
 - cleaner implementation for getting/setting elements in a class
+
+## Multicast Delegates
+
+> [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/thing-multicast-delegates.cs)
+
+- concat function executions
+- one piece of params to >= 0 functions
+- functions that tied to must be of same signature
