@@ -129,7 +129,7 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 
 > [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/thing-indexer.cs)
 
-- kinda just a syntax sugar for easier accessing/manipulating elements
+- syntax sugar for easier accessing/manipulating elements
 - cleaner implementation for getting/setting elements in a class
 
 ## Multicast Delegates

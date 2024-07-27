@@ -1,5 +1,4 @@
 > A trashy blog written by a biased, incompetent and lazy human 🤣.
->> This blog was completed revamped and rebuilt from scratch on 2024-07-07. The original blog with 200+ posts were either distilled, expanded or simply removed because of the even higher standard of the practicality and simplicity which derived from First Principle for the posts. (此博客启用于 2024 年 7 月 7 日，原博客 200 余篇文章已经被精简、扩展或移除。新博客对于博文的实践性与由第一原则引致的简洁性的要求更为严格。)
 
 ## Posts
 
@@ -36,3 +35,7 @@
         assets/             # Images and other assets.
         hands-on/           # Concepts in practice.
         facts-n-quotes/     # Random facts and quotes.
+
+## Lastly
+
+> This blog was completed revamped and rebuilt from scratch on 2024-07-07. The original blog with 200+ posts were either distilled, expanded or simply removed because of the even higher standard of the practicality and simplicity which derived from First Principle for the posts. (此博客启用于 2024 年 7 月 7 日，原博客 200 余篇文章已经被精简、扩展或移除。新博客对于博文的实践性与由第一原则引致的简洁性的要求更为严格。)
