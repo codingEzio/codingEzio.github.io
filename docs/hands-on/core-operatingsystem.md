@@ -11,13 +11,13 @@
 
 ### What
 
-- A form of IPC (communicate between processes)
-- A way to setup **listen up, X happens, do Y**
-- A way to setup **if receives signal X, invoke function Y**
+- One of IPC (commu between processes)
+- Listen up, if X happens, do Y
+- Sys/Prog sends it, prog registers handler reacts
 
 ### Types of Signals
 
-> scenarios = events || (program) cannot/could X || handlers for the signal
+> scenarios=events, (program), handlers for the signal
 
 - some scenarios, cannot proceed as usual, respective signal abort it
 - some scenarios, could go on just fine, respective signal was ignored
