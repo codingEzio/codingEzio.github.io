@@ -7,11 +7,7 @@
 
 ## Signals
 
-### Resources
-
-- [Signal Handling (The GNU C Library)](https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html)
-
-### Concepts Simplified
+> Sources: [*Signal Handling (The GNU C Library)*](https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html), LLMs on Poe (GPT-4o, Claude Sonnet 3.5)
 
 - A form of IPC (communicate between processes)
 - A way to setup **listen up, X happens, do Y**
