@@ -78,13 +78,13 @@
 </blockquote>
 <h3 id="what">What</h3>
 <ul>
-<li>A form of IPC (communicate between processes)</li>
-<li>A way to setup <strong>listen up, X happens, do Y</strong></li>
-<li>A way to setup <strong>if receives signal X, invoke function Y</strong></li>
+<li>One of IPC (commu between processes)</li>
+<li>Listen up, if X happens, do Y</li>
+<li>Sys/Prog sends it, prog registers handler reacts</li>
 </ul>
 <h3 id="types-of-signals">Types of Signals</h3>
 <blockquote>
-<p>scenarios = events || (program) cannot/could X || handlers for the signal</p>
+<p>scenarios=events, (program), handlers for the signal</p>
 </blockquote>
 <ul>
 <li>some scenarios, cannot proceed as usual, respective signal abort it</li>
