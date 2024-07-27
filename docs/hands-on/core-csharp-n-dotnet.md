@@ -139,3 +139,10 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 - concat function executions
 - one piece of params to >= 0 functions
 - functions that tied to must be of same signature
+
+## Struct v Class
+
+> [sample code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/comparison-struct-v-class.cs) <sup>superfluous object allocation benchmark</sup>
+
+- just use *class*!
+- see discussions [here](https://old.reddit.com/r/csharp/comments/s9nfk8/when_to_use_structs_vs_classes/) and [there](https://old.reddit.com/r/cpp_questions/comments/gxrskj/what_is_the_difference_between_a_struct_and_a/)
