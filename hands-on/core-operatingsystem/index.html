@@ -74,29 +74,28 @@
 <hr />
 <h2 id="signals">Signals</h2>
 <blockquote>
-<p>Sources: <a href="https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html"><em>Signal Handling (The GNU C Library)</em></a>, LLMs on Poe (GPT-4o, Claude Sonnet 3.5)</p>
+<p>Sources: <a href="https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html"><em>Signal Handling (The GNU C Library)</em></a></p>
 </blockquote>
+<h3 id="what-is-a-signal">What is a Signal?</h3>
 <ul>
 <li>A form of IPC (communicate between processes)</li>
 <li>A way to setup <strong>listen up, X happens, do Y</strong></li>
 <li>A way to setup <strong>if receives signal X, invoke function Y</strong></li>
-<li>A variety of types to for particular kind of events<blockquote>
-<p>Scenarios = events || (program) cannot/could X || handlers for the signal</p>
+</ul>
+<h3 id="what-kind-of-signals-are-there">What kind of Signals are there?</h3>
+<blockquote>
+<p>scenarios = events || (program) cannot/could X || handlers for the signal</p>
 </blockquote>
 <ul>
 <li>some scenarios, cannot proceed as usual, respective signal abort it</li>
 <li>some scenarios, could go on just fine, respective signal was ignored</li>
 <li>and you could make <em>child process telling parent it's done</em> to exit/sync/whatever</li>
 </ul>
-</li>
-<li>
-<p>Here's how you setup one that reacts to events and gracefully exits the program</p>
+<h3 id="setup-one-that-reacts-to-events-and-gracefully-exits-the-program">Setup one that Reacts to Events and Gracefully Exits the Program</h3>
 <ul>
 <li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal.py">example in Python</a> using <code>signal</code></li>
 <li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal.c">example in C</a> using <code>signal</code></li>
 <li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal-with-event.cs">example in C#</a> using <em>Events</em> to do similar things</li>
-</ul>
-</li>
 </ul></div>
             </div>
         </div>
