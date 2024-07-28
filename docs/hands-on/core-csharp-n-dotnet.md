@@ -146,3 +146,21 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 
 - just use *class*!
 - see discussions [here](https://old.reddit.com/r/csharp/comments/s9nfk8/when_to_use_structs_vs_classes/) and [there](https://old.reddit.com/r/cpp_questions/comments/gxrskj/what_is_the_difference_between_a_struct_and_a/)
+
+-----
+
+## On *Testing*
+
+Run specific tests via `dotnet test --filter "Name~TestMeasureEachRunIfExceedTime"`
+
+## On *Entity Framework*
+
+- use `.Distinct().ToList()`
+- New models added must be added in XxDbContext, otherwise no new database migrations would be added
+
+## On *Scripting*
+
+- Install via `dotnet tool install -g dotnet-script`
+- For stuff like extension method
+    - strip down the outer `public static class XxxExtensionsWhatever`
+    - then write the `static TYPE NAME_EXTENSION_METHOD`

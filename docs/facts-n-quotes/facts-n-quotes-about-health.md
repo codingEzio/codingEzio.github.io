@@ -18,6 +18,8 @@
 
 - 葡萄糖不只存在于血液中。它渗透到了我们身体的各个部位。这就是为什么动态血糖仪能够在不抽血的情况下测量出身体的葡萄糖含量：动态血糖仪可以感应到我们手臂外侧脂肪细胞之间的葡萄糖浓度。
 - 咖啡因片与咖啡饮品：后者有着咖啡因以外的成分使其起效更温和，其余几乎一致。
+- Food with any amount of calories **would** break fasting.
+- It's okay to drink coffee with empty stomach.
 
 ## Multi-liner
 
