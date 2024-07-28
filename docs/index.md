@@ -4,6 +4,7 @@
 
 ### Hands-on
 
+- On [*Security*](./hands-on/core-security.md)
 - On [*Frontend*](./hands-on/core-frontend.md)
 - On [*Network*](./hands-on/core-network.md)
 - On [*Operating System*](./hands-on/core-operatingsystem.md)
