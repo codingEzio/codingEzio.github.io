@@ -127,6 +127,21 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#on-testing" class="nav-link">On Testing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#on-entity-framework" class="nav-link">On Entity Framework</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#on-scripting" class="nav-link">On Scripting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
@@ -297,6 +312,23 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <ul>
 <li>just use <em>class</em>!</li>
 <li>see discussions <a href="https://old.reddit.com/r/csharp/comments/s9nfk8/when_to_use_structs_vs_classes/">here</a> and <a href="https://old.reddit.com/r/cpp_questions/comments/gxrskj/what_is_the_difference_between_a_struct_and_a/">there</a></li>
+</ul>
+<hr />
+<h2 id="on-testing">On <em>Testing</em></h2>
+<p>Run specific tests via <code>dotnet test --filter "Name~TestMeasureEachRunIfExceedTime"</code></p>
+<h2 id="on-entity-framework">On <em>Entity Framework</em></h2>
+<ul>
+<li>use <code>.Distinct().ToList()</code></li>
+<li>New models added must be added in XxDbContext, otherwise no new database migrations would be added</li>
+</ul>
+<h2 id="on-scripting">On <em>Scripting</em></h2>
+<ul>
+<li>Install via <code>dotnet tool install -g dotnet-script</code></li>
+<li>For stuff like extension method<ul>
+<li>strip down the outer <code>public static class XxxExtensionsWhatever</code></li>
+<li>then write the <code>static TYPE NAME_EXTENSION_METHOD</code></li>
+</ul>
+</li>
 </ul></div>
             </div>
         </div>
