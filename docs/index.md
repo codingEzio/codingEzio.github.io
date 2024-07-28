@@ -25,6 +25,19 @@
 - About [*Love*](./facts-n-quotes/facts-n-quotes-about-love.md)
 - About [*Organism*](./facts-n-quotes/facts-n-quotes-about-organism.md)
 
+### Tech Notes
+
+> All were **work in progress**
+
+- Tidbits on [*Git*](./tips-n-tricks/tidbits-git.md)
+- Tidbits on [*Editor*](./tips-n-tricks/tidbits-editor.md)
+- Tidbits on [*Terminal*](./tips-n-tricks/tidbits-terminal.md)
+- Tidbits on [*macOS*](./tips-n-tricks/tidbits-macos.md)
+- Tidbits on [*Windows*](./tips-n-tricks/tidbits-windows.md)
+- Tidbits on [*Android*](./tips-n-tricks/tidbits-android.md)
+- Tidbits on [*Network*](./tips-n-tricks/tidbits-network.md)
+- Tidbits on [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine.md)
+
 ## Project layout
 
 > Built via `mkdocs gh-deploy --site-dir build-output`
@@ -35,6 +48,7 @@
         index.md            # Homepage.
         assets/             # Images and other assets.
         hands-on/           # Concepts in practice.
+        tips-n-tricks/      # Tips n tricks for tech.
         facts-n-quotes/     # Random facts and quotes.
 
 ## Lastly
