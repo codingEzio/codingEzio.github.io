@@ -4,8 +4,6 @@
 
 ### Hands-on
 
-- [test.md](./hands-on/test.md) (full HTML)
-
 - On [*Security*](./hands-on/core-security.md)
 - On [*Frontend*](./hands-on/core-frontend.md)
 - On [*Network*](./hands-on/core-network.md)
