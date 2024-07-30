@@ -4,6 +4,8 @@
 
 ### Hands-on
 
+- [test.md](./hands-on/test.md) (full HTML)
+
 - On [*Security*](./hands-on/core-security.md)
 - On [*Frontend*](./hands-on/core-frontend.md)
 - On [*Network*](./hands-on/core-network.md)
@@ -11,6 +13,10 @@
 - On [*Database*](./hands-on/core-database.md)
 - On [*C#* and *.NET*](./hands-on/core-csharp-n-dotnet.md)
 - On [*Ext.js*](./hands-on/random-extjs-overview.md)
+
+### Build Your Own
+
+- Toy [*Load Balancer*](./build-your-own/my-toy-load-balancer.md)
 
 ### Facts and Quotes
 
@@ -50,6 +56,7 @@
         hands-on/           # Concepts in practice.
         tips-n-tricks/      # Tips n tricks for tech.
         facts-n-quotes/     # Random facts and quotes.
+        build-your-own/     # DIY-ed version established thingy.
 
 ## Lastly
 
