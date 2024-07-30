@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Core operatingsystem - Human</title>
+        <title>My toy load balancer - Human</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -58,7 +58,12 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#signals" class="nav-link">Signals</a>
+            <li class="nav-item" data-bs-level="2"><a href="#intro" class="nav-link">Intro</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#design" class="nav-link">Design</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -69,112 +74,17 @@
 
 <h2 id="context">Context</h2>
 <blockquote>
-<p>None yet</p>
+<p>It sounds so fun!</p>
 </blockquote>
 <hr />
-<h2 id="signals">Signals</h2>
-<blockquote>
-<p>Sources: <a href="https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html"><em>Signal Handling (The GNU C Library)</em></a></p>
-</blockquote>
-<h3 id="what">What</h3>
+<h2 id="intro">Intro</h2>
 <ul>
-<li>One of IPC (commu between processes)</li>
-<li>Listen up, if X happens, do Y</li>
-<li>Sys/Prog sends it, prog registers handler reacts</li>
+<li>Balance the incoming request (=load) to various existing servers</li>
+<li>requests -&gt; check server stat -&gt; route to server X (all not too busy, too light)</li>
 </ul>
-<h3 id="types-of-signals">Types of Signals</h3>
-<blockquote>
-<p>scenarios=events, (program), handlers for the signal</p>
-</blockquote>
+<h2 id="design">Design</h2>
 <ul>
-<li>some scenarios, cannot proceed as usual, respective signal abort it</li>
-<li>some scenarios, could go on just fine, respective signal was ignored</li>
-<li>and you could make <em>child process telling parent it's done</em> to exit/sync/whatever</li>
-</ul>
-<h3 id="get-one-that-reacts-to-events">Get One that Reacts to Events</h3>
-<ul>
-<li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal.py">example in Python</a> using <code>signal</code></li>
-<li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal.c">example in C</a> using <code>signal</code></li>
-<li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal-with-event.cs">example in C#</a> using <em>Events</em> to do similar things</li>
-</ul>
-<hr />
-<ul>
-<li>Life of 0s and 1s</li>
-<li>
-<p>Get from 0s and 1s to a code file</p>
-<ul>
-<li>Zeros and ones represent binary data, which can be grouped into sets of eight bits called bytes.</li>
-<li>Each byte, composed of zeros and ones, can be converted to a decimal value.</li>
-<li>The decimal value corresponds to a specific character in the ASCII table, allowing us to map binary data to ASCII characters.</li>
-<li>By repeating this process for each byte, we can transform multiple sets of zeros and ones into multiple ASCII characters.</li>
-<li>These ASCII characters are then encoded and written into a file, creating a sequence of characters that can be interpreted by text-based applications.</li>
-</ul>
-</li>
-<li>
-<p>0s and 1s in Different Context <sup><a href="https://poe.com/s/JioudqEtMjMAKsu9BFa1">example</a></sup></p>
-</li>
-</ul>
-<pre><code class="language-asciidoc">0101010101
-    /           \
-   /             \
-  v               v
-+-------+     +--------+
-| ASCII |     | Binary |
-+-------+     +--------+
-    |             |
-    v             v
-+-------------------+
-|    Code File      |
-+-------------------+
-</code></pre>
-<ul>
-<li>From hello.c to the executable ./hello</li>
-<li>
-<p><em>Preprocessing Phase</em>: add/insert implicit imported code, like the import in Python, the #include in C, in the end, produce a different file, typically ended with .i, a hello.i file.</p>
-</li>
-<li>
-<p><em>Compilation Phase</em>: translate C code into assembly instructions, which all non-assembly really are underneath 😉, normally ended with .s, aka. hello.s.</p>
-</li>
-<li>
-<p><em>Assembly Phase</em>: translate Assembly code into actual machine instructions (0s and 1s), though this time it was packaged in the form of <em>relocatable object program</em> (this time the context of those bytes were machine instructions instead of characters), typically ended with .o, aka. hello.o.</p>
-</li>
-<li>
-<p><em>Linking Phase</em>: the linker ld do the merging between the imported stuff (like the stdio.h for basic printing) and the previously generated hello.o, the eventual output is an executable object, i.e. ./hello.</p>
-</li>
-<li>
-<p>from <em>CPU Land</em></p>
-</li>
-<li>
-<p>Machine code are 0s and 1s</p>
-<ul>
-<li>Machine code have both binary (0001) and hex formats (0xA3)</li>
-<li>The machine codes in hex formats were individually mapped to Assembly instructions.</li>
-</ul>
-</li>
-<li>
-<p>Different CPUs hold different architectures</p>
-</li>
-<li>Different architectures diff in the mappings between the hex (machine) code and (assembly) instructions.</li>
-<li>
-<p>Things like ADD, SUB were called as OPCODE</p>
-</li>
-<li>
-<p>One CPU can only hold one architecture</p>
-</li>
-<li>
-<p>One CPU can do emulation and/or translations more than the architecture of its own (like how you run x86 apps on Apple M3 machines via the <em>Rosetta 2</em> translation layers)</p>
-</li>
-<li>
-<p>Machine instructions were loaded onto RAM</p>
-<ul>
-<li>Machine instructions were ran via CPU executing instructions loaded onto RAM</li>
-<li>Machine instructions can only be ran when loading onto RAM</li>
-</ul>
-</li>
-<li>
-<p>RAM acts like a workspace for CPU, which holds data and instructions, ready for access</p>
-</li>
-<li>RAM is like a book with multiple pages, that you find data via something like <em>PageA :: LINE 19 :: POS 2:10</em></li>
+<li>[</li>
 </ul></div>
             </div>
         </div>
