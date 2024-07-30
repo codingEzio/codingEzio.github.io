@@ -58,7 +58,27 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#signals" class="nav-link">Signals</a>
+            <li class="nav-item" data-bs-level="2"><a href="#memory" class="nav-link">Memory</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#vm-pervades-the-design" class="nav-link">VM Pervades the Design</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#concurrency" class="nav-link">Concurrency</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#process-n-thread" class="nav-link">Process n Thread</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#signal" class="nav-link">Signal</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -72,7 +92,64 @@
 <p>None yet</p>
 </blockquote>
 <hr />
-<h2 id="signals">Signals</h2>
+<h2 id="memory">Memory</h2>
+<h3 id="scenario">Scenario</h3>
+<ul>
+<li>Too many prog need too many mem</li>
+<li>A program intentionally/or-not writes to a part memory that another program is using, cause unforeseeable outcome</li>
+</ul>
+<h3 id="issues-summarized">Issues summarized</h3>
+<ul>
+<li>Need to manage more efficiently</li>
+<li>Need to avoid <em>prime to corruption</em></li>
+</ul>
+<h3 id="vm-comes-to-the-rescue">VM Comes to the Rescue</h3>
+<ul>
+<li>An abstraction for the physical memory</li>
+<li>A suite of tools including hardware exceptions, hardware address translation, main memory, disk files and kernel software that provides each process with a large/uniform/private memory address space to resolve/help the issues mentioned above.</li>
+</ul>
+<h2 id="vm-pervades-the-design">VM Pervades the Design</h2>
+<ul>
+<li>any newer similar toolings must have that in order for Virtual Memory to work</li>
+<li>like <a href="https://poe.com/s/dKosSepXG6QTvDiLwoJq">this</a></li>
+</ul>
+<p>How does CPU loads instructions from memory (before n after)?</p>
+<blockquote>
+<p><a href="https://poe.com/s/zFGZI0uZq8nXIgG5je4h">ref</a></p>
+</blockquote>
+<ul>
+<li>back then: CPU provides a physcisl memory address, reading directly from physical memory</li>
+<li>now: CPU provides a virtual memory address, the MMU translates it into a physical memory address, viola 🎉</li>
+</ul>
+<h2 id="concurrency">Concurrency</h2>
+<h3 id="strategy">Strategy</h3>
+<ul>
+<li>One of the approach of building a concurrent server is to accept client connection requests in the parent and then create a new child process to service each new client.</li>
+<li>The server forks a child with complete file descriptors which could and would be used to serve incoming requests. Meanwhile, the server shall release the file descriptors it originally listened to and received (file table entry).</li>
+</ul>
+<h2 id="process-n-thread">Process n Thread</h2>
+<h3 id="some-say-process-is-slowerheavier">Some Say Process is Slower/Heavier</h3>
+<blockquote>
+<p>File tables are share between parent and child processes, address spaces are not as diff processes got different address spaces, they would need explicit IPC to communicate (like state information)</p>
+</blockquote>
+<ul>
+<li><a href="https://poe.com/s/rdIxnh8aJE7mYkDg8BSB">Process Control n Inter-Process Comm</a></li>
+<li>
+<p>Process control</p>
+<ul>
+<li>创建与销毁</li>
+<li>保存与切换</li>
+</ul>
+</li>
+<li>
+<p>Inter-Process Communication</p>
+<ul>
+<li>通信需要系统机制 系统机制如 MQ 都需要跨内核用户态多次复制数据</li>
+<li>当多个进程访问共享资源时 为了维持一致性与完整性 须另外引入同步等机制 这些机制也都需要更多的系统调用</li>
+</ul>
+</li>
+</ul>
+<h2 id="signal">Signal</h2>
 <blockquote>
 <p>Sources: <a href="https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html"><em>Signal Handling (The GNU C Library)</em></a></p>
 </blockquote>
@@ -99,7 +176,9 @@
 </ul>
 <hr />
 <ul>
-<li>Life of 0s and 1s</li>
+<li>
+<p>Life of 0s and 1s</p>
+<ul>
 <li>
 <p>Get from 0s and 1s to a code file</p>
 <ul>
@@ -112,6 +191,8 @@
 </li>
 <li>
 <p>0s and 1s in Different Context <sup><a href="https://poe.com/s/JioudqEtMjMAKsu9BFa1">example</a></sup></p>
+</li>
+</ul>
 </li>
 </ul>
 <pre><code class="language-asciidoc">0101010101
@@ -128,7 +209,9 @@
 +-------------------+
 </code></pre>
 <ul>
-<li>From hello.c to the executable ./hello</li>
+<li>
+<p>From hello.c to the executable ./hello</p>
+<ul>
 <li>
 <p><em>Preprocessing Phase</em>: add/insert implicit imported code, like the import in Python, the #include in C, in the end, produce a different file, typically ended with .i, a hello.i file.</p>
 </li>
@@ -141,9 +224,11 @@
 <li>
 <p><em>Linking Phase</em>: the linker ld do the merging between the imported stuff (like the stdio.h for basic printing) and the previously generated hello.o, the eventual output is an executable object, i.e. ./hello.</p>
 </li>
+</ul>
+</li>
 <li>
 <p>from <em>CPU Land</em></p>
-</li>
+<ul>
 <li>
 <p>Machine code are 0s and 1s</p>
 <ul>
@@ -175,6 +260,8 @@
 <p>RAM acts like a workspace for CPU, which holds data and instructions, ready for access</p>
 </li>
 <li>RAM is like a book with multiple pages, that you find data via something like <em>PageA :: LINE 19 :: POS 2:10</em></li>
+</ul>
+</li>
 </ul></div>
             </div>
         </div>
