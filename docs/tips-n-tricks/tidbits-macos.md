@@ -1,13 +1,42 @@
-macos single app mode via `defaults write com.apple.dock single-app -bool true/no ;killall Dock` |||| macos, focus, toggle, config
-macos reduce save windows animation speed via `defaults write NSGlobalDomain NSWindowResizeTime .001` |||| macos, animation, config
-macos revert reduce save windows animation speed via `defaults delete NSGlobalDomain NSWindowResizeTime` |||| macos, animation, config
-macos reduce check file info animation speed via `defaults write com.apple.finder DisableAllAnimations -bool true` |||| macos, animation, config
-macos revert reduce check file info animation speed via `defaults delete com.apple.finder DisableAllAnimations` |||| macos, animation, config
-safari cloud tabs showing old/closed tabs, fix by deleting files started with 'CloudTabs.' under '~/Library/Containers/com.apple.Safari/Data/Library/Safari', then relaunch safari |||| macos, safari, cloud, data, potential-data-loss
-macos dock only shown opened apps via `defaults write com.apple.dock static-only -bool True` |||| macos, animation, config
-macos dock add spacer via `efaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}' ;` |||| macos, dock
 
-iTerm turn off selection in block mode (find and replace only in that context) |||| terminal, config, iterm
-Hide/remove the border-thingy after clicking a random spot in dark theme by 'Uncheck "Clicking on a command selects it to restrict Find and Filter" within General / Selection' |||| terminal, gui, config, style
+## Content
 
-can run x86 apps on windows 11 via VMWare Fusion on M-seires Mac |||| windows, mac, vmware, m-chip, virtualization
+### M-series Macs
+
+- Q: Can you run x86 apps on Windows 11 via VMWare Fusion
+- A: Yes (oh, okay)
+
+### iTerm2
+
+- Q: Hide/remove the border-thingy after clicking a random spot in dark theme by
+- A
+    - Go to General / Selection
+    - Uncheck "Clicking on a command selects it to restrict Find and Filter"
+
+### macOS Tweaks via `defaults`
+
+```sh
+# Enable single app mode in macOS
+# Disable single app mode in macOS
+defaults write com.apple.dock single-app -bool true; killall Dock
+defaults write com.apple.dock single-app -bool false; killall Dock
+
+# Reduce save window animation speed
+# Revert save window animation speed
+defaults write NSGlobalDomain NSWindowResizeTime .001
+defaults delete NSGlobalDomain NSWindowResizeTime
+
+# Reduce check file info animation speed
+# Revert check file info animation speed
+defaults write com.apple.finder DisableAllAnimations -bool true
+defaults delete com.apple.finder DisableAllAnimations
+
+# Fix Safari cloud tabs showing old/closed tabs
+rm ~/Library/Containers/com.apple.Safari/Data/Library/Safari/CloudTabs.* && open -a Safari
+
+# Show only opened apps in the Dock
+defaults write com.apple.dock static-only -bool true; killall Dock
+
+# Add a spacer to the Dock
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'; killall Dock
+```

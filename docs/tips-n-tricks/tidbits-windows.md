@@ -1,2 +1,17 @@
-Windows make application run at startup by running 'Shell:startup' via CMD(Command Prompt), then putting your shortcuts(of Applications) to that folder |||| startup, launch, Windows, boot, config
-注册表 HKEY_LOCAL_MACHINE\\SOFTWARE\\EA Games\\Battlefield V |||| windows, game, config, battlefield
+
+## General
+
+### Launch when Boot
+
+1. Command + R, then write `Shell:startup`,
+2. put your shortcuts(of Applications) to the folder
+
+## Game
+
+### Battlefield V
+
+#### Change to English
+
+- 打开 注册表
+- 找到 `HKEY_LOCAL_MACHINE\\SOFTWARE\\EA Games\\Battlefield V`
+- 修改 相关属性值为 `en_US`

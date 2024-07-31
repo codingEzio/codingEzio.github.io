@@ -7,6 +7,8 @@
 
 ## Memory
 
+> **WIP**
+
 ### Scenario
 
 - Too many prog need too many mem
@@ -22,18 +24,21 @@
 - An abstraction for the physical memory
 - A suite of tools including hardware exceptions, hardware address translation, main memory, disk files and kernel software that provides each process with a large/uniform/private memory address space to resolve/help the issues mentioned above.
 
-## VM Pervades the Design
+### VM Pervades the Design
 
 - any newer similar toolings must have that in order for Virtual Memory to work
 - like [this](https://poe.com/s/dKosSepXG6QTvDiLwoJq)
 
-How does CPU loads instructions from memory (before n after)?
+### How does CPU loads instructions from memory (before n after)?
+
 > [ref](https://poe.com/s/zFGZI0uZq8nXIgG5je4h)
 
 - back then: CPU provides a physcisl memory address, reading directly from physical memory
 - now: CPU provides a virtual memory address, the MMU translates it into a physical memory address, viola 🎉
 
 ## Concurrency
+
+> **WIP**
 
 ### Strategy
 

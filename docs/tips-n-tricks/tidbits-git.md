@@ -1,4 +1,13 @@
-git apply stashed changes, it's like a stash, last in, (could be) used first, run 'git stash apply n' (index starts from 0) |||| git, terminal, data, potential-dataloss
-git rewrite commits' messages that had NOT been pushed yet via 'git rebase -i HEAD~3' |||| git, terminal, history, style
-git put commits that haven't been pushed back to the staging area (before the stage where you write commit messages) via 'git reset HEAD~n' |||| git, terminal, history
-git gc won't remove stashed changes |||| git, data, potential-data-loss
+
+## Git
+
+| 操作                     | 命令                      | 备注         |
+|:--------------------------|:---------------------------|:--------------|
+| 应用暂存更改             | `git stash apply n`       | 最后进先出   |
+| 重写提交信息             | `git rebase -i HEAD~3`   | 修改未推送信息 (还没 `git push` 的)  |
+| 将未推送提交退回到暂存区 | `git reset HEAD~n`        | 退回暂存区 (还没 `git push` 的)  |
+| 关于垃圾回收的说明       | `git gc`                  | 不会移除暂存 |
+
+## Git Workflow
+
+> **WIP**

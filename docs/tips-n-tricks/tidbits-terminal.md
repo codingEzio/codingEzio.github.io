@@ -3,7 +3,7 @@
 
 ### One-liner
 
-fish shell maximum history legnth, it's unconfigurable, up to 256KB of UNIQUE commands (fish de-dups it. In short, don't worry about configuring it like zsh (which would lose my FUCKING history commands!) |||| terminal, config, zsh, fish, shell, backup, potential-data-loss
+fish shell maximum history legnth, it's unconfigurable, up to 256KB of UNIQUE commands (fish de-dups it). In short, don't worry about configuring it like zsh (which would lose my FUCKING history commands!) |||| terminal, config, zsh, fish, shell, backup, potential-data-loss
 remove history entries in zsh via `LC_ALL=C sed -i '' '/porn/d' $HISTFILE` |||| terminal, zsh, macos, privacy
 reverse the content in a text file via `tac OLD_FILE.txt > NEW_FILE.txt` |||| terminal, format, text-manipulation
 
@@ -69,13 +69,82 @@ chsh -s /usr/local/bin/fish
 
 ## Terminal
 
-use curl to save/download file via `curl .. --output FILE.EXTENSION` |||| terminal, curl, download
-making the image smaller using (image)magick via `magick source.jpg -strip -interlace Plane -quality 85% result.jpg` |||| terminal, image, image-manipulation
-minify aka compress multi-line json into one-line json through jq via `jq --compact-output < FILE.json` |||| terminal, json, format
-compile applescript into a macOS application via `osacompile -o output.app input.applescript` |||| terminal, compile, application, macos, script, applescript
-list npm globally installed packages via `npm list -g --depth=0` |||| terminal, javascript, package-manager, npm
-list yarn globally installed packages via `yarn global list` |||| terminal, javascript, package-manager, yarn
-download, archive videos: lux for Bilibili, you-get for AcFun(or 'https://leesoar.com/acfun#parse'), yt-dlp for YouTube/Xv/Ph |||| data, backup, archive, video
-try new python version with anaconda via `conda create -n py312 python=3.12 && conda activate py312` |||| terminal, python
-profiling like eat X RAM/CPU/Disk .. via 'https://github.com/shawn-bluce/eat' |||| terminal, profiling, fun, script, golang, go, stress-test
-add dedicated Github token for homebrew via applying a classic token on 'https://github.com/settings/tokens' with no scope selected, then add that via `export HOMEBREW_GITHUB_API_TOKEN=YOUR_TOKEN` |||| terminal, homebrew, github, token, config, macos
+### `curl`
+
+To download a file using `curl`, use:
+
+```bash
+curl [URL] --output FILE.EXTENSION
+```
+
+### Image Manipulation
+
+To make an image smaller using ImageMagick:
+
+```bash
+magick source.jpg -strip -interlace Plane -quality 85% result.jpg
+```
+
+### `jq`
+
+To minify (compress) multi-line JSON into one-line JSON:
+
+```bash
+jq --compact-output < FILE.json
+```
+
+### AppleScript
+
+To compile AppleScript into a macOS application:
+
+```bash
+osacompile -o /Applcations/output.app /input.applescript
+```
+
+### `npm`
+
+To list globally installed npm packages:
+
+```bash
+npm list -g --depth=0
+```
+
+### `yarn`
+
+To list globally installed Yarn packages:
+
+```bash
+yarn global list
+```
+
+### Video
+
+To download and archive videos from platforms:
+
+- For Bilibili: **lux**
+- For AcFun: **you-get** (or visit `https://leesoar.com/acfun#parse`)
+- For YouTube: **yt-dlp**
+
+### Python
+
+To try a new Python version with Anaconda:
+
+```bash
+conda create -n py312 python=3.12 && conda activate py312
+```
+
+### Profiling
+
+To profile resource usage like RAM, CPU, or Disk: [eat](https://github.com/shawn-bluce/eat).
+
+### Homebrew
+
+To add a dedicated GitHub token for Homebrew:
+
+1. Apply a classic token at [GitHub tokens](https://github.com/settings/tokens) with no scope selected.
+
+2. Add it using:
+
+```bash
+export HOMEBREW_GITHUB_API_TOKEN=YOUR_TOKEN
+```
