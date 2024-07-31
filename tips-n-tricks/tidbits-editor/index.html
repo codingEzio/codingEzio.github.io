@@ -53,12 +53,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#context" class="nav-link">Context</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#content" class="nav-link">Content</a>
+            <li class="nav-item" data-bs-level="2"><a href="#tip" class="nav-link">Tip</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -67,13 +62,33 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="context">Context</h2>
-<hr />
-<h2 id="content">Content</h2>
-<p>in IDEA IDE drag less to snap layout via 'search action -&gt; registry -&gt; ide.tabbedPane.dragOutMultiplier -&gt; orig is 0.1 I chose 10' |||| macos, editor, config
-VS Code install all exported list of extensions via 'cat ~/EXT_VSCODE_LIST.txt | xargs -L 1 echo code --install-extension | % { "code --install-extension $_” }' |||| terminal, vscode, editor, backup, extension
-VS Code list all installed extensions via 'code --list-extensions &gt; EXT_VSCODE_LIST.txt' |||| terminal, vscode, editor, backup, extension
-install both Times and Lucida Bright if using plantuml in VS Code through extension on macOS |||| macOS, VSCode, extension, font, visualization</p></div>
+<h2 id="tip">Tip</h2>
+<h3 id="jetbrains-ide">JetBrains IDE</h3>
+<h4 id="drag-to-snap">Drag to Snap</h4>
+<blockquote>
+<p>Tweak via <code>Registry</code></p>
+</blockquote>
+<ul>
+<li>old: <code>ide.tabbedPane.dragOutMultiplier -&gt; 0.1</code></li>
+<li>new <code>ide.tabbedPane.dragOutMultiplier -&gt; 2</code></li>
+</ul>
+<h3 id="vs-code">VS Code</h3>
+<h4 id="export-extensions">Export Extensions</h4>
+<pre><code class="language-sh">code --list-extensions &gt; EXT_VSCODE_LIST.txt
+</code></pre>
+<h4 id="install-extensions">Install Extensions</h4>
+<pre><code class="language-sh">cat ~/EXT_VSCODE_LIST.txt \
+    | xargs -L 1 echo code --install-extension \
+    | % { &quot;code --install-extension $_” }
+</code></pre>
+<h4 id="issues-with-plugin-plantuml">Issues with Plugin <em>PlantUML</em></h4>
+<blockquote>
+<p>Install these fonts first to avoid the error</p>
+</blockquote>
+<ul>
+<li>Times</li>
+<li>Lucida Bright</li>
+</ul></div>
             </div>
         </div>
 
