@@ -52,22 +52,56 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#content" class="nav-link">Content</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>macos single app mode via <code>defaults write com.apple.dock single-app -bool true/no ;killall Dock</code> |||| macos, focus, toggle, config
-macos reduce save windows animation speed via <code>defaults write NSGlobalDomain NSWindowResizeTime .001</code> |||| macos, animation, config
-macos revert reduce save windows animation speed via <code>defaults delete NSGlobalDomain NSWindowResizeTime</code> |||| macos, animation, config
-macos reduce check file info animation speed via <code>defaults write com.apple.finder DisableAllAnimations -bool true</code> |||| macos, animation, config
-macos revert reduce check file info animation speed via <code>defaults delete com.apple.finder DisableAllAnimations</code> |||| macos, animation, config
-safari cloud tabs showing old/closed tabs, fix by deleting files started with 'CloudTabs.' under '~/Library/Containers/com.apple.Safari/Data/Library/Safari', then relaunch safari |||| macos, safari, cloud, data, potential-data-loss
-macos dock only shown opened apps via <code>defaults write com.apple.dock static-only -bool True</code> |||| macos, animation, config
-macos dock add spacer via <code>efaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}' ;</code> |||| macos, dock</p>
-<p>iTerm turn off selection in block mode (find and replace only in that context) |||| terminal, config, iterm
-Hide/remove the border-thingy after clicking a random spot in dark theme by 'Uncheck "Clicking on a command selects it to restrict Find and Filter" within General / Selection' |||| terminal, gui, config, style</p>
-<p>can run x86 apps on windows 11 via VMWare Fusion on M-seires Mac |||| windows, mac, vmware, m-chip, virtualization</p></div>
+<h2 id="content">Content</h2>
+<h3 id="m-series-macs">M-series Macs</h3>
+<ul>
+<li>Q: Can you run x86 apps on Windows 11 via VMWare Fusion</li>
+<li>A: Yes (oh, okay)</li>
+</ul>
+<h3 id="iterm2">iTerm2</h3>
+<ul>
+<li>Q: Hide/remove the border-thingy after clicking a random spot in dark theme by</li>
+<li>A<ul>
+<li>Go to General / Selection</li>
+<li>Uncheck "Clicking on a command selects it to restrict Find and Filter"</li>
+</ul>
+</li>
+</ul>
+<h3 id="macos-tweaks-via-defaults">macOS Tweaks via <code>defaults</code></h3>
+<pre><code class="language-sh"># Enable single app mode in macOS
+# Disable single app mode in macOS
+defaults write com.apple.dock single-app -bool true; killall Dock
+defaults write com.apple.dock single-app -bool false; killall Dock
+
+# Reduce save window animation speed
+# Revert save window animation speed
+defaults write NSGlobalDomain NSWindowResizeTime .001
+defaults delete NSGlobalDomain NSWindowResizeTime
+
+# Reduce check file info animation speed
+# Revert check file info animation speed
+defaults write com.apple.finder DisableAllAnimations -bool true
+defaults delete com.apple.finder DisableAllAnimations
+
+# Fix Safari cloud tabs showing old/closed tabs
+rm ~/Library/Containers/com.apple.Safari/Data/Library/Safari/CloudTabs.* &amp;&amp; open -a Safari
+
+# Show only opened apps in the Dock
+defaults write com.apple.dock static-only -bool true; killall Dock
+
+# Add a spacer to the Dock
+defaults write com.apple.dock persistent-apps -array-add '{&quot;tile-type&quot;=&quot;spacer-tile&quot;;}'; killall Dock
+</code></pre></div>
             </div>
         </div>
 

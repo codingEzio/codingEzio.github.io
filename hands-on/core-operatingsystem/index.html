@@ -63,11 +63,6 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#vm-pervades-the-design" class="nav-link">VM Pervades the Design</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
             <li class="nav-item" data-bs-level="2"><a href="#concurrency" class="nav-link">Concurrency</a>
               <ul class="nav flex-column">
               </ul>
@@ -93,6 +88,9 @@
 </blockquote>
 <hr />
 <h2 id="memory">Memory</h2>
+<blockquote>
+<p><strong>WIP</strong></p>
+</blockquote>
 <h3 id="scenario">Scenario</h3>
 <ul>
 <li>Too many prog need too many mem</li>
@@ -108,12 +106,12 @@
 <li>An abstraction for the physical memory</li>
 <li>A suite of tools including hardware exceptions, hardware address translation, main memory, disk files and kernel software that provides each process with a large/uniform/private memory address space to resolve/help the issues mentioned above.</li>
 </ul>
-<h2 id="vm-pervades-the-design">VM Pervades the Design</h2>
+<h3 id="vm-pervades-the-design">VM Pervades the Design</h3>
 <ul>
 <li>any newer similar toolings must have that in order for Virtual Memory to work</li>
 <li>like <a href="https://poe.com/s/dKosSepXG6QTvDiLwoJq">this</a></li>
 </ul>
-<p>How does CPU loads instructions from memory (before n after)?</p>
+<h3 id="how-does-cpu-loads-instructions-from-memory-before-n-after">How does CPU loads instructions from memory (before n after)?</h3>
 <blockquote>
 <p><a href="https://poe.com/s/zFGZI0uZq8nXIgG5je4h">ref</a></p>
 </blockquote>
@@ -122,6 +120,9 @@
 <li>now: CPU provides a virtual memory address, the MMU translates it into a physical memory address, viola 🎉</li>
 </ul>
 <h2 id="concurrency">Concurrency</h2>
+<blockquote>
+<p><strong>WIP</strong></p>
+</blockquote>
 <h3 id="strategy">Strategy</h3>
 <ul>
 <li>One of the approach of building a concurrent server is to accept client connection requests in the parent and then create a new child process to service each new client.</li>

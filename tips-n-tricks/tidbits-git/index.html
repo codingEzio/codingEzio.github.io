@@ -52,15 +52,57 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#git" class="nav-link">Git</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#git-workflow" class="nav-link">Git Workflow</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>git apply stashed changes, it's like a stash, last in, (could be) used first, run 'git stash apply n' (index starts from 0) |||| git, terminal, data, potential-dataloss
-git rewrite commits' messages that had NOT been pushed yet via 'git rebase -i HEAD~3' |||| git, terminal, history, style
-git put commits that haven't been pushed back to the staging area (before the stage where you write commit messages) via 'git reset HEAD~n' |||| git, terminal, history
-git gc won't remove stashed changes |||| git, data, potential-data-loss</p></div>
+<h2 id="git">Git</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">应用暂存更改</td>
+<td style="text-align: left;"><code>git stash apply n</code></td>
+<td style="text-align: left;">最后进先出</td>
+</tr>
+<tr>
+<td style="text-align: left;">重写提交信息</td>
+<td style="text-align: left;"><code>git rebase -i HEAD~3</code></td>
+<td style="text-align: left;">修改未推送信息 (还没 <code>git push</code> 的)</td>
+</tr>
+<tr>
+<td style="text-align: left;">将未推送提交退回到暂存区</td>
+<td style="text-align: left;"><code>git reset HEAD~n</code></td>
+<td style="text-align: left;">退回暂存区 (还没 <code>git push</code> 的)</td>
+</tr>
+<tr>
+<td style="text-align: left;">关于垃圾回收的说明</td>
+<td style="text-align: left;"><code>git gc</code></td>
+<td style="text-align: left;">不会移除暂存</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-workflow">Git Workflow</h2>
+<blockquote>
+<p><strong>WIP</strong></p>
+</blockquote></div>
             </div>
         </div>
 

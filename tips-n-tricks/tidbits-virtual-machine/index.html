@@ -52,18 +52,105 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#vagrant" class="nav-link">Vagrant</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>vagrant configure shared folder via <code>config.vm.synced_folder "data_bridge", "/vagrant_data"</code> |||| virtualization, vagrant, config
-vagrant configure port mapping in INSIDE-aka-virtualized::HOST-aka-macOS via <code>config.vm.network "forwarded_port", guest: 3306, host: 3307</code> |||| virtualization, vagrant, config, database
-vagrant configure resource via <code>config.vm.provider "virtualbox" do |vb| vb.memory = "1024" end</code> |||| virtualization, vagrant, config
-vagrant configure network proxy with 'vagrant plugin install vagrant-proxyconf' and 'config.proxy.http(s) = "http://127.0.0.1:7890" config.proxy.no_proxy = "localhost,127.0.0.1"' |||| virtualization, vagrant, config, network
-vagrant from launch to destroy via 'vagrant status', 'vagrant suspend(sleep)/up(boot)/halt(shutdown)/reload(reboot)' |||| virtualization, vagrant, config, lifecycle
-vagrant make snapshots to backup, preview via 'vagrant snapshot list', create via 'vagrant snapshot NEW_SNAPSHOT_NAME', then 'vagrant snapshot restore SNAP_NAME' (and 'delete SNAP_NAME') |||| virtualization, vagrant, backup, time-machine, snapshot, data
-vagrant common images on 'https://app.vagrantup.com/boxes/search', I often use 'vagrant init (centos/7)||(ubuntu/focal64) |||| virtualization, vagrant, image, os</p></div>
+<h2 id="vagrant">Vagrant</h2>
+<h3 id="intro">Intro</h3>
+<ul>
+<li>Find images on <a href="https://app.vagrantup.com/boxes/search">Vagrant Cloud</a></li>
+<li>e.g. vagrant init <code>centos/7</code> (or <code>ubuntu/focal64</code>)</li>
+</ul>
+<h3 id="share">Share</h3>
+<h4 id="folder">Folder</h4>
+<ul>
+<li>Edit <code>config.vm.synced_folder "host_folder", "/vm_folder"</code></li>
+</ul>
+<h4 id="port">Port</h4>
+<ul>
+<li>Edit <code>config.vm.network "forwarded_port", guest: 3306, host: 3307</code></li>
+</ul>
+<h3 id="tweak">Tweak</h3>
+<h4 id="resource">Resource</h4>
+<ul>
+<li>Edit <code>config.vm.provider "virtualbox" do |vb| vb.memory = "1024" end</code></li>
+</ul>
+<h4 id="proxy">Proxy</h4>
+<ul>
+<li>
+<p>Run <code>vagrant plugin install vagrant-proxyconf</code></p>
+</li>
+<li>
+<p>Edit</p>
+</li>
+</ul>
+<pre><code class="language-sh"># Vagrantfile
+config.proxy.http     = &quot;http://127.0.0.1:7890&quot;
+config.proxy.https    = &quot;http://127.0.0.1:7890&quot;
+config.proxy.no_proxy = &quot;localhost,127.0.0.1&quot;
+</code></pre>
+<h3 id="manage">Manage</h3>
+<h4 id="state">State</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>vagrant status</code></td>
+<td style="text-align: left;">Status</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>vagrant suspend</code></td>
+<td style="text-align: left;">Sleep</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>vagrant up</code></td>
+<td style="text-align: left;">Boot</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>vagrant halt</code></td>
+<td style="text-align: left;">Shutdown</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>vagrant reload</code></td>
+<td style="text-align: left;">Reboot</td>
+</tr>
+</tbody>
+</table>
+<h3 id="backup">Backup</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>vagrant snapshot list</code></td>
+<td style="text-align: left;">List</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>vagrant snapshot NEW_SNAPSHOT_NAME</code></td>
+<td style="text-align: left;">Create</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>vagrant snapshot restore SNAP_NAME</code> (and <code>delete SNAP_NAME</code>)</td>
+<td style="text-align: left;">Restore</td>
+</tr>
+</tbody>
+</table></div>
             </div>
         </div>
 

@@ -52,13 +52,35 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#general" class="nav-link">General</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#game" class="nav-link">Game</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>Windows make application run at startup by running 'Shell:startup' via CMD(Command Prompt), then putting your shortcuts(of Applications) to that folder |||| startup, launch, Windows, boot, config
-注册表 HKEY_LOCAL_MACHINE\SOFTWARE\EA Games\Battlefield V |||| windows, game, config, battlefield</p></div>
+<h2 id="general">General</h2>
+<h3 id="launch-when-boot">Launch when Boot</h3>
+<ol>
+<li>Command + R, then write <code>Shell:startup</code>,</li>
+<li>put your shortcuts(of Applications) to the folder</li>
+</ol>
+<h2 id="game">Game</h2>
+<h3 id="battlefield-v">Battlefield V</h3>
+<h4 id="change-to-english">Change to English</h4>
+<ul>
+<li>打开 注册表</li>
+<li>找到 <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\EA Games\\Battlefield V</code></li>
+<li>修改 相关属性值为 <code>en_US</code></li>
+</ul></div>
             </div>
         </div>
 
