@@ -12,4 +12,4 @@
 
 ## Design
 
-> **WIP**
+> None yet

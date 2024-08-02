@@ -7,7 +7,7 @@
 
 ## One-liner
 
-> **WIP**
+> None yet
 
 ## Multi-liner
 

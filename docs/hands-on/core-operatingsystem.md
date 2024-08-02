@@ -7,8 +7,6 @@
 
 ## Memory
 
-> **WIP**
-
 ### Scenario
 
 - Too many prog need too many mem
@@ -37,8 +35,6 @@
 - now: CPU provides a virtual memory address, the MMU translates it into a physical memory address, viola 🎉
 
 ## Concurrency
-
-> **WIP**
 
 ### Strategy
 

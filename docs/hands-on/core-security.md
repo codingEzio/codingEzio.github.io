@@ -1,11 +1,7 @@
 
 ## Context
 
-### Low Priority for Practice
-
-- DNS Attack on *CC Attack*
-- DNS Attack on *SYN Flood*
-- DNS Attack on *DNS Amplification*
+> None yet
 
 -----
 
@@ -15,10 +11,6 @@
 - X makes unintentional request that were set to be made by the attacker, usually happens in the context of submitting forms, we generate a token along with the form data when submitting, we differ the user making genuine request from the malicious request the attacker set up that were to be executed when the user’s in the context via HTTP attribute Origin.
 
 ## DNS
-
-### What
-
-> **WIP**
 
 ### Attack
 

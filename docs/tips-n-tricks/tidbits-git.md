@@ -7,7 +7,3 @@
 | 重写提交信息             | `git rebase -i HEAD~3`   | 修改未推送信息 (还没 `git push` 的)  |
 | 将未推送提交退回到暂存区 | `git reset HEAD~n`        | 退回暂存区 (还没 `git push` 的)  |
 | 关于垃圾回收的说明       | `git gc`                  | 不会移除暂存 |
-
-## Git Workflow
-
-> **WIP**
