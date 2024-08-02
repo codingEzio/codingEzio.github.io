@@ -6,7 +6,6 @@
 - I believe *if you didn't type the commands on the existing DB, it was all theory*
 - I wanted to learn more about DB
 - It was fun
-- Heavily made use of *LLM*s (alongside StackOverflow n Wikipedia)
 
 ## What's Up with the MVCC
 

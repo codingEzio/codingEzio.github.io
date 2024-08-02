@@ -2,7 +2,6 @@
 ## Context
 
 - It was fun
-- Heavily made use of *LLM*s (alongside StackOverflow n Wikipedia)
 
 -----
 

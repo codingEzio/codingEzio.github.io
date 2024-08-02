@@ -3,68 +3,143 @@
 
 ### One-liner
 
-fish shell maximum history legnth, it's unconfigurable, up to 256KB of UNIQUE commands (fish de-dups it). In short, don't worry about configuring it like zsh (which would lose my FUCKING history commands!) |||| terminal, config, zsh, fish, shell, backup, potential-data-loss
-remove history entries in zsh via `LC_ALL=C sed -i '' '/porn/d' $HISTFILE` |||| terminal, zsh, macos, privacy
-reverse the content in a text file via `tac OLD_FILE.txt > NEW_FILE.txt` |||| terminal, format, text-manipulation
+#### Nice to Have
+
+- Reverse content in a text file via `tac OLD_FILE.txt > NEW_FILE.txt`
+- Remove history entries in `zsh`
+
+```sh
+LC_ALL=C sed -i '' '/matching-this-pattern/d' $HISTFILE
+```
+
+#### Good to Know
+
+- `fish` shell maximum history legnth
+    - it's unconfigurable
+    - up to 256KB of UNIQUE commands (fish de-dups it)
+    - In short, don't worry about configuring it like `zsh`
 
 ### Multi-liner
 
-- Setup up *fish* shell
+#### `fish` Shell
+
+> 即有配置其本身，亦有基于 fish 配置其他工具
+
+##### Installation
+
+> `~/zshrc` == `~/.config/fish/config.fish`
 
 ```sh
-# ~/.zshrc == ~/.config/fish/config.fish
 brew install fish && fish --version
 curl -L https://get.oh-my.fish | fish
+```
+
+##### Change Default Shell
+
+```sh
+# Append to /etc/shells
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
+
+# Check whether it's in there
+cat /etc/shells
+
+# Switch to a non-fish shell and make the change effective
+bash
+chsh -s /usr/local/bin/fish
 
 
-# One timer set for proxy
-# set proxy IN THIS WAY https://stackoverflow.com/a/30187924
-# 1. run these in terminal
+# Now restart the terminal
+```
+
+##### `PATH`s for binaries
+
+```sh
+# One timer set for PATHs (append to USER PATHs)
+# I prefer 'fish_add_path /opt/mycoolthing/bin' in config.fish
+# So that I could actually see and copy it over for export/backup
+
+# Run this in fish shell
+fish_add_path /opt/some_cool_stuff/bin
+```
+
+##### Proxy
+
+```sh
+# https://stackoverflow.com/a/30187924
+# Run this in fish shell
 set -Ux https_proxy "http://127.0.0.1:7890"
 set -Ux http_proxy "http://127.0.0.1:7890"
 set -Ux all_proxy "socks5://127.0.0.1:7890"
 set -Ux HTTPS_PROXY "http://127.0.0.1:7890"
 set -Ux HTTP_PROXY "http://127.0.0.1:7890"
 set -Ux ALL_PROXY "socks5://127.0.0.1:7890"
-# 2. check via
+
+
 cat ~/.config/fish/fish_variables
+```
 
-# One timer set for token
-# Other one-timer global variable declaration
-set -Ux HOMEBREW_GITHUB_API_TOKEN ".."  # check ~/.config/fish/fish_variables
+##### Common Utilities
 
-# One timer set for PATHs (append to USER PATHs)
-# I prefer 'fish_add_path /opt/mycoolthing/bin' in config.fish
-# So that I could actually see and copy it over for export/backup
+> via `fisher`
 
-# change to zsh-alike default theme
-omf install eclm
-omf theme eclm
-omf reload
-
-# basic config
+```sh
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-fisher list
+
+# Fuzzy pipe search
+# e.g. ls | fzf
 fisher install PatrickF1/fzf.fish
+
+# Jump to recent directory
+# e.g. z doc, z blog
 fisher install jethrokuan/z
+
+# Node Version Manager
+# e.g. nvm install lts, nvm use lts
 fisher install jorgebucaran/nvm.fish && nvm install lts
 
 
-# install and configure in set
-# :: asdf
-# 1
+# Check what do we got
+fisher list
+```
+
+##### Homebrew Token
+
+```sh
+# Run this in fish shell
+set -Ux HOMEBREW_GITHUB_API_TOKEN ".."
+
+cat ~/.config/fish/fish_variables
+```
+
+##### Theme
+
+> Just like *oh-my-zsh*
+
+```sh
+omf install eclm
+omf theme eclm
+omf reload
+```
+
+##### `asdf`
+
+> Like *NVM* but for more languages
+
+```sh
 brew install asdf
-# 2
-# Add 'source ~/.asdf/asdf.fish' to ~/.config/fish/config.fish
-# Run 'mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions'
 
 
+# Inject into config.fish
+echo "source ~/.asdf/asdf.fish" >> ~/.config/fish/config.fish
 
-# change default shell to fish
-echo /usr/local/bin/fish | sudo tee -a /etc/shells
-cat /etc/shells
-bash
-chsh -s /usr/local/bin/fish
+# Install completions
+mkdir -p ~/.config/fish/completions
+ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+
+
+# Checking, checking
+asdf info
+asdf current
 ```
 
 ## Terminal
