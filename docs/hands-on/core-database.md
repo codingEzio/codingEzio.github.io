@@ -8,25 +8,6 @@
 - It was fun
 - Heavily made use of *LLM*s (alongside StackOverflow n Wikipedia)
 
-## Overview of a Database
-
-### Transport Layer
-
-- accepting n managing incoming requents, like/is an always-running server
-- check the [mock implementation](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-db-transport-layer.py) in Python
-
-### Query Processor
-
-> TBD
-
-### Execution Engine
-
-> TBD
-
-### Storage Engine
-
-> TBD
-
 ## What's Up with the MVCC
 
 > Full form: [*M*ulti*v*ersion *c*oncurrency *c*ontrol](https://en.wikipedia.org/wiki/Multiversion_concurrency_control)
