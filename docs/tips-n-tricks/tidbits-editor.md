@@ -12,6 +12,14 @@
 
 ### VS Code
 
+#### Clean Up History
+
+> Press `Cmd + P` on macOS
+
+- Entry `Clean Editor History`
+- Entry `Clean Command History`
+- Entry `Clean Search History`
+
 #### Export Extensions
 
 ```sh
