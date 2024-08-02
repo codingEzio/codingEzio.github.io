@@ -58,6 +58,21 @@
               </ul>
             </li>
             
+            <li class="nav-item" data-bs-level="2"><a href="#on-testing" class="nav-link">On Testing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#on-entity-framework" class="nav-link">On Entity Framework</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#on-scripting" class="nav-link">On Scripting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
             <li class="nav-item" data-bs-level="2"><a href="#boxing-v-unboxing" class="nav-link">Boxing v Unboxing</a>
               <ul class="nav flex-column">
               </ul>
@@ -79,11 +94,6 @@
             </li>
             
             <li class="nav-item" data-bs-level="2"><a href="#generics-v-overload" class="nav-link">Generics v Overload</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#list" class="nav-link">List</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -127,21 +137,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#on-testing" class="nav-link">On Testing</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#on-entity-framework" class="nav-link">On Entity Framework</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#on-scripting" class="nav-link">On Scripting</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
         </ul>
     </div>
 </div></div>
@@ -153,6 +148,27 @@
 <li>All the sample code along with these were standalone runnable C# script</li>
 </ul>
 <hr />
+<h2 id="on-testing">On <em>Testing</em></h2>
+<ul>
+<li>Run specific tests matching name patterns</li>
+</ul>
+<blockquote>
+<p><code>dotnet test --filter "Name~TestThisIsAmazing"</code></p>
+</blockquote>
+<h2 id="on-entity-framework">On <em>Entity Framework</em></h2>
+<ul>
+<li>use <code>.Distinct().ToList()</code></li>
+<li>New models added must be added in <code>XxDbContext</code>, otherwise no new database migrations would be added</li>
+</ul>
+<h2 id="on-scripting">On <em>Scripting</em></h2>
+<ul>
+<li>Run  <code>dotnet tool install -g dotnet-script</code></li>
+<li>For stuff like extension method<ul>
+<li>strip down the outer <code>public static class XxxExtensionsWhatever</code></li>
+<li>just write the <code>static TYPE NAME_EXTENSION_METHOD</code></li>
+</ul>
+</li>
+</ul>
 <h2 id="boxing-v-unboxing">Boxing v Unboxing</h2>
 <blockquote>
 <p>also, Value v Reference Type</p>
@@ -176,15 +192,17 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 </code></pre>
 <h2 id="destructors">Destructors</h2>
 <blockquote>
-<p><strong>WIP</strong> <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/type-destructor.cs">sample code</a></p>
+<p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/type-destructor.cs">sample code</a></p>
 </blockquote>
 <h3 id="classname-clean-up"><code>~ClassName { clean up }</code></h3>
 <ul>
-<li>Finalizers are NOT guaranteed to be called</li>
+<li>
+<p>Finalizers are NOT guaranteed to be called</p>
+<ul>
 <li>It’s implementation-specific (quote)</li>
 <li>For my case? It means that I won’t get the debugging output from customized finalizers.</li>
-<li>
-<p>For production? We’ll do more testing then</p>
+<li>For production? We’ll do more testing then</li>
+</ul>
 </li>
 <li>
 <p>References</p>
@@ -226,14 +244,6 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <ul>
 <li>generics ensure uniformity</li>
 <li>overloading get you more than handling different types, but also methods with different length of parameters</li>
-</ul>
-<h2 id="list"><code>List</code></h2>
-<blockquote>
-<p><strong>WIP</strong></p>
-</blockquote>
-<ul>
-<li>ICollection<T> ➡️ IList<T> ➡️ List</li>
-<li>Each with different set of methods impl_ed</li>
 </ul>
 <h2 id="copy-v-clone">Copy v Clone</h2>
 <blockquote>
@@ -312,23 +322,6 @@ Value of value type copies over value itself on the stack. Whereas reference typ
 <ul>
 <li>just use <em>class</em>!</li>
 <li>see discussions <a href="https://old.reddit.com/r/csharp/comments/s9nfk8/when_to_use_structs_vs_classes/">here</a> and <a href="https://old.reddit.com/r/cpp_questions/comments/gxrskj/what_is_the_difference_between_a_struct_and_a/">there</a></li>
-</ul>
-<hr />
-<h2 id="on-testing">On <em>Testing</em></h2>
-<p>Run specific tests via <code>dotnet test --filter "Name~TestMeasureEachRunIfExceedTime"</code></p>
-<h2 id="on-entity-framework">On <em>Entity Framework</em></h2>
-<ul>
-<li>use <code>.Distinct().ToList()</code></li>
-<li>New models added must be added in XxDbContext, otherwise no new database migrations would be added</li>
-</ul>
-<h2 id="on-scripting">On <em>Scripting</em></h2>
-<ul>
-<li>Install via <code>dotnet tool install -g dotnet-script</code></li>
-<li>For stuff like extension method<ul>
-<li>strip down the outer <code>public static class XxxExtensionsWhatever</code></li>
-<li>then write the <code>static TYPE NAME_EXTENSION_METHOD</code></li>
-</ul>
-</li>
 </ul></div>
             </div>
         </div>
