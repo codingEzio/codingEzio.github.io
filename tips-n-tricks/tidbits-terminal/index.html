@@ -69,66 +69,123 @@
 
 <h2 id="shell">Shell</h2>
 <h3 id="one-liner">One-liner</h3>
-<p>fish shell maximum history legnth, it's unconfigurable, up to 256KB of UNIQUE commands (fish de-dups it). In short, don't worry about configuring it like zsh (which would lose my FUCKING history commands!) |||| terminal, config, zsh, fish, shell, backup, potential-data-loss
-remove history entries in zsh via <code>LC_ALL=C sed -i '' '/porn/d' $HISTFILE</code> |||| terminal, zsh, macos, privacy
-reverse the content in a text file via <code>tac OLD_FILE.txt &gt; NEW_FILE.txt</code> |||| terminal, format, text-manipulation</p>
-<h3 id="multi-liner">Multi-liner</h3>
+<h4 id="nice-to-have">Nice to Have</h4>
 <ul>
-<li>Setup up <em>fish</em> shell</li>
+<li>Reverse content in a text file via <code>tac OLD_FILE.txt &gt; NEW_FILE.txt</code></li>
+<li>Remove history entries in <code>zsh</code></li>
 </ul>
-<pre><code class="language-sh"># ~/.zshrc == ~/.config/fish/config.fish
-brew install fish &amp;&amp; fish --version
+<pre><code class="language-sh">LC_ALL=C sed -i '' '/matching-this-pattern/d' $HISTFILE
+</code></pre>
+<h4 id="good-to-know">Good to Know</h4>
+<ul>
+<li><code>fish</code> shell maximum history legnth<ul>
+<li>it's unconfigurable</li>
+<li>up to 256KB of UNIQUE commands (fish de-dups it)</li>
+<li>In short, don't worry about configuring it like <code>zsh</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="multi-liner">Multi-liner</h3>
+<h4 id="fish-shell"><code>fish</code> Shell</h4>
+<blockquote>
+<p>即有配置其本身，亦有基于 fish 配置其他工具</p>
+</blockquote>
+<h5 id="installation">Installation</h5>
+<blockquote>
+<p><code>~/zshrc</code> == <code>~/.config/fish/config.fish</code></p>
+</blockquote>
+<pre><code class="language-sh">brew install fish &amp;&amp; fish --version
 curl -L https://get.oh-my.fish | fish
+</code></pre>
+<h5 id="change-default-shell">Change Default Shell</h5>
+<pre><code class="language-sh"># Append to /etc/shells
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
+
+# Check whether it's in there
+cat /etc/shells
+
+# Switch to a non-fish shell and make the change effective
+bash
+chsh -s /usr/local/bin/fish
 
 
-# One timer set for proxy
-# set proxy IN THIS WAY https://stackoverflow.com/a/30187924
-# 1. run these in terminal
+# Now restart the terminal
+</code></pre>
+<h5 id="paths-for-binaries"><code>PATH</code>s for binaries</h5>
+<pre><code class="language-sh"># One timer set for PATHs (append to USER PATHs)
+# I prefer 'fish_add_path /opt/mycoolthing/bin' in config.fish
+# So that I could actually see and copy it over for export/backup
+
+# Run this in fish shell
+fish_add_path /opt/some_cool_stuff/bin
+</code></pre>
+<h5 id="proxy">Proxy</h5>
+<pre><code class="language-sh"># https://stackoverflow.com/a/30187924
+# Run this in fish shell
 set -Ux https_proxy &quot;http://127.0.0.1:7890&quot;
 set -Ux http_proxy &quot;http://127.0.0.1:7890&quot;
 set -Ux all_proxy &quot;socks5://127.0.0.1:7890&quot;
 set -Ux HTTPS_PROXY &quot;http://127.0.0.1:7890&quot;
 set -Ux HTTP_PROXY &quot;http://127.0.0.1:7890&quot;
 set -Ux ALL_PROXY &quot;socks5://127.0.0.1:7890&quot;
-# 2. check via
+
+
 cat ~/.config/fish/fish_variables
+</code></pre>
+<h5 id="common-utilities">Common Utilities</h5>
+<blockquote>
+<p>via <code>fisher</code></p>
+</blockquote>
+<pre><code class="language-sh">curl -sL https://git.io/fisher | source &amp;&amp; fisher install jorgebucaran/fisher
 
-# One timer set for token
-# Other one-timer global variable declaration
-set -Ux HOMEBREW_GITHUB_API_TOKEN &quot;..&quot;  # check ~/.config/fish/fish_variables
-
-# One timer set for PATHs (append to USER PATHs)
-# I prefer 'fish_add_path /opt/mycoolthing/bin' in config.fish
-# So that I could actually see and copy it over for export/backup
-
-# change to zsh-alike default theme
-omf install eclm
-omf theme eclm
-omf reload
-
-# basic config
-curl -sL https://git.io/fisher | source &amp;&amp; fisher install jorgebucaran/fisher
-fisher list
+# Fuzzy pipe search
+# e.g. ls | fzf
 fisher install PatrickF1/fzf.fish
+
+# Jump to recent directory
+# e.g. z doc, z blog
 fisher install jethrokuan/z
+
+# Node Version Manager
+# e.g. nvm install lts, nvm use lts
 fisher install jorgebucaran/nvm.fish &amp;&amp; nvm install lts
 
 
-# install and configure in set
-# :: asdf
-# 1
-brew install asdf
-# 2
-# Add 'source ~/.asdf/asdf.fish' to ~/.config/fish/config.fish
-# Run 'mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions'
+# Check what do we got
+fisher list
+</code></pre>
+<h5 id="homebrew-token">Homebrew Token</h5>
+<pre><code class="language-sh"># Run this in fish shell
+set -Ux HOMEBREW_GITHUB_API_TOKEN &quot;..&quot;
+
+cat ~/.config/fish/fish_variables
+</code></pre>
+<h5 id="theme">Theme</h5>
+<blockquote>
+<p>Just like <em>oh-my-zsh</em></p>
+</blockquote>
+<pre><code class="language-sh">omf install eclm
+omf theme eclm
+omf reload
+</code></pre>
+<h5 id="asdf"><code>asdf</code></h5>
+<blockquote>
+<p>Like <em>NVM</em> but for more languages</p>
+</blockquote>
+<pre><code class="language-sh">brew install asdf
 
 
+# Inject into config.fish
+echo &quot;source ~/.asdf/asdf.fish&quot; &gt;&gt; ~/.config/fish/config.fish
 
-# change default shell to fish
-echo /usr/local/bin/fish | sudo tee -a /etc/shells
-cat /etc/shells
-bash
-chsh -s /usr/local/bin/fish
+# Install completions
+mkdir -p ~/.config/fish/completions
+ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+
+
+# Checking, checking
+asdf info
+asdf current
 </code></pre>
 <h2 id="terminal">Terminal</h2>
 <h3 id="curl"><code>curl</code></h3>
