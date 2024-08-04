@@ -21,6 +21,26 @@ LC_ALL=C sed -i '' '/matching-this-pattern/d' $HISTFILE
 
 ### Multi-liner
 
+> Lots of installation below will be based on `brew`, `asdf` or something else.
+
+#### Environment for *KotLin*
+
+```sh
+# I'm not entirely sure about what this does
+# All I got in mind right now is this allows
+# asdf to know how to handle specific languages
+# or frameworks (as it's community-managed?)
+asdf plugin add kotlin
+
+# List, choose, set
+asdf list-all kotlin
+asdf install kotlin 1.9.25
+asdf global kotlin 1.9.25
+
+
+kotlin  # REPL
+```
+
 #### `fish` Shell
 
 > 即有配置其本身，亦有基于 fish 配置其他工具
@@ -105,6 +125,7 @@ fisher list
 ##### Homebrew Token
 
 ```sh
+# Generate token from https://github.com/settings/tokens with no scope selected
 # Run this in fish shell
 set -Ux HOMEBREW_GITHUB_API_TOKEN ".."
 
@@ -146,23 +167,19 @@ asdf current
 
 ### `curl`
 
-To download a file using `curl`, use:
+- Download file via `curl [URL] --output NAME.EXT`
+
+### `imagemagick`
+
+- Smaller image
 
 ```bash
-curl [URL] --output FILE.EXTENSION
-```
-
-### Image Manipulation
-
-To make an image smaller using ImageMagick:
-
-```bash
-magick source.jpg -strip -interlace Plane -quality 85% result.jpg
+magick SRC.jpg -strip -interlace Plane -quality 85% SRC_smaller.jpg
 ```
 
 ### `jq`
 
-To minify (compress) multi-line JSON into one-line JSON:
+Minify/compress multi-line into one-liner
 
 ```bash
 jq --compact-output < FILE.json
@@ -170,56 +187,33 @@ jq --compact-output < FILE.json
 
 ### AppleScript
 
-To compile AppleScript into a macOS application:
+Compile into a macOS application:
 
 ```bash
-osacompile -o /Applcations/output.app /input.applescript
+osacompile -o /Applcations/output.app ~/scripts/input.applescript
 ```
 
-### `npm`
+### JavaScript Package Manager
 
-To list globally installed npm packages:
+List globally installed packages:
 
 ```bash
 npm list -g --depth=0
-```
 
-### `yarn`
 
-To list globally installed Yarn packages:
-
-```bash
 yarn global list
 ```
 
 ### Video
 
-To download and archive videos from platforms:
-
-- For Bilibili: **lux**
-- For AcFun: **you-get** (or visit `https://leesoar.com/acfun#parse`)
-- For YouTube: **yt-dlp**
+- For Bilibili: [`lux`](https://github.com/iawia002/lux)
+- For AcFun: [`you-get`](https://github.com/soimort/you-get) <sup>or [AcFun 视频解析及下载](https://leesoar.com/acfun#parse)</sup>
+- For YouTube: [`yt-dlp`](https://github.com/yt-dlp/yt-dlp)
 
 ### Python
 
-To try a new Python version with Anaconda:
+Try new versions with Anaconda:
 
 ```bash
 conda create -n py312 python=3.12 && conda activate py312
-```
-
-### Profiling
-
-To profile resource usage like RAM, CPU, or Disk: [eat](https://github.com/shawn-bluce/eat).
-
-### Homebrew
-
-To add a dedicated GitHub token for Homebrew:
-
-1. Apply a classic token at [GitHub tokens](https://github.com/settings/tokens) with no scope selected.
-
-2. Add it using:
-
-```bash
-export HOMEBREW_GITHUB_API_TOKEN=YOUR_TOKEN
 ```
