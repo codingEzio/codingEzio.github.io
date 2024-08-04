@@ -86,6 +86,24 @@
 </li>
 </ul>
 <h3 id="multi-liner">Multi-liner</h3>
+<blockquote>
+<p>Lots of installation below will be based on <code>brew</code>, <code>asdf</code> or something else.</p>
+</blockquote>
+<h4 id="environment-for-kotlin">Environment for <em>KotLin</em></h4>
+<pre><code class="language-sh"># I'm not entirely sure about what this does
+# All I got in mind right now is this allows
+# asdf to know how to handle specific languages
+# or frameworks (as it's community-managed?)
+asdf plugin add kotlin
+
+# List, choose, set
+asdf list-all kotlin
+asdf install kotlin 1.9.25
+asdf global kotlin 1.9.25
+
+
+kotlin  # REPL
+</code></pre>
 <h4 id="fish-shell"><code>fish</code> Shell</h4>
 <blockquote>
 <p>即有配置其本身，亦有基于 fish 配置其他工具</p>
@@ -155,7 +173,8 @@ fisher install jorgebucaran/nvm.fish &amp;&amp; nvm install lts
 fisher list
 </code></pre>
 <h5 id="homebrew-token">Homebrew Token</h5>
-<pre><code class="language-sh"># Run this in fish shell
+<pre><code class="language-sh"># Generate token from https://github.com/settings/tokens with no scope selected
+# Run this in fish shell
 set -Ux HOMEBREW_GITHUB_API_TOKEN &quot;..&quot;
 
 cat ~/.config/fish/fish_variables
@@ -189,53 +208,39 @@ asdf current
 </code></pre>
 <h2 id="terminal">Terminal</h2>
 <h3 id="curl"><code>curl</code></h3>
-<p>To download a file using <code>curl</code>, use:</p>
-<pre><code class="language-bash">curl [URL] --output FILE.EXTENSION
-</code></pre>
-<h3 id="image-manipulation">Image Manipulation</h3>
-<p>To make an image smaller using ImageMagick:</p>
-<pre><code class="language-bash">magick source.jpg -strip -interlace Plane -quality 85% result.jpg
+<ul>
+<li>Download file via <code>curl [URL] --output NAME.EXT</code></li>
+</ul>
+<h3 id="imagemagick"><code>imagemagick</code></h3>
+<ul>
+<li>Smaller image</li>
+</ul>
+<pre><code class="language-bash">magick SRC.jpg -strip -interlace Plane -quality 85% SRC_smaller.jpg
 </code></pre>
 <h3 id="jq"><code>jq</code></h3>
-<p>To minify (compress) multi-line JSON into one-line JSON:</p>
+<p>Minify/compress multi-line into one-liner</p>
 <pre><code class="language-bash">jq --compact-output &lt; FILE.json
 </code></pre>
 <h3 id="applescript">AppleScript</h3>
-<p>To compile AppleScript into a macOS application:</p>
-<pre><code class="language-bash">osacompile -o /Applcations/output.app /input.applescript
+<p>Compile into a macOS application:</p>
+<pre><code class="language-bash">osacompile -o /Applcations/output.app ~/scripts/input.applescript
 </code></pre>
-<h3 id="npm"><code>npm</code></h3>
-<p>To list globally installed npm packages:</p>
+<h3 id="javascript-package-manager">JavaScript Package Manager</h3>
+<p>List globally installed packages:</p>
 <pre><code class="language-bash">npm list -g --depth=0
-</code></pre>
-<h3 id="yarn"><code>yarn</code></h3>
-<p>To list globally installed Yarn packages:</p>
-<pre><code class="language-bash">yarn global list
+
+
+yarn global list
 </code></pre>
 <h3 id="video">Video</h3>
-<p>To download and archive videos from platforms:</p>
 <ul>
-<li>For Bilibili: <strong>lux</strong></li>
-<li>For AcFun: <strong>you-get</strong> (or visit <code>https://leesoar.com/acfun#parse</code>)</li>
-<li>For YouTube: <strong>yt-dlp</strong></li>
+<li>For Bilibili: <a href="https://github.com/iawia002/lux"><code>lux</code></a></li>
+<li>For AcFun: <a href="https://github.com/soimort/you-get"><code>you-get</code></a> <sup>or <a href="https://leesoar.com/acfun#parse">AcFun 视频解析及下载</a></sup></li>
+<li>For YouTube: <a href="https://github.com/yt-dlp/yt-dlp"><code>yt-dlp</code></a></li>
 </ul>
 <h3 id="python">Python</h3>
-<p>To try a new Python version with Anaconda:</p>
+<p>Try new versions with Anaconda:</p>
 <pre><code class="language-bash">conda create -n py312 python=3.12 &amp;&amp; conda activate py312
-</code></pre>
-<h3 id="profiling">Profiling</h3>
-<p>To profile resource usage like RAM, CPU, or Disk: <a href="https://github.com/shawn-bluce/eat">eat</a>.</p>
-<h3 id="homebrew">Homebrew</h3>
-<p>To add a dedicated GitHub token for Homebrew:</p>
-<ol>
-<li>
-<p>Apply a classic token at <a href="https://github.com/settings/tokens">GitHub tokens</a> with no scope selected.</p>
-</li>
-<li>
-<p>Add it using:</p>
-</li>
-</ol>
-<pre><code class="language-bash">export HOMEBREW_GITHUB_API_TOKEN=YOUR_TOKEN
 </code></pre></div>
             </div>
         </div>
