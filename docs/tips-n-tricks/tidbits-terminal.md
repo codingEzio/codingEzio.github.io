@@ -12,6 +12,29 @@
 LC_ALL=C sed -i '' '/matching-this-pattern/d' $HISTFILE
 ```
 
+- Read continously-updating logs
+
+```sh
+# Generate random texts emulating logs
+
+# :: Bash Shell ::
+(while true; do
+  echo "$(date): Log entry $RANDOM"
+  sleep 0.1
+done > logfile.log) &
+
+# :: Fish Shell ::
+fish -c \
+    "while true; echo (date)': Log entry '(random); sleep 0.1; end" \
+    > logfile.log &
+
+# Check the log
+tail -f logfile.log
+
+# Kill the generator
+fg  # with Ctrl+C
+```
+
 #### Good to Know
 
 - `fish` shell maximum history legnth
