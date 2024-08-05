@@ -76,6 +76,28 @@
 </ul>
 <pre><code class="language-sh">LC_ALL=C sed -i '' '/matching-this-pattern/d' $HISTFILE
 </code></pre>
+<ul>
+<li>Read continously-updating logs</li>
+</ul>
+<pre><code class="language-sh"># Generate random texts emulating logs
+
+# :: Bash Shell ::
+(while true; do
+  echo &quot;$(date): Log entry $RANDOM&quot;
+  sleep 0.1
+done &gt; logfile.log) &amp;
+
+# :: Fish Shell ::
+fish -c \
+    &quot;while true; echo (date)': Log entry '(random); sleep 0.1; end&quot; \
+    &gt; logfile.log &amp;
+
+# Check the log
+tail -f logfile.log
+
+# Kill the generator
+fg  # with Ctrl+C
+</code></pre>
 <h4 id="good-to-know">Good to Know</h4>
 <ul>
 <li><code>fish</code> shell maximum history legnth<ul>
