@@ -6,6 +6,3 @@ plugins:
       base_path: docs
       encoding: utf-8
       file_extension: .mm.md
-      d3_version: 7
-      lib_version: 0.15.3
-      view_version: 0.15.3
