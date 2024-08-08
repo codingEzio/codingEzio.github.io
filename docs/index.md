@@ -58,6 +58,33 @@ docs/
     build-your-own/     # DIY-ed version established thingy.
 ```
 
+## Test Diagram
+
+```mermaid
+sequenceDiagram
+    actor ddl as CREATE TABLE Query
+    participant server as MySQL Server
+    participant parser as SQL Parser
+    participant ast as Abstract Syntax Tree
+    participant cmd as SQL Command
+    participant ci as HA_CREATE_INFO
+    participant plugin as MySQL plugin
+
+    ddl ->> server: DDL QUERY TEXT
+    server ->> parser: THD::sql_parser()
+    Note over parser: Bison parser<br>Build SQL command
+    parser ->> ast: make_cmd()
+    ast ->> ast: contextualize()
+    ast ->> ci: build()
+    activate ci
+    ci ->> plugin: ha_resolve_engine()
+    ci -->> plugin: storage engine handlerton
+    ast -->> ci: Parse Tree (contextualized)
+    ast ->> cmd: build()
+    activate cmd
+    server -->> cmd: SQL Command
+```
+
 ## Lastly
 
 > This blog was completed revamped and rebuilt from scratch on 2024-07-07. The original blog with 200+ posts were either distilled, expanded or simply removed because of the even higher standard of the practicality and simplicity which derived from First Principle for the posts. (此博客启用于 2024 年 7 月 7 日，原博客 200 余篇文章已经被精简、扩展或移除。新博客对于博文的实践性与由第一原则引致的简洁性的要求更为严格。)
