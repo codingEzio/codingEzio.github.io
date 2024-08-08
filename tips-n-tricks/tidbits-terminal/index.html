@@ -30,11 +30,6 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
 
                     <ul class="nav navbar-nav ms-md-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -83,13 +78,13 @@
 
 # :: Bash Shell ::
 (while true; do
-  echo &quot;$(date): Log entry $RANDOM&quot;
+  echo "$(date): Log entry $RANDOM"
   sleep 0.1
 done &gt; logfile.log) &amp;
 
 # :: Fish Shell ::
 fish -c \
-    &quot;while true; echo (date)': Log entry '(random); sleep 0.1; end&quot; \
+    "while true; echo (date)': Log entry '(random); sleep 0.1; end" \
     &gt; logfile.log &amp;
 
 # Check the log
@@ -162,12 +157,12 @@ fish_add_path /opt/some_cool_stuff/bin
 <h5 id="proxy">Proxy</h5>
 <pre><code class="language-sh"># https://stackoverflow.com/a/30187924
 # Run this in fish shell
-set -Ux https_proxy &quot;http://127.0.0.1:7890&quot;
-set -Ux http_proxy &quot;http://127.0.0.1:7890&quot;
-set -Ux all_proxy &quot;socks5://127.0.0.1:7890&quot;
-set -Ux HTTPS_PROXY &quot;http://127.0.0.1:7890&quot;
-set -Ux HTTP_PROXY &quot;http://127.0.0.1:7890&quot;
-set -Ux ALL_PROXY &quot;socks5://127.0.0.1:7890&quot;
+set -Ux https_proxy "http://127.0.0.1:7890"
+set -Ux http_proxy "http://127.0.0.1:7890"
+set -Ux all_proxy "socks5://127.0.0.1:7890"
+set -Ux HTTPS_PROXY "http://127.0.0.1:7890"
+set -Ux HTTP_PROXY "http://127.0.0.1:7890"
+set -Ux ALL_PROXY "socks5://127.0.0.1:7890"
 
 
 cat ~/.config/fish/fish_variables
@@ -197,7 +192,7 @@ fisher list
 <h5 id="homebrew-token">Homebrew Token</h5>
 <pre><code class="language-sh"># Generate token from https://github.com/settings/tokens with no scope selected
 # Run this in fish shell
-set -Ux HOMEBREW_GITHUB_API_TOKEN &quot;..&quot;
+set -Ux HOMEBREW_GITHUB_API_TOKEN ".."
 
 cat ~/.config/fish/fish_variables
 </code></pre>
@@ -217,7 +212,7 @@ omf reload
 
 
 # Inject into config.fish
-echo &quot;source ~/.asdf/asdf.fish&quot; &gt;&gt; ~/.config/fish/config.fish
+echo "source ~/.asdf/asdf.fish" &gt;&gt; ~/.config/fish/config.fish
 
 # Install completions
 mkdir -p ~/.config/fish/completions
@@ -277,29 +272,8 @@ yarn global list
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js"></script>
-        <script src="../../search/main.js"></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

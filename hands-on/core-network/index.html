@@ -30,11 +30,6 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
 
                     <ul class="nav navbar-nav ms-md-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -71,7 +66,7 @@
 <ul>
 <li>It was fun</li>
 </ul>
-<hr />
+<hr/>
 <h2 id="cookie-v-session">Cookie v Session</h2>
 <h3 id="cookie">Cookie</h3>
 <ul>
@@ -89,23 +84,23 @@
 </li>
 </ul>
 <pre><code class="language-js">// Session Cookie
-document.cookie = &quot;sessionToken=ABC123; path=/; SameSite=Lax&quot;;
+document.cookie = "sessionToken=ABC123; path=/; SameSite=Lax";
 
 // Persistent Cookie for 7 days
 var date = new Date();
 date.setTime(date.getTime() + (7*24*60*60*1000)); // 7 days from now
-var expires = &quot;expires=&quot; + date.toUTCString();
-document.cookie = &quot;persistentToken=XYZ456; path=/; &quot; + expires + &quot;; SameSite=Lax&quot;;
+var expires = "expires=" + date.toUTCString();
+document.cookie = "persistentToken=XYZ456; path=/; " + expires + "; SameSite=Lax";
 
 // Secure Cookie
-document.cookie = &quot;secureToken=DEF789; path=/; Secure; SameSite=Lax&quot;;
+document.cookie = "secureToken=DEF789; path=/; Secure; SameSite=Lax";
 
 // HttpOnly Cookie (must be set via server)
 
 // SameSite Cookies
-document.cookie = &quot;sameSiteToken=LaxValue; path=/; SameSite=Lax&quot;;
-document.cookie = &quot;sameSiteToken2=StrictValue; path=/; SameSite=Strict&quot;;
-document.cookie = &quot;sameSiteToken3=NoneValue; path=/; SameSite=None; Secure&quot;;
+document.cookie = "sameSiteToken=LaxValue; path=/; SameSite=Lax";
+document.cookie = "sameSiteToken2=StrictValue; path=/; SameSite=Strict";
+document.cookie = "sameSiteToken3=NoneValue; path=/; SameSite=None; Secure";
 
 // Viewing all cookies
 console.log(document.cookie);
@@ -163,29 +158,8 @@ console.log(document.cookie);
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js"></script>
-        <script src="../../search/main.js"></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

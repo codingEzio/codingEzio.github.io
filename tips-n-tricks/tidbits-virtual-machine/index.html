@@ -30,11 +30,6 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
 
                     <ul class="nav navbar-nav ms-md-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -92,9 +87,9 @@
 </li>
 </ul>
 <pre><code class="language-sh"># Vagrantfile
-config.proxy.http     = &quot;http://127.0.0.1:7890&quot;
-config.proxy.https    = &quot;http://127.0.0.1:7890&quot;
-config.proxy.no_proxy = &quot;localhost,127.0.0.1&quot;
+config.proxy.http     = "http://127.0.0.1:7890"
+config.proxy.https    = "http://127.0.0.1:7890"
+config.proxy.no_proxy = "localhost,127.0.0.1"
 </code></pre>
 <h3 id="manage">Manage</h3>
 <h4 id="state">State</h4>
@@ -164,29 +159,8 @@ config.proxy.no_proxy = &quot;localhost,127.0.0.1&quot;
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js"></script>
-        <script src="../../search/main.js"></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
