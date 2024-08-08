@@ -2,6 +2,7 @@
 
 ## Posts
 
+```markmap
 ### Hands-on
 
 - On [*Security*](./hands-on/core-security.md)
@@ -31,8 +32,6 @@
 
 ### Tech Notes
 
-> All were **work in progress**
-
 - Tidbits on [*Git*](./tips-n-tricks/tidbits-git.md)
 - Tidbits on [*Editor*](./tips-n-tricks/tidbits-editor.md)
 - Tidbits on [*Terminal*](./tips-n-tricks/tidbits-terminal.md)
@@ -41,6 +40,7 @@
 - Tidbits on [*Android*](./tips-n-tricks/tidbits-android.md)
 - Tidbits on [*Network*](./tips-n-tricks/tidbits-network.md)
 - Tidbits on [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine.md)
+```
 
 ## Project layout
 
