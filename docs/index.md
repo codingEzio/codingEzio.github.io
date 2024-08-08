@@ -5,56 +5,58 @@
 ```markmap
 ### Hands-on
 
-- On [*Security*](./hands-on/core-security.md)
-- On [*Frontend*](./hands-on/core-frontend.md)
-- On [*Network*](./hands-on/core-network.md)
-- On [*Operating System*](./hands-on/core-operatingsystem.md)
-- On [*Database*](./hands-on/core-database.md)
-- On [*C#* and *.NET*](./hands-on/core-csharp-n-dotnet.md)
-- On [*Ext.js*](./hands-on/random-extjs-overview.md)
+- On [*Security*](./hands-on/core-security)
+- On [*Frontend*](./hands-on/core-frontend)
+- On [*Network*](./hands-on/core-network)
+- On [*Operating System*](./hands-on/core-operatingsystem)
+- On [*Database*](./hands-on/core-database)
+- On [*C#* and *.NET*](./hands-on/core-csharp-n-dotnet)
+- On [*Ext.js*](./hands-on/random-extjs-overview)
 
 ### Build Your Own
 
-- Toy [*Load Balancer*](./build-your-own/my-toy-load-balancer.md)
+- Toy [*Load Balancer*](./build-your-own/my-toy-load-balancer)
 
 ### Facts and Quotes
 
-- About [*AI*](./facts-n-quotes/facts-n-quotes-about-AI.md)
-- About [*Equality*](./facts-n-quotes/facts-n-quotes-about-equality.md)
-- About [*Climate Change*](./facts-n-quotes/facts-n-quotes-about-climate-change.md)
-- About [*Politics*](./facts-n-quotes/facts-n-quotes-about-politics.md)
-- About [*Health*](./facts-n-quotes/facts-n-quotes-about-health.md)
-- About [*Mind*](./facts-n-quotes/facts-n-quotes-about-mind.md)
-- About [*Finance*](./facts-n-quotes/facts-n-quotes-about-finance.md)
-- About [*Universe*](./facts-n-quotes/facts-n-quotes-about-universe.md)
-- About [*Love*](./facts-n-quotes/facts-n-quotes-about-love.md)
-- About [*Organism*](./facts-n-quotes/facts-n-quotes-about-organism.md)
+- About [*AI*](./facts-n-quotes/facts-n-quotes-about-AI)
+- About [*Equality*](./facts-n-quotes/facts-n-quotes-about-equality)
+- About [*Climate Change*](./facts-n-quotes/facts-n-quotes-about-climate-change)
+- About [*Politics*](./facts-n-quotes/facts-n-quotes-about-politics)
+- About [*Health*](./facts-n-quotes/facts-n-quotes-about-health)
+- About [*Mind*](./facts-n-quotes/facts-n-quotes-about-mind)
+- About [*Finance*](./facts-n-quotes/facts-n-quotes-about-finance)
+- About [*Universe*](./facts-n-quotes/facts-n-quotes-about-universe)
+- About [*Love*](./facts-n-quotes/facts-n-quotes-about-love)
+- About [*Organism*](./facts-n-quotes/facts-n-quotes-about-organism)
 
 ### Tech Notes
 
-- Tidbits on [*Git*](./tips-n-tricks/tidbits-git.md)
-- Tidbits on [*Editor*](./tips-n-tricks/tidbits-editor.md)
-- Tidbits on [*Terminal*](./tips-n-tricks/tidbits-terminal.md)
-- Tidbits on [*macOS*](./tips-n-tricks/tidbits-macos.md)
-- Tidbits on [*Windows*](./tips-n-tricks/tidbits-windows.md)
-- Tidbits on [*Android*](./tips-n-tricks/tidbits-android.md)
-- Tidbits on [*Network*](./tips-n-tricks/tidbits-network.md)
-- Tidbits on [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine.md)
+- Tidbits on [*Git*](./tips-n-tricks/tidbits-git)
+- Tidbits on [*Editor*](./tips-n-tricks/tidbits-editor)
+- Tidbits on [*Terminal*](./tips-n-tricks/tidbits-terminal)
+- Tidbits on [*macOS*](./tips-n-tricks/tidbits-macos)
+- Tidbits on [*Windows*](./tips-n-tricks/tidbits-windows)
+- Tidbits on [*Android*](./tips-n-tricks/tidbits-android)
+- Tidbits on [*Network*](./tips-n-tricks/tidbits-network)
+- Tidbits on [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine)
 ```
 
 ## Project layout
 
 > Built via `mkdocs gh-deploy --site-dir build-output`
 
-    mkdocs.yml              # Blog configuration.
-    hands-on/               # Bits of code examples.
-    docs/
-        index.md            # Homepage.
-        assets/             # Images and other assets.
-        hands-on/           # Concepts in practice.
-        tips-n-tricks/      # Tips n tricks for tech.
-        facts-n-quotes/     # Random facts and quotes.
-        build-your-own/     # DIY-ed version established thingy.
+```sh
+mkdocs.yml              # Blog configuration.
+hands-on/               # Bits of code examples.
+docs/
+    index               # Homepage.
+    assets/             # Images and other assets.
+    hands-on/           # Concepts in practice.
+    tips-n-tricks/      # Tips n tricks for tech.
+    facts-n-quotes/     # Random facts and quotes.
+    build-your-own/     # DIY-ed version established thingy.
+```
 
 ## Lastly
 
