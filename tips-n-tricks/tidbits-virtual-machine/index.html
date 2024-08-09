@@ -97,6 +97,19 @@ config.proxy.https    = "http://127.0.0.1:7890"
 config.proxy.no_proxy = "localhost,127.0.0.1"
 </code></pre>
 <h3 id="manage">Manage</h3>
+<h4 id="destroy-all-boxes">Destroy All Boxes</h4>
+<blockquote>
+<p>Maybe you wanna switch to non-Vagrant-managed VMs</p>
+</blockquote>
+<pre><code class="language-sh">vagrant global-status
+vagrant global-status --prune  # Remove invalid entries
+
+# via Vagrant
+vagrant destroy 9e7d547
+
+# via the manual way
+cd ~/.vagrant.d/boxes/
+</code></pre>
 <h4 id="state">State</h4>
 <table>
 <thead>
@@ -132,21 +145,21 @@ config.proxy.no_proxy = "localhost,127.0.0.1"
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Command</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;"><code>vagrant</code></th>
+<th style="text-align: left;">Does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>vagrant snapshot list</code></td>
+<td style="text-align: left;"><code>.. snapshot list</code></td>
 <td style="text-align: left;">List</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>vagrant snapshot NEW_SNAPSHOT_NAME</code></td>
+<td style="text-align: left;"><code>.. snapshot NEW_SNAPSHOT_NAME</code></td>
 <td style="text-align: left;">Create</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>vagrant snapshot restore SNAP_NAME</code> (and <code>delete SNAP_NAME</code>)</td>
+<td style="text-align: left;"><code>.. snapshot restore SNAP_NAME</code> (and <code>delete SNAP_NAME</code>)</td>
 <td style="text-align: left;">Restore</td>
 </tr>
 </tbody>
