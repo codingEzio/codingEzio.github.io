@@ -7,69 +7,20 @@
 - I wanted to learn more about DB
 - It was fun
 
-## What's Up with the MVCC
+-----
 
-> Full form: [*M*ulti*v*ersion *c*oncurrency *c*ontrol](https://en.wikipedia.org/wiki/Multiversion_concurrency_control)
+## How a Query is Done in MySQL
 
-### Databases are designed to be concurrent
+### First Principle
 
-- access/update, by users, by transactions and so on
-- when accessing some record, others might be updating it
-    - action of updating takes time
-    - order of updating matters
-- we might consider block it after writers are done
-    - the transactions for read/update might be a huge one
-    - this was achieved using locks
-    - this would cause *contention* (subjects fight over something)
+- I requested, it finds & returns it, I got
 
-### MVCC is more of an addtional tool helping with concurrency
+### Diggin' Deeper
 
-- IMO, it was meant to be used in conjunction with locks
-- It does three main things, IMO
-    > All got a hidden timestamp/transaction id to ensure uniqueness
+- xx
+- xx
 
-- Read
-    - get the most recent ver. of the record, no blocking
-    - might not be the latest (someone might be updating it)
-- Write
-    - current operation creates new ver (with timestamp or transaction ID), no blocking
-    - Older versions are still available for reading
-- Garbage collection
-    - the older versions [were stored in the undo log](https://mariadb.com/kb/en/innodb-purge/)
-    - for InnoDB in MySQL, it's a process that [runs periodically](https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html)
-
-- For the case explained above, *Isolation Level* came into play, context below
-    - Different types of them for different strictness levels
-    - Categorized by read phenomenon (~=how bad is it)
-    - Scenarios mentioned above were *Snapshot Isolation* <sup>reference needed</sup>
-    - Different DB have widely different *default* isolation levels
-
-## How a Database Query is Done
-
-- Supopose we were using MySQL (with the InnoDB storage engine)
-
-```sh
-Client
-  │
-  ▼
-MySQL Server
-  │
-  ├─ Parser
-  │
-  ├─ Optimizer
-  │
-  ├─ Execution Engine
-  │    │
-  │    └─ Storage Engine API
-  │         │
-  │         ▼
-  └─ Storage Engine (e.g., InnoDB)
-      │
-      ▼
-    Data Files
-```
-
-## How a SQL Query is Done
+## How a SQL Query is Executed
 
 ### The Example
 
@@ -112,7 +63,11 @@ ORDER BY project_count DESC;
 
 - I'll write the notes once I've done the hands-on testing ;P
 
-## Renaming a Database
+-----
+
+## Data Definition Operations
+
+### Renaming a Database
 
 > I guess it wasn't normally done. I purely changed it for the sake of learning.
 
@@ -141,9 +96,9 @@ USE `旧库`;
 -- the SQL generated from the previous step
 ```
 
-## Table Partitioning
+### Table Partitioning
 
-### Context
+#### Context
 
 > I wasn't in a position to do this in production, but I still wanted to learn about it.
 >
@@ -207,7 +162,7 @@ ls /var/lib/mysql/testdb | grep -i quotes
     - A PRIMARY KEY must include all columns in the table's partitioning function (prefixed columns are not considered).
     - ..
 
-## Get Sample Data for a Table
+### Get Sample Data for a Table
 
 > The last line is the one you need to edit to match your table schema
 
@@ -246,3 +201,42 @@ DELIMITER ;
 -- the table definition shall be the same as **table partitioning** section
 CALL GenerateSampleData('testdb', 'Quotes');
 ```
+
+-----
+
+## What's Up with the MVCC
+
+> Full form: [*M*ulti*v*ersion *c*oncurrency *c*ontrol](https://en.wikipedia.org/wiki/Multiversion_concurrency_control)
+
+### Databases are designed to be concurrent
+
+- access/update, by users, by transactions and so on
+- when accessing some record, others might be updating it
+    - action of updating takes time
+    - order of updating matters
+- we might consider block it after writers are done
+    - the transactions for read/update might be a huge one
+    - this was achieved using locks
+    - this would cause *contention* (subjects fight over something)
+
+### MVCC is more of an addtional tool helping with concurrency
+
+- IMO, it was meant to be used in conjunction with locks
+- It does three main things, IMO
+    > All got a hidden timestamp/transaction id to ensure uniqueness
+
+- Read
+    - get the most recent ver. of the record, no blocking
+    - might not be the latest (someone might be updating it)
+- Write
+    - current operation creates new ver (with timestamp or transaction ID), no blocking
+    - Older versions are still available for reading
+- Garbage collection
+    - the older versions [were stored in the undo log](https://mariadb.com/kb/en/innodb-purge/)
+    - for InnoDB in MySQL, it's a process that [runs periodically](https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html)
+
+- For the case explained above, *Isolation Level* came into play, context below
+    - Different types of them for different strictness levels
+    - Categorized by read phenomenon (~=how bad is it)
+    - Scenarios mentioned above were *Snapshot Isolation* <sup>reference needed</sup>
+    - Different DB have widely different *default* isolation levels
