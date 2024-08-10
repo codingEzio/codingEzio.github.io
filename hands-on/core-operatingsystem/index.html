@@ -63,16 +63,6 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#concurrency" class="nav-link">Concurrency</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#process-n-thread" class="nav-link">Process n Thread</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
             <li class="nav-item" data-bs-level="2"><a href="#signal" class="nav-link">Signal</a>
               <ul class="nav flex-column">
               </ul>
@@ -84,7 +74,7 @@
 
 <h2 id="context">Context</h2>
 <blockquote>
-<p>None yet</p>
+<p>Heavily <strong>Work in Progress</strong>!!</p>
 </blockquote>
 <hr/>
 <h2 id="memory">Memory</h2>
@@ -103,47 +93,6 @@
 <li>An abstraction for the physical memory</li>
 <li>A suite of tools including hardware exceptions, hardware address translation, main memory, disk files and kernel software that provides each process with a large/uniform/private memory address space to resolve/help the issues mentioned above.</li>
 </ul>
-<h3 id="vm-pervades-the-design">VM Pervades the Design</h3>
-<ul>
-<li>any newer similar toolings must have that in order for Virtual Memory to work</li>
-<li>like <a href="https://poe.com/s/dKosSepXG6QTvDiLwoJq">this</a></li>
-</ul>
-<h3 id="how-does-cpu-loads-instructions-from-memory-before-n-after">How does CPU loads instructions from memory (before n after)?</h3>
-<blockquote>
-<p><a href="https://poe.com/s/zFGZI0uZq8nXIgG5je4h">ref</a></p>
-</blockquote>
-<ul>
-<li>back then: CPU provides a physcisl memory address, reading directly from physical memory</li>
-<li>now: CPU provides a virtual memory address, the MMU translates it into a physical memory address, viola 🎉</li>
-</ul>
-<h2 id="concurrency">Concurrency</h2>
-<h3 id="strategy">Strategy</h3>
-<ul>
-<li>One of the approach of building a concurrent server is to accept client connection requests in the parent and then create a new child process to service each new client.</li>
-<li>The server forks a child with complete file descriptors which could and would be used to serve incoming requests. Meanwhile, the server shall release the file descriptors it originally listened to and received (file table entry).</li>
-</ul>
-<h2 id="process-n-thread">Process n Thread</h2>
-<h3 id="some-say-process-is-slowerheavier">Some Say Process is Slower/Heavier</h3>
-<blockquote>
-<p>File tables are share between parent and child processes, address spaces are not as diff processes got different address spaces, they would need explicit IPC to communicate (like state information)</p>
-</blockquote>
-<ul>
-<li><a href="https://poe.com/s/rdIxnh8aJE7mYkDg8BSB">Process Control n Inter-Process Comm</a></li>
-<li>
-<p>Process control</p>
-<ul>
-<li>创建与销毁</li>
-<li>保存与切换</li>
-</ul>
-</li>
-<li>
-<p>Inter-Process Communication</p>
-<ul>
-<li>通信需要系统机制 系统机制如 MQ 都需要跨内核用户态多次复制数据</li>
-<li>当多个进程访问共享资源时 为了维持一致性与完整性 须另外引入同步等机制 这些机制也都需要更多的系统调用</li>
-</ul>
-</li>
-</ul>
 <h2 id="signal">Signal</h2>
 <blockquote>
 <p>Sources: <a href="https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html"><em>Signal Handling (The GNU C Library)</em></a></p>
@@ -154,7 +103,7 @@
 <li>Listen up, if X happens, do Y</li>
 <li>Sys/Prog sends it, prog registers handler reacts</li>
 </ul>
-<h3 id="types-of-signals">Types of Signals</h3>
+<h3 id="types">Types</h3>
 <blockquote>
 <p>scenarios=events, (program), handlers for the signal</p>
 </blockquote>
@@ -162,101 +111,7 @@
 <li>some scenarios, cannot proceed as usual, respective signal abort it</li>
 <li>some scenarios, could go on just fine, respective signal was ignored</li>
 <li>and you could make <em>child process telling parent it's done</em> to exit/sync/whatever</li>
-</ul>
-<h3 id="get-one-that-reacts-to-events">Get One that Reacts to Events</h3>
-<ul>
-<li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal.py">example in Python</a> using <code>signal</code></li>
-<li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal.c">example in C</a> using <code>signal</code></li>
-<li>Code <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal-with-event.cs">example in C#</a> using <em>Events</em> to do similar things</li>
-</ul>
-<hr/>
-<ul>
-<li>
-<p>Life of 0s and 1s</p>
-<ul>
-<li>
-<p>Get from 0s and 1s to a code file</p>
-<ul>
-<li>Zeros and ones represent binary data, which can be grouped into sets of eight bits called bytes.</li>
-<li>Each byte, composed of zeros and ones, can be converted to a decimal value.</li>
-<li>The decimal value corresponds to a specific character in the ASCII table, allowing us to map binary data to ASCII characters.</li>
-<li>By repeating this process for each byte, we can transform multiple sets of zeros and ones into multiple ASCII characters.</li>
-<li>These ASCII characters are then encoded and written into a file, creating a sequence of characters that can be interpreted by text-based applications.</li>
-</ul>
-</li>
-<li>
-<p>0s and 1s in Different Context <sup><a href="https://poe.com/s/JioudqEtMjMAKsu9BFa1">example</a></sup></p>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code class="language-asciidoc">0101010101
-    /           \
-   /             \
-  v               v
-+-------+     +--------+
-| ASCII |     | Binary |
-+-------+     +--------+
-    |             |
-    v             v
-+-------------------+
-|    Code File      |
-+-------------------+
-</code></pre>
-<ul>
-<li>
-<p>From hello.c to the executable ./hello</p>
-<ul>
-<li>
-<p><em>Preprocessing Phase</em>: add/insert implicit imported code, like the import in Python, the #include in C, in the end, produce a different file, typically ended with .i, a hello.i file.</p>
-</li>
-<li>
-<p><em>Compilation Phase</em>: translate C code into assembly instructions, which all non-assembly really are underneath 😉, normally ended with .s, aka. hello.s.</p>
-</li>
-<li>
-<p><em>Assembly Phase</em>: translate Assembly code into actual machine instructions (0s and 1s), though this time it was packaged in the form of <em>relocatable object program</em> (this time the context of those bytes were machine instructions instead of characters), typically ended with .o, aka. hello.o.</p>
-</li>
-<li>
-<p><em>Linking Phase</em>: the linker ld do the merging between the imported stuff (like the stdio.h for basic printing) and the previously generated hello.o, the eventual output is an executable object, i.e. ./hello.</p>
-</li>
-</ul>
-</li>
-<li>
-<p>from <em>CPU Land</em></p>
-<ul>
-<li>
-<p>Machine code are 0s and 1s</p>
-<ul>
-<li>Machine code have both binary (0001) and hex formats (0xA3)</li>
-<li>The machine codes in hex formats were individually mapped to Assembly instructions.</li>
-</ul>
-</li>
-<li>
-<p>Different CPUs hold different architectures</p>
-</li>
-<li>Different architectures diff in the mappings between the hex (machine) code and (assembly) instructions.</li>
-<li>
-<p>Things like ADD, SUB were called as OPCODE</p>
-</li>
-<li>
-<p>One CPU can only hold one architecture</p>
-</li>
-<li>
-<p>One CPU can do emulation and/or translations more than the architecture of its own (like how you run x86 apps on Apple M3 machines via the <em>Rosetta 2</em> translation layers)</p>
-</li>
-<li>
-<p>Machine instructions were loaded onto RAM</p>
-<ul>
-<li>Machine instructions were ran via CPU executing instructions loaded onto RAM</li>
-<li>Machine instructions can only be ran when loading onto RAM</li>
-</ul>
-</li>
-<li>
-<p>RAM acts like a workspace for CPU, which holds data and instructions, ready for access</p>
-</li>
-<li>RAM is like a book with multiple pages, that you find data via something like <em>PageA :: LINE 19 :: POS 2:10</em></li>
-</ul>
-</li>
+<li>Code examples in <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal.py"><strong><em>Python</em></strong></a> using <code>signal</code> <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal.c"><strong><em>C</em></strong></a> and <a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/mock-signal-with-event.cs"><strong><em>C#</em></strong></a></li>
 </ul></div>
             </div>
         </div>
