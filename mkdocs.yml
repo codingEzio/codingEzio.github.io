@@ -3,7 +3,6 @@ nav:
   - Home: index.md
 plugins:
   - search
-  - mermaid2
   - markmap:
       base_path: docs
       encoding: utf-8
