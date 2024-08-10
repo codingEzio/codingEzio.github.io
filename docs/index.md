@@ -13,6 +13,12 @@
 - On [*C#* and *.NET*](./hands-on/core-csharp-n-dotnet)
 - On [*Ext.js*](./hands-on/random-extjs-overview)
 
+### Algorithms <sup>Work in Progress</sup>
+
+- [*Data Structure*](./algorithms/algo-data-structure)
+- [*For Fun*](./algorithms/algo-for-fun)
+- [*Sort*](./algorithms/algo-sort)
+
 ### Build Your Own
 
 - Toy [*Load Balancer*](./build-your-own/my-toy-load-balancer)
