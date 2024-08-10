@@ -58,17 +58,12 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#whats-up-with-the-mvcc" class="nav-link">What's Up with the MVCC</a>
+            <li class="nav-item" data-bs-level="2"><a href="#how-a-query-is-done-in-mysql" class="nav-link">How a Query is Done in MySQL</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#how-a-database-query-is-done" class="nav-link">How a Database Query is Done</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#how-a-sql-query-is-done" class="nav-link">How a SQL Query is Done</a>
+            <li class="nav-item" data-bs-level="2"><a href="#how-a-sql-query-is-executed" class="nav-link">How a SQL Query is Executed</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -78,17 +73,12 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#renaming-a-database" class="nav-link">Renaming a Database</a>
+            <li class="nav-item" data-bs-level="2"><a href="#data-definition-operations" class="nav-link">Data Definition Operations</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#table-partitioning" class="nav-link">Table Partitioning</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#get-sample-data-for-a-table" class="nav-link">Get Sample Data for a Table</a>
+            <li class="nav-item" data-bs-level="2"><a href="#whats-up-with-the-mvcc" class="nav-link">What's Up with the MVCC</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -105,88 +95,19 @@
 <li>I wanted to learn more about DB</li>
 <li>It was fun</li>
 </ul>
-<h2 id="whats-up-with-the-mvcc">What's Up with the MVCC</h2>
-<blockquote>
-<p>Full form: <a href="https://en.wikipedia.org/wiki/Multiversion_concurrency_control"><em>M</em>ulti<em>v</em>ersion <em>c</em>oncurrency <em>c</em>ontrol</a></p>
-</blockquote>
-<h3 id="databases-are-designed-to-be-concurrent">Databases are designed to be concurrent</h3>
+<hr/>
+<h2 id="how-a-query-is-done-in-mysql">How a Query is Done in MySQL</h2>
+<h3 id="first-principle">First Principle</h3>
 <ul>
-<li>access/update, by users, by transactions and so on</li>
-<li>when accessing some record, others might be updating it<ul>
-<li>action of updating takes time</li>
-<li>order of updating matters</li>
+<li>I requested, it finds &amp; returns it, I got</li>
 </ul>
-</li>
-<li>we might consider block it after writers are done<ul>
-<li>the transactions for read/update might be a huge one</li>
-<li>this was achieved using locks</li>
-<li>this would cause <em>contention</em> (subjects fight over something)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mvcc-is-more-of-an-addtional-tool-helping-with-concurrency">MVCC is more of an addtional tool helping with concurrency</h3>
+<h3 id="diggin-deeper">Diggin' Deeper</h3>
 <ul>
-<li>IMO, it was meant to be used in conjunction with locks</li>
-<li>
-<p>It does three main things, IMO
-    &gt; All got a hidden timestamp/transaction id to ensure uniqueness</p>
-</li>
-<li>
-<p>Read</p>
-<ul>
-<li>get the most recent ver. of the record, no blocking</li>
-<li>might not be the latest (someone might be updating it)</li>
+<li>xx</li>
+<li>xx</li>
 </ul>
-</li>
-<li>Write<ul>
-<li>current operation creates new ver (with timestamp or transaction ID), no blocking</li>
-<li>Older versions are still available for reading</li>
-</ul>
-</li>
-<li>
-<p>Garbage collection</p>
-<ul>
-<li>the older versions <a href="https://mariadb.com/kb/en/innodb-purge/">were stored in the undo log</a></li>
-<li>for InnoDB in MySQL, it's a process that <a href="https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html">runs periodically</a></li>
-</ul>
-</li>
-<li>
-<p>For the case explained above, <em>Isolation Level</em> came into play, context below</p>
-<ul>
-<li>Different types of them for different strictness levels</li>
-<li>Categorized by read phenomenon (~=how bad is it)</li>
-<li>Scenarios mentioned above were <em>Snapshot Isolation</em> <sup>reference needed</sup></li>
-<li>Different DB have widely different <em>default</em> isolation levels</li>
-</ul>
-</li>
-</ul>
-<h2 id="how-a-database-query-is-done">How a Database Query is Done</h2>
-<ul>
-<li>Supopose we were using MySQL (with the InnoDB storage engine)</li>
-</ul>
-<pre><code class="language-sh">Client
-  │
-  ▼
-MySQL Server
-  │
-  ├─ Parser
-  │
-  ├─ Optimizer
-  │
-  ├─ Execution Engine
-  │    │
-  │    └─ Storage Engine API
-  │         │
-  │         ▼
-  └─ Storage Engine (e.g., InnoDB)
-      │
-      ▼
-    Data Files
-</code></pre>
-<h2 id="how-a-sql-query-is-done">How a SQL Query is Done</h2>
-<ul>
-<li>Suppose we have a query like this</li>
-</ul>
+<h2 id="how-a-sql-query-is-executed">How a SQL Query is Executed</h2>
+<h3 id="the-example">The Example</h3>
 <pre><code class="language-sql">SELECT employees.name, COUNT(projects.project_id) as project_count
 FROM employees
 JOIN projects ON employees.id = projects.employee_id
@@ -195,9 +116,7 @@ GROUP BY employees.name
 HAVING COUNT(projects.project_id) &gt; 5
 ORDER BY project_count DESC;
 </code></pre>
-<ul>
-<li>
-<p>The process of executing the query is as follows</p>
+<h3 id="the-procedure">The Procedure</h3>
 <ul>
 <li><code>FROM</code> the <code>employee</code> table</li>
 <li>With <code>JOIN</code>ing the <code>projects</code> table <code>ON</code> <code>employee_id</code> column</li>
@@ -206,30 +125,28 @@ ORDER BY project_count DESC;
 <li><code>HAVING</code> <code>project</code>s the <code>employee</code>s working on is greater than 5</li>
 <li><code>ORDER BY</code> the number of <code>project</code>s the <code>employee</code> is working on in descending order</li>
 </ul>
-</li>
-</ul>
 <h2 id="common-index-types">Common Index Types</h2>
+<h3 id="b-tree-index">B+ Tree Index</h3>
 <ul>
-<li>B+ Tree Index (default for MySQL InnoDB)<ul>
 <li>most common, efficient enough</li>
 <li>support both exact and range queries</li>
 </ul>
-</li>
-<li>Hash Index<ul>
+<h3 id="hash-index">Hash Index</h3>
+<ul>
 <li>only avialable for <em>Memory</em> tables</li>
 <li>only support exact lookups (<code>=</code>, <code>IN</code>)</li>
 </ul>
-</li>
-<li>Full-Text Index<ul>
+<h3 id="full-text-index">Full-Text Index</h3>
+<ul>
 <li>I'll write the notes once I've done the hands-on testing ;P</li>
 </ul>
-</li>
-<li>Spatial Index<ul>
+<h3 id="spatial-index">Spatial Index</h3>
+<ul>
 <li>I'll write the notes once I've done the hands-on testing ;P</li>
 </ul>
-</li>
-</ul>
-<h2 id="renaming-a-database">Renaming a Database</h2>
+<hr/>
+<h2 id="data-definition-operations">Data Definition Operations</h2>
+<h3 id="renaming-a-database">Renaming a Database</h3>
 <blockquote>
 <p>I guess it wasn't normally done. I purely changed it for the sake of learning.</p>
 </blockquote>
@@ -255,8 +172,8 @@ WHERE table_schema LIKE '旧库';
 
 -- the SQL generated from the previous step
 </code></pre>
-<h2 id="table-partitioning">Table Partitioning</h2>
-<h3 id="context_1">Context</h3>
+<h3 id="table-partitioning">Table Partitioning</h3>
+<h4 id="context_1">Context</h4>
 <blockquote>
 <p>I wasn't in a position to do this in production, but I still wanted to learn about it.</p>
 <p>So I got a local MySQL database in Docker and tried it out.
@@ -325,7 +242,7 @@ ls /var/lib/mysql/testdb | grep -i quotes
 </ul>
 </li>
 </ul>
-<h2 id="get-sample-data-for-a-table">Get Sample Data for a Table</h2>
+<h3 id="get-sample-data-for-a-table">Get Sample Data for a Table</h3>
 <blockquote>
 <p>The last line is the one you need to edit to match your table schema</p>
 </blockquote>
@@ -362,7 +279,63 @@ DELIMITER ;
 -- the DB wasn't specfial, just run `CREATE DATABASE testdb;` before this
 -- the table definition shall be the same as **table partitioning** section
 CALL GenerateSampleData('testdb', 'Quotes');
-</code></pre></div>
+</code></pre>
+<hr/>
+<h2 id="whats-up-with-the-mvcc">What's Up with the MVCC</h2>
+<blockquote>
+<p>Full form: <a href="https://en.wikipedia.org/wiki/Multiversion_concurrency_control"><em>M</em>ulti<em>v</em>ersion <em>c</em>oncurrency <em>c</em>ontrol</a></p>
+</blockquote>
+<h3 id="databases-are-designed-to-be-concurrent">Databases are designed to be concurrent</h3>
+<ul>
+<li>access/update, by users, by transactions and so on</li>
+<li>when accessing some record, others might be updating it<ul>
+<li>action of updating takes time</li>
+<li>order of updating matters</li>
+</ul>
+</li>
+<li>we might consider block it after writers are done<ul>
+<li>the transactions for read/update might be a huge one</li>
+<li>this was achieved using locks</li>
+<li>this would cause <em>contention</em> (subjects fight over something)</li>
+</ul>
+</li>
+</ul>
+<h3 id="mvcc-is-more-of-an-addtional-tool-helping-with-concurrency">MVCC is more of an addtional tool helping with concurrency</h3>
+<ul>
+<li>IMO, it was meant to be used in conjunction with locks</li>
+<li>
+<p>It does three main things, IMO
+    &gt; All got a hidden timestamp/transaction id to ensure uniqueness</p>
+</li>
+<li>
+<p>Read</p>
+<ul>
+<li>get the most recent ver. of the record, no blocking</li>
+<li>might not be the latest (someone might be updating it)</li>
+</ul>
+</li>
+<li>Write<ul>
+<li>current operation creates new ver (with timestamp or transaction ID), no blocking</li>
+<li>Older versions are still available for reading</li>
+</ul>
+</li>
+<li>
+<p>Garbage collection</p>
+<ul>
+<li>the older versions <a href="https://mariadb.com/kb/en/innodb-purge/">were stored in the undo log</a></li>
+<li>for InnoDB in MySQL, it's a process that <a href="https://dev.mysql.com/doc/refman/8.4/en/innodb-purge-configuration.html">runs periodically</a></li>
+</ul>
+</li>
+<li>
+<p>For the case explained above, <em>Isolation Level</em> came into play, context below</p>
+<ul>
+<li>Different types of them for different strictness levels</li>
+<li>Categorized by read phenomenon (~=how bad is it)</li>
+<li>Scenarios mentioned above were <em>Snapshot Isolation</em> <sup>reference needed</sup></li>
+<li>Different DB have widely different <em>default</em> isolation levels</li>
+</ul>
+</li>
+</ul></div>
             </div>
         </div>
 
