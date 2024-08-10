@@ -71,7 +71,7 @@ MySQL Server
 
 ## How a SQL Query is Done
 
-- Suppose we have a query like this
+### The Example
 
 ```sql
 SELECT employees.name, COUNT(projects.project_id) as project_count
@@ -83,27 +83,34 @@ HAVING COUNT(projects.project_id) > 5
 ORDER BY project_count DESC;
 ```
 
-- The process of executing the query is as follows
+### The Procedure
 
-    - `FROM` the `employee` table
-    - With `JOIN`ing the `projects` table `ON` `employee_id` column
-    - Filter `WHERE` the `salary` is greater than 20000
-    - `GROUP BY` the `employee`'s `name`
-    - `HAVING` `project`s the `employee`s working on is greater than 5
-    - `ORDER BY` the number of `project`s the `employee` is working on in descending order
+- `FROM` the `employee` table
+- With `JOIN`ing the `projects` table `ON` `employee_id` column
+- Filter `WHERE` the `salary` is greater than 20000
+- `GROUP BY` the `employee`'s `name`
+- `HAVING` `project`s the `employee`s working on is greater than 5
+- `ORDER BY` the number of `project`s the `employee` is working on in descending order
 
 ## Common Index Types
 
-- B+ Tree Index (default for MySQL InnoDB)
-    - most common, efficient enough
-    - support both exact and range queries
-- Hash Index
-    - only avialable for *Memory* tables
-    - only support exact lookups (`=`, `IN`)
-- Full-Text Index
-    - I'll write the notes once I've done the hands-on testing ;P
-- Spatial Index
-    - I'll write the notes once I've done the hands-on testing ;P
+### B+ Tree Index
+
+- most common, efficient enough
+- support both exact and range queries
+
+### Hash Index
+
+- only avialable for *Memory* tables
+- only support exact lookups (`=`, `IN`)
+
+### Full-Text Index
+
+- I'll write the notes once I've done the hands-on testing ;P
+
+### Spatial Index
+
+- I'll write the notes once I've done the hands-on testing ;P
 
 ## Renaming a Database
 
