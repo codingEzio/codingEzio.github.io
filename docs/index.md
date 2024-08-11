@@ -66,4 +66,4 @@ docs/
 
 ## Lastly
 
-> This blog was completed revamped and rebuilt from scratch on 2024-07-07. The original blog with 200+ posts were either distilled, expanded or simply removed because of the even higher standard of the practicality and simplicity which derived from First Principle for the posts. (此博客启用于 2024 年 7 月 7 日，原博客 200 余篇文章已经被精简、扩展或移除。新博客对于博文的实践性与由第一原则引致的简洁性的要求更为严格。)
+> 我不知道在别人看来，我是什么样的人；但在我自己看来，我不过就像是一个在海滩玩耍的孩子，为时而发现比寻常更光滑的一块卵石或比寻常更美丽的一片贝壳而沾沾自喜，而对于眼前的浩瀚的真理海洋，却全然没有发觉。
