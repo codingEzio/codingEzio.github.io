@@ -9,7 +9,7 @@
 
 -----
 
-## How a Query is Done in MySQL
+## How a Query was Executed in MySQL
 
 ### First Principle
 
@@ -17,8 +17,44 @@
 
 ### Diggin' Deeper
 
-- xx
-- xx
+> Errors n mistakes happen. Lots of guesses n little time I got. References were from the project *mysql-server* in branch `trunk`, official documentation, StackOverflow and LLM (Sonnet 3.5 mostly)
+
+#### Rough Process
+
+- 连接管理：服务器随时候着，身份验证，权限验证
+- 解析预理：析句为词元，检确语法，查数验限
+- 查询优化：优写法，用索引，判联序，*想*好执行计划
+- 计划生成：用 `EXPLAIN` 看引擎思路，其余发生在内部
+- 执行计划：调用 CRUD API on DB files 并处理响应
+
+#### Actual Process
+
+##### Connection Handling
+
+- <u>`sql/conn_handler/connection_handler_manager.cc` manages the connection handling</u>
+- files like `connection_handler_one_thread.cc`  in the same level does the connection handling
+- think of it like a powered n mature version of your own *setup a socket listening*  n *respond when specific command is received*
+
+##### Parsing and Preparing
+
+- <u>`parse_sql`  in `sql/sql_parse.cc` setup the parsing procedures</u>
+- Line `thd→sql_parser()`  calls `THD:sql_parser`  in `sql/sql_class.c`  to transforming **received commands** into a parse tree
+- External function "imported" inside `my_sql_parser_parse` does the parsing
+    - First we got the `sql/sql_yacc.yy` which is the definition of the **SQL language subset understood by SQL** that could be compiled into parser functions which we would use later on
+    - Gotta use *bison* that was declared in the `/CMakeLists.txt` which compiles the `.yy` file into each of its own `.cc` file that has methods we could invoke and use
+    - The `sql/CMakeLists.txt` does the actual work for the conversion from `.yy` to `.cc` along with some other useful functions spanned in different generated files
+
+##### Optimization and Preparation
+
+- <u>`JOIN::optimize` in `sql/sql_optimizer.cc` does various kinds of optimizations from the parsed query statement</u>
+    - a fuck ton of optimizations by types, in stages
+    - preparations made specifically for the executor
+
+##### Execution
+
+- <u>`JOIN:get_best_combination` in `sql/sql_optimizer.cc` does additional optimizations and adjustments</u>
+    - `Sql_cmd_dml::execute` does the actual SQL DML operations (Data Manipulation Language, aka. CRUD)
+    - Via the `RowIterator` in `sql/iterators/row_iterator.h`to do something about the results you got from query execution
 
 ## How a SQL Query is Executed
 
