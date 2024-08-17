@@ -58,7 +58,7 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#how-a-query-is-done-in-mysql" class="nav-link">How a Query is Done in MySQL</a>
+            <li class="nav-item" data-bs-level="2"><a href="#how-a-query-was-executed-in-mysql" class="nav-link">How a Query was Executed in MySQL</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -96,15 +96,56 @@
 <li>It was fun</li>
 </ul>
 <hr/>
-<h2 id="how-a-query-is-done-in-mysql">How a Query is Done in MySQL</h2>
+<h2 id="how-a-query-was-executed-in-mysql">How a Query was Executed in MySQL</h2>
 <h3 id="first-principle">First Principle</h3>
 <ul>
 <li>I requested, it finds &amp; returns it, I got</li>
 </ul>
 <h3 id="diggin-deeper">Diggin' Deeper</h3>
+<blockquote>
+<p>Errors n mistakes happen. Lots of guesses n little time I got. References were from the project <em>mysql-server</em> in branch <code>trunk</code>, official documentation, StackOverflow and LLM (Sonnet 3.5 mostly)</p>
+</blockquote>
+<h4 id="rough-process">Rough Process</h4>
 <ul>
-<li>xx</li>
-<li>xx</li>
+<li>连接管理：服务器随时候着，身份验证，权限验证</li>
+<li>解析预理：析句为词元，检确语法，查数验限</li>
+<li>查询优化：优写法，用索引，判联序，<em>想</em>好执行计划</li>
+<li>计划生成：用 <code>EXPLAIN</code> 看引擎思路，其余发生在内部</li>
+<li>执行计划：调用 CRUD API on DB files 并处理响应</li>
+</ul>
+<h4 id="actual-process">Actual Process</h4>
+<h5 id="connection-handling">Connection Handling</h5>
+<ul>
+<li><u><code>sql/conn_handler/connection_handler_manager.cc</code> manages the connection handling</u></li>
+<li>files like <code>connection_handler_one_thread.cc</code>  in the same level does the connection handling</li>
+<li>think of it like a powered n mature version of your own <em>setup a socket listening</em>  n <em>respond when specific command is received</em></li>
+</ul>
+<h5 id="parsing-and-preparing">Parsing and Preparing</h5>
+<ul>
+<li><u><code>parse_sql</code>  in <code>sql/sql_parse.cc</code> setup the parsing procedures</u></li>
+<li>Line <code>thd→sql_parser()</code>  calls <code>THD:sql_parser</code>  in <code>sql/sql_class.c</code>  to transforming <strong>received commands</strong> into a parse tree</li>
+<li>External function "imported" inside <code>my_sql_parser_parse</code> does the parsing<ul>
+<li>First we got the <code>sql/sql_yacc.yy</code> which is the definition of the <strong>SQL language subset understood by SQL</strong> that could be compiled into parser functions which we would use later on</li>
+<li>Gotta use <em>bison</em> that was declared in the <code>/CMakeLists.txt</code> which compiles the <code>.yy</code> file into each of its own <code>.cc</code> file that has methods we could invoke and use</li>
+<li>The <code>sql/CMakeLists.txt</code> does the actual work for the conversion from <code>.yy</code> to <code>.cc</code> along with some other useful functions spanned in different generated files</li>
+</ul>
+</li>
+</ul>
+<h5 id="optimization-and-preparation">Optimization and Preparation</h5>
+<ul>
+<li><u><code>JOIN::optimize</code> in <code>sql/sql_optimizer.cc</code> does various kinds of optimizations from the parsed query statement</u><ul>
+<li>a fuck ton of optimizations by types, in stages</li>
+<li>preparations made specifically for the executor</li>
+</ul>
+</li>
+</ul>
+<h5 id="execution">Execution</h5>
+<ul>
+<li><u><code>JOIN:get_best_combination</code> in <code>sql/sql_optimizer.cc</code> does additional optimizations and adjustments</u><ul>
+<li><code>Sql_cmd_dml::execute</code> does the actual SQL DML operations (Data Manipulation Language, aka. CRUD)</li>
+<li>Via the <code>RowIterator</code> in <code>sql/iterators/row_iterator.h</code>to do something about the results you got from query execution</li>
+</ul>
+</li>
 </ul>
 <h2 id="how-a-sql-query-is-executed">How a SQL Query is Executed</h2>
 <h3 id="the-example">The Example</h3>
