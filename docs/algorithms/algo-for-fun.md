@@ -8,9 +8,7 @@
 
 ### Examples
 
-#### Time
-
-> 找主要增长项
+> 找主要增长项 n 找最大分配量
 
 ```python
 # O(1)
@@ -70,14 +68,6 @@ def find_shortest_route(places):
     # 3. A -> D -> B -> C -> A (dist = ?)
     #    ...
     # at worst, need to check N! times to know the shortest
-
-```
-
-#### Space
-
-> 找最大分配量
-
-```python
 
 ```
 

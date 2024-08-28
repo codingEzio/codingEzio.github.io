@@ -9,6 +9,38 @@
 
 -----
 
+## Normalization
+
+### Explanation
+
+> What counts as *atomic*, *indivisible*, *relates* is **highly** situation n context dependent
+>> What you came up might be directly started at 2NF
+
+- 1NF: Like permutations, but in a good way
+    - Cell for each col/row has only one indivisible value
+    - Cell with one or more identify the One (as PK)
+
+- 2NF
+    - Same as 1NF, but with the addition of
+    - Each non-PK column FULLY relates to the PK(>= 1 col)
+
+- 3NF
+    - Same as 2NF, but with the addition of
+    - Each non-PK column does NOT relates to other non-PK columns
+
+- 3.5NF (BCNF)
+    - Same as 3NF, but with the addition of
+    - Each fucking column depends solely on Super Key or better CK
+
+### Examples
+
+> It seemed that all the examples online were starting from non-1NF to 1NF, then all the way to 3.5NF or higher
+>> I'll resort to the reversed order then
+
+```txt
+
+```
+
 ## Types of Keys
 
 ### Context
