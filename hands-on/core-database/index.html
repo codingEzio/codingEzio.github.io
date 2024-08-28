@@ -58,6 +58,11 @@
               </ul>
             </li>
             
+            <li class="nav-item" data-bs-level="2"><a href="#normalization" class="nav-link">Normalization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
             <li class="nav-item" data-bs-level="2"><a href="#types-of-keys" class="nav-link">Types of Keys</a>
               <ul class="nav flex-column">
               </ul>
@@ -101,6 +106,53 @@
 <li>It was fun</li>
 </ul>
 <hr/>
+<h2 id="normalization">Normalization</h2>
+<h3 id="explanation">Explanation</h3>
+<blockquote>
+<p>What counts as <em>atomic</em>, <em>indivisible</em>, <em>relates</em> is <strong>highly</strong> situation n context dependent</p>
+<blockquote>
+<p>What you came up might be directly started at 2NF</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>
+<p>1NF: Like permutations, but in a good way</p>
+<ul>
+<li>Cell for each col/row has only one indivisible value</li>
+<li>Cell with one or more identify the One (as PK)</li>
+</ul>
+</li>
+<li>
+<p>2NF</p>
+<ul>
+<li>Same as 1NF, but with the addition of</li>
+<li>Each non-PK column FULLY relates to the PK(&gt;= 1 col)</li>
+</ul>
+</li>
+<li>
+<p>3NF</p>
+<ul>
+<li>Same as 2NF, but with the addition of</li>
+<li>Each non-PK column does NOT relates to other non-PK columns</li>
+</ul>
+</li>
+<li>
+<p>3.5NF (BCNF)</p>
+<ul>
+<li>Same as 3NF, but with the addition of</li>
+<li>Each fucking column depends solely on Super Key or better CK</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<blockquote>
+<p>It seemed that all the examples online were starting from non-1NF to 1NF, then all the way to 3.5NF or higher</p>
+<blockquote>
+<p>I'll resort to the reversed order then</p>
+</blockquote>
+</blockquote>
+<pre><code class="language-txt">
+</code></pre>
 <h2 id="types-of-keys">Types of Keys</h2>
 <h3 id="context_1">Context</h3>
 <ul>
@@ -109,7 +161,7 @@
 <li>Identify the <em>One</em>, link each other or many</li>
 <li>Tightly related to real-world scenarios</li>
 </ul>
-<h3 id="explanation">Explanation</h3>
+<h3 id="explanation_1">Explanation</h3>
 <blockquote>
 <p>Words that were wrapped in brackets mean they are optional (excluding the end of the sentence)</p>
 </blockquote>
