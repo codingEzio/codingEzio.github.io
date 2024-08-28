@@ -53,6 +53,11 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
+            <li class="nav-item" data-bs-level="2"><a href="#big-o" class="nav-link">Big O</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
             <li class="nav-item" data-bs-level="2"><a href="#0-9999-7" class="nav-link">0 到 9999 之间有多少个 7</a>
               <ul class="nav flex-column">
               </ul>
@@ -62,6 +67,87 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
+<h2 id="big-o">Big <em>O</em></h2>
+<h3 id="type">Type</h3>
+<ul>
+<li>Time Complexity</li>
+<li>Space Complexity</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="time">Time</h4>
+<blockquote>
+<p>找主要增长项</p>
+</blockquote>
+<pre><code class="language-python"># O(1)
+def get_first_beer(fridge):
+    return fridge[0]
+
+
+# O(log n)
+def find_specific_brand(sorted_fridge_by_name, brand_name):
+    CHECK middle n FOUND it
+        COOL    # Gotcha
+        LOWER   # CHECK middle in RIGHT half
+        HIGHER  # CHECK middle in LEFT half
+    ELSE
+        return None
+
+
+# O(n)
+def find_expired_beer(fridge):
+    for beer in fridge:
+        if beer.is_expired():
+            return beer  # Gotta check 'em all!
+
+
+# O(n log n)
+def find_expired_beer_in_specific_brand(fridge):
+    CHECK middle n FOUND it
+        COOL    # Gotcha
+        LOWER   # CHECK middle in RIGHT half
+        HIGHER  # CHECK middle in LEFT half
+
+    for beer in FOUND_BRAND:
+        if beer.is_expired():
+            return beer  # Gotta check 'em all!
+
+
+# O(n^2)
+def find_perfect_beer_combo(fridge):
+    for A in fridge:
+        for B in fridge:
+            if taste(A, B) is GOOD:
+                return A, B
+
+
+# O(n!)
+def find_shortest_route(places):
+    # [A]---[B]
+    #  |\   /|
+    #  | \ / |
+    #  | / \ |
+    #  |/   \|
+    # [C]---[D]
+
+    # [Pub A]    [Pub B]    [Pub C]    [Pub D]
+    # 1. A -&gt; B -&gt; C -&gt; D -&gt; A (dist = ?)
+    # 2. A -&gt; C -&gt; B -&gt; D -&gt; A (dist = ?)
+    # 3. A -&gt; D -&gt; B -&gt; C -&gt; A (dist = ?)
+    #    ...
+    # at worst, need to check N! times to know the shortest
+
+</code></pre>
+<h4 id="space">Space</h4>
+<blockquote>
+<p>找最大分配量</p>
+</blockquote>
+<pre><code class="language-python">
+</code></pre>
+<h3 id="identification">Identification</h3>
+<ul>
+<li>x</li>
+<li>x</li>
+</ul>
 <h2 id="0-9999-7">0 到 9999 之间有多少个 7</h2>
 <blockquote>
 <p><a href="https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/algo-fun-count-7s.py">source code</a></p>
