@@ -58,6 +58,11 @@
               </ul>
             </li>
             
+            <li class="nav-item" data-bs-level="2"><a href="#types-of-keys" class="nav-link">Types of Keys</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
             <li class="nav-item" data-bs-level="2"><a href="#how-a-query-was-executed-in-mysql" class="nav-link">How a Query was Executed in MySQL</a>
               <ul class="nav flex-column">
               </ul>
@@ -92,10 +97,48 @@
 <li>I'm NOT a DB dev</li>
 <li>I rarely operate on DB directly (I use ORM)</li>
 <li>I believe <em>if you didn't type the commands on the existing DB, it was all theory</em></li>
-<li>I wanted to learn more about DB</li>
+<li>I wanted to learn about DB from the ground up</li>
 <li>It was fun</li>
 </ul>
 <hr/>
+<h2 id="types-of-keys">Types of Keys</h2>
+<h3 id="context_1">Context</h3>
+<ul>
+<li>Lots of types</li>
+<li>Some were DB-oriented, some were ER-oriented</li>
+<li>Identify the <em>One</em>, link each other or many</li>
+<li>Tightly related to real-world scenarios</li>
+</ul>
+<h3 id="explanation">Explanation</h3>
+<blockquote>
+<p>Words that were wrapped in brackets mean they are optional (excluding the end of the sentence)</p>
+</blockquote>
+<ul>
+<li>Primary Key: absolutely the <em>One</em>, not null (== CK)</li>
+<li>Foreign Key: link to another table's <em>One</em></li>
+<li>Candidate Key: any Key that could ID the <em>One</em> (~= PK)</li>
+<li>Super Key: any (sets) of CK(s) that could ID the <em>One</em></li>
+<li>Composite Key: any sets of Keys that could ID the <em>One</em></li>
+<li>Alternate Key: any non-PK that could ID the <em>One</em> (CK - PK)</li>
+</ul>
+<h3 id="graph">Graph</h3>
+<pre><code class="language-txt">+----------------------------------+
+|             SUPER KEY            |
+|  +----------------------------+  |
+|  |      CANDIDATE KEYS        |  |
+|  |  +----------------------+  |  |
+|  |  |    PRIMARY KEY       |  |  |
+|  |  |  +----------------+  |  |  |
+|  |  |  |  FOREIGN KEY   |  |  |  |
+|  |  |  +----------------+  |  |  |
+|  |  +----------------------+  |  |
+|  |                            |  |
+|  |    ALTERNATE KEYS          |  |
+|  +----------------------------+  |
+|                                  |
+|        COMPOSITE KEYS            |
++----------------------------------+
+</code></pre>
 <h2 id="how-a-query-was-executed-in-mysql">How a Query was Executed in MySQL</h2>
 <h3 id="first-principle">First Principle</h3>
 <ul>
@@ -214,7 +257,7 @@ WHERE table_schema LIKE '旧库';
 -- the SQL generated from the previous step
 </code></pre>
 <h3 id="table-partitioning">Table Partitioning</h3>
-<h4 id="context_1">Context</h4>
+<h4 id="context_2">Context</h4>
 <blockquote>
 <p>I wasn't in a position to do this in production, but I still wanted to learn about it.</p>
 <p>So I got a local MySQL database in Docker and tried it out.
