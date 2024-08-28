@@ -4,10 +4,51 @@
 - I'm NOT a DB dev
 - I rarely operate on DB directly (I use ORM)
 - I believe *if you didn't type the commands on the existing DB, it was all theory*
-- I wanted to learn more about DB
+- I wanted to learn about DB from the ground up
 - It was fun
 
 -----
+
+## Types of Keys
+
+### Context
+
+- Lots of types
+- Some were DB-oriented, some were ER-oriented
+- Identify the *One*, link each other or many
+- Tightly related to real-world scenarios
+
+### Explanation
+
+> Words that were wrapped in brackets mean they are optional (excluding the end of the sentence)
+
+- Primary Key: absolutely the *One*, not null (== CK)
+- Foreign Key: link to another table's *One*
+- Candidate Key: any Key that could ID the *One* (~= PK)
+- Super Key: any (sets) of CK(s) that could ID the *One*
+- Composite Key: any sets of Keys that could ID the *One*
+- Alternate Key: any non-PK that could ID the *One* (CK - PK)
+
+### Graph
+
+```txt
++----------------------------------+
+|             SUPER KEY            |
+|  +----------------------------+  |
+|  |      CANDIDATE KEYS        |  |
+|  |  +----------------------+  |  |
+|  |  |    PRIMARY KEY       |  |  |
+|  |  |  +----------------+  |  |  |
+|  |  |  |  FOREIGN KEY   |  |  |  |
+|  |  |  +----------------+  |  |  |
+|  |  +----------------------+  |  |
+|  |                            |  |
+|  |    ALTERNATE KEYS          |  |
+|  +----------------------------+  |
+|                                  |
+|        COMPOSITE KEYS            |
++----------------------------------+
+```
 
 ## How a Query was Executed in MySQL
 
