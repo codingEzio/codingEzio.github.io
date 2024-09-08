@@ -2,6 +2,8 @@
 
 ## Posts
 
+> I've been long feeling distanced from the world. Ah.. at least building or writing something would grant me some sense of control or .. purpose.
+
 ```markmap
 ### Hands-on
 
