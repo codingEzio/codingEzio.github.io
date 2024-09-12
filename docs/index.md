@@ -21,9 +21,9 @@
 - [*For Fun*](./algorithms/algo-for-fun)
 - [*Sort*](./algorithms/algo-sort)
 
-### Build Your Own
+### Concept Explained
 
-- Toy [*Load Balancer*](./build-your-own/my-toy-load-balancer)
+- On [*Dependency Injection](./concept-explained/on-dependency-injection)
 
 ### Facts and Quotes
 
@@ -48,6 +48,11 @@
 - Tidbits on [*Android*](./tips-n-tricks/tidbits-android)
 - Tidbits on [*Network*](./tips-n-tricks/tidbits-network)
 - Tidbits on [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine)
+
+### Build Your Own
+
+- Toy [*Load Balancer*](./build-your-own/my-toy-load-balancer)
+
 ```
 
 ## Project layout

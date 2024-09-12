@@ -78,3 +78,10 @@
 > 想象一下你所看低的人，也许她们胸无大志、浑浑噩噩，也许她们纵情声色、肆意安为。不用看低她们，也许她们经历过不为人知的故事。况且，谁说快乐和满足，会有高下之分。
 
 - 每个人都在经历同样的痛苦、迷茫和挣扎，无论她看起来多么健康、坚强、乐观。每一个人 (如果我们能看到她们的内心世界)，都搞砸了。
+
+### all models are wrong, some are useful.
+
+- models were the products of human
+- humans are fallible
+- humans cannot be trusted
+- break all the mental models from them n you're free, partly
