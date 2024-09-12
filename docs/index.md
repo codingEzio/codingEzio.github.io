@@ -1,9 +1,6 @@
-> A trashy blog written by a biased, incompetent and lazy human 🤣.
-> 我不知道在别人看来，我是什么样的人；但在我自己看来，我不过就像是一个在海滩玩耍的孩子，为时而发现比寻常更光滑的一块卵石或比寻常更美丽的一片贝壳而沾沾自喜，而对于眼前的浩瀚的真理海洋，却全然没有发觉。
+> A trashy blog written by a biased, incompetent and lazy human...
 
 ## Posts
-
-> I've been long feeling distanced from the world. Ah.. at least building or writing something would grant me some sense of control or .. purpose.
 
 ```markmap
 ### Hands-on
@@ -72,3 +69,7 @@ docs/
     build-your-own/     # DIY-ed version established thingy.
     concept-explained/  # Concepts explained from the ground up.
 ```
+
+## Lastly
+
+> 我不知道在别人看来，我是什么样的人；但在我自己看来，我不过就像是一个在海滩玩耍的孩子，为时而发现比寻常更光滑的一块卵石或比寻常更美丽的一片贝壳而沾沾自喜，而对于眼前的浩瀚的真理海洋，却全然没有发觉。
