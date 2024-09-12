@@ -49,7 +49,7 @@
 
 ### Build Your Own
 
-- Toy [*Load Balancer*](./build-your-own/my-toy-load-balancer)
+- not yet
 
 ```
 
