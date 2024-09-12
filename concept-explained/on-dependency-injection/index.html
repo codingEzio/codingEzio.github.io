@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Tidbits git - Human</title>
+        <title>On dependency injection - Human</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -53,7 +53,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#git" class="nav-link">Git</a>
+            <li class="nav-item" data-bs-level="2"><a href="#context" class="nav-link">Context</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#dependency-injection" class="nav-link">Dependency Injection</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -62,43 +67,50 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="git">Git</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">操作</th>
-<th style="text-align: left;">命令</th>
-<th style="text-align: left;">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">应用暂存更改</td>
-<td style="text-align: left;"><code>git stash apply n</code></td>
-<td style="text-align: left;">最后进先出</td>
-</tr>
-<tr>
-<td style="text-align: left;">重写提交信息</td>
-<td style="text-align: left;"><code>git rebase -i HEAD~3</code></td>
-<td style="text-align: left;">修改未推送信息 (还没 <code>git push</code> 的)</td>
-</tr>
-<tr>
-<td style="text-align: left;">将未推送提交退回到暂存区</td>
-<td style="text-align: left;"><code>git reset HEAD~n</code></td>
-<td style="text-align: left;">退回暂存区 (还没 <code>git push</code> 的)</td>
-</tr>
-<tr>
-<td style="text-align: left;">关于垃圾回收的说明</td>
-<td style="text-align: left;"><code>git gc</code></td>
-<td style="text-align: left;">不会移除暂存</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git push</code> 失败</td>
-<td style="text-align: left;"><code>git config http.postBuffer 524288000</code></td>
-<td style="text-align: left;">首次 <code>push</code> <a href="https://stackoverflow.com/questions/62753648/rpc-failed-http-400-curl-22-the-requested-url-returned-error-400-bad-request">超出默认配置大小</a></td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="context">Context</h2>
+<blockquote>
+<p>It sounds so fun!</p>
+</blockquote>
+<hr/>
+<h2 id="dependency-injection">Dependency Injection</h2>
+<blockquote>
+<p>Derive from the first principle and iterating from that, much easier to remember as it originates from YOUR OWN intuition</p>
+</blockquote>
+<h3 id="two-starting-points">Two starting points</h3>
+<ul>
+<li>Name: injecting X’s dependency to X</li>
+<li>Why: cleaner code, easy refactorization</li>
+</ul>
+<h3 id="breaking-down">Breaking down</h3>
+<ul>
+<li>Not all functionality has to be directly in the class (whether it’s the features you haven’t implemented yet, or the afterthought that you wanna make it easy to replace/interpolate some of the actions/features of the class)</li>
+<li>Therefore, you gotta pass in the dependency in some way or another (that’s why we have more than one way to do DI, more on this later)</li>
+</ul>
+<h3 id="plus">Plus</h3>
+<ul>
+<li>Proper DI (class and the one providing additional features for the class) ensures complete de-coupling between the two (hell yeah)</li>
+<li>Proper DI for easier testing since they two (object itself and the dependency) were decoupled, you could just make some mock data (or a mock DB) without non-DI solution which might have to write extra code to override the default behaviors of the class</li>
+<li>Related concept is IoC (Inversion of Control) Container which handles a lot of things like object creation, Dependency Injection is of course under its jurisdiction as well</li>
+<li>For frameworks that have IoC container implemented, you gotta register the dependency somewhere for the frameworks to manage the lifecycle of the object on behalf of you (your implementation of the class)</li>
+</ul>
+<h3 id="quote">Quote</h3>
+<ul>
+<li>https://www.jamesshore.com/v2/blog/2006/dependency-injection-demystified<ul>
+<li>25-dollar term for a 5-cent concept (lol)</li>
+<li>Dependency injection ~= passing in an instance variable</li>
+</ul>
+</li>
+<li>https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html<ul>
+<li>Dependency injection (DI) is a process whereby objects define their dependencies (that is, the other objects with which they work) only through constructor arguments, arguments to a factory method, or properties that are set on the object instance after it is constructed or returned from a factory method.</li>
+</ul>
+</li>
+</ul>
+<h3 id="type">Type</h3>
+<ul>
+<li>(class) Constructor Injection</li>
+<li>(class instance) Property Injection</li>
+<li>(class instance) Method (load as needed) Injection</li>
+</ul></div>
             </div>
         </div>
 
