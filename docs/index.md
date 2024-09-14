@@ -36,20 +36,20 @@
 - [*For Fun*](./algorithms/algo-for-fun)
 - [*Sort*](./algorithms/algo-sort)
 
-### Tech Notes
+### Tidbit Notes
 
-- Tidbits on [*Git*](./tips-n-tricks/tidbits-git)
-- Tidbits on [*Editor*](./tips-n-tricks/tidbits-editor)
-- Tidbits on [*Terminal*](./tips-n-tricks/tidbits-terminal)
-- Tidbits on [*macOS*](./tips-n-tricks/tidbits-macos)
-- Tidbits on [*Windows*](./tips-n-tricks/tidbits-windows)
-- Tidbits on [*Android*](./tips-n-tricks/tidbits-android)
-- Tidbits on [*Network*](./tips-n-tricks/tidbits-network)
-- Tidbits on [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine)
+- On [*Git*](./tips-n-tricks/tidbits-git)
+- On [*Editor*](./tips-n-tricks/tidbits-editor)
+- On [*Terminal*](./tips-n-tricks/tidbits-terminal)
+- On [*macOS*](./tips-n-tricks/tidbits-macos)
+- On [*Windows*](./tips-n-tricks/tidbits-windows)
+- On [*Android*](./tips-n-tricks/tidbits-android)
+- On [*Network*](./tips-n-tricks/tidbits-network)
+- On [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine)
 
 ### Build Your Own
 
-- not yet
+> ***NOT YET***
 
 ```
 
