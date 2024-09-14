@@ -51,6 +51,54 @@
 
 > ***NOT YET***
 
+### **Amateurish** System Design
+
+> ***NOT YET***
+
+#### On **Authentication and Authorization**
+
+- [*API Gateway with Auth*](./system-design/design-auth-api-gateway)
+- [*User Authentication Strategies*](./system-design/design-user-auth-strategies)
+- [*Role-Based Authorization*](./system-design/design-role-based-auth)
+
+#### On **Data Management**
+
+- [*Large Dataset Sorting Algorithm*](./system-design/design-large-dataset-sorting-algorithm)
+- [*Partitioned File Storage*](./system-design/design-partitioned-file-storage)
+- [*Scalable Big Data Loading*](./system-design/design-scalable-big-data-loading)
+
+#### On **Distributed Systems**
+
+- [*Distributed ID Generator*](./system-design/design-distributed-id-generator)
+- [*Distributed Task Scheduler*](./system-design/design-distributed-task-scheduler)
+- [*Microservices Architecture Patterns*](./system-design/design-microservices-architecture-patterns)
+
+#### On **E-Commerce Systems**
+
+- [*Payment Processing System*](./system-design/design-payment-processing-system)
+- [*Shopping Cart System*](./system-design/design-shopping-cart-system)
+
+#### On **Messaging Systems**
+
+- [*Event-Driven Notification System*](./system-design/design-event-driven-notification-system)
+- [*Message Queue Reliability*](./system-design/design-message-queue-reliability)
+
+#### On **Scalability and Performance**
+
+- [*Concurrency Control Mechanisms*](./system-design/design-concurrency-control-mechanisms)
+- [*Handling Hotspot Traffic*](./system-design/design-handling-hotspot-traffic)
+- [*Rate Limiting Implementation*](./system-design/design-rate-limiting-implementation)
+
+#### On **Social Media Systems**
+
+- [*Microblogging Platform Features*](./system-design/design-microblogging-platform-features)
+- [*Social Media Like System*](./system-design/design-social-media-like-system)
+
+#### On **System Utilities**
+
+- [*Real-Time User Online Tracking*](./system-design/design-real-time-user-online-tracking)
+- [*Trending Keywords Analysis*](./system-design/design-trending-keywords-analysis)
+- [*URL Shortening Service*](./system-design/design-url-shortening-service)
 ```
 
 ## Project layout
