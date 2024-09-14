@@ -1,5 +1,7 @@
 > A trashy blog written by a biased, incompetent and lazy human...
 
+# 🤔
+
 ## Posts
 
 ```markmap
@@ -47,58 +49,54 @@
 - On [*Network*](./tips-n-tricks/tidbits-network)
 - On [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine)
 
-### Build Your Own
+### Build Your Own <sup>Work in Progress</sup>
 
-> ***NOT YET***
-
-### **Amateurish** System Design
-
-> ***NOT YET***
+### **Amateurish** System Design <sup>Work in Progress</sup>
 
 #### On **Authentication and Authorization**
 
-- [*API Gateway with Auth*](./system-design/design-auth-api-gateway)
-- [*User Authentication Strategies*](./system-design/design-user-auth-strategies)
-- [*Role-Based Authorization*](./system-design/design-role-based-auth)
+- [*API Gateway with Auth*](./system-design/authentication-and-authorization/design-api-gateway-with-auth)
+- [*User Authentication Strategies*](./system-design/authentication-and-authorization/design-user-auth-strategies)
+- [*Role-Based Authorization*](./system-design/authentication-and-authorization/design-role-based-auth)
 
 #### On **Data Management**
 
-- [*Large Dataset Sorting Algorithm*](./system-design/design-large-dataset-sorting-algorithm)
-- [*Partitioned File Storage*](./system-design/design-partitioned-file-storage)
-- [*Scalable Big Data Loading*](./system-design/design-scalable-big-data-loading)
+- [*Large Dataset Sorting Algorithm*](./system-design/data-management/design-large-dataset-sorting-algorithm)
+- [*Partitioned File Storage*](./system-design/data-management/design-partitioned-file-storage)
+- [*Scalable Big Data Loading*](./system-design/data-management/design-scalable-big-data-loading)
 
 #### On **Distributed Systems**
 
-- [*Distributed ID Generator*](./system-design/design-distributed-id-generator)
-- [*Distributed Task Scheduler*](./system-design/design-distributed-task-scheduler)
-- [*Microservices Architecture Patterns*](./system-design/design-microservices-architecture-patterns)
+- [*Distributed ID Generator*](./system-design/distributed-systems/design-distributed-id-generator)
+- [*Distributed Task Scheduler*](./system-design/distributed-systems/design-distributed-task-scheduler)
+- [*Microservices Architecture Patterns*](./system-design/distributed-systems/design-microservices-architecture-patterns)
 
 #### On **E-Commerce Systems**
 
-- [*Payment Processing System*](./system-design/design-payment-processing-system)
-- [*Shopping Cart System*](./system-design/design-shopping-cart-system)
+- [*Payment Processing System*](./system-design/e-commerce-systems/design-payment-processing-system)
+- [*Shopping Cart System*](./system-design/e-commerce-systems/design-shopping-cart-system)
 
 #### On **Messaging Systems**
 
-- [*Event-Driven Notification System*](./system-design/design-event-driven-notification-system)
-- [*Message Queue Reliability*](./system-design/design-message-queue-reliability)
+- [*Event-Driven Notification System*](./system-design/messaging-systems/design-event-driven-notification-system)
+- [*Message Queue Reliability*](./system-design/messaging-systems/design-message-queue-reliability)
 
 #### On **Scalability and Performance**
 
-- [*Concurrency Control Mechanisms*](./system-design/design-concurrency-control-mechanisms)
-- [*Handling Hotspot Traffic*](./system-design/design-handling-hotspot-traffic)
-- [*Rate Limiting Implementation*](./system-design/design-rate-limiting-implementation)
+- [*Concurrency Control Mechanisms*](./system-design/scalability-and-performance/design-concurrency-control-mechanisms)
+- [*Handling Hotspot Traffic*](./system-design/scalability-and-performance/design-handling-hotspot-traffic)
+- [*Rate Limiting Implementation*](./system-design/scalability-and-performance/design-rate-limiting-implementation)
 
 #### On **Social Media Systems**
 
-- [*Microblogging Platform Features*](./system-design/design-microblogging-platform-features)
-- [*Social Media Like System*](./system-design/design-social-media-like-system)
+- [*Microblogging Platform Features*](./system-design/social-media-systems/design-microblogging-platform-features)
+- [*Social Media Like System*](./system-design/social-media-systems/design-social-media-like-system)
 
 #### On **System Utilities**
 
-- [*Real-Time User Online Tracking*](./system-design/design-real-time-user-online-tracking)
-- [*Trending Keywords Analysis*](./system-design/design-trending-keywords-analysis)
-- [*URL Shortening Service*](./system-design/design-url-shortening-service)
+- [*Real-Time User Online Tracking*](./system-design/system-utilities/design-real-time-user-online-tracking)
+- [*Trending Keywords Analysis*](./system-design/system-utilities/design-trending-keywords-analysis)
+- [*URL Shortening Service*](./system-design/system-utilities/design-url-shortening-service)
 ```
 
 ## Project layout
