@@ -64,10 +64,11 @@ docs/
     index               # Homepage.
     assets/             # Images and other assets.
     hands-on/           # Concepts in practice.
-    tips-n-tricks/      # Tips n tricks for tech.
-    facts-n-quotes/     # Random facts and quotes.
-    build-your-own/     # DIY-ed version established thingy.
-    concept-explained/  # Concepts explained from the ground up.
+    system-design/      # Transforming needs into solutions.
+    tips-n-tricks/      # Tips n tricks for tech/programming.
+    facts-n-quotes/     # Random facts and quotes (very subjective).
+    build-your-own/     # DIY-ed version established stuff and implementations.
+    concept-explained/  # Concepts explained from the ground up (very subjective).
 ```
 
 ## Lastly
