@@ -12,6 +12,22 @@
 
 ### VS Code
 
+#### Turn Off Line Wrapping
+
+> for Markdown files
+
+- Press `Command + Shift + P` (macOS)
+- Enter *Preferences: Open Settings (JSON)*
+
+    > The 2nd one is essential as it was set to `on` by default by VS Code! 😬
+
+    ```json
+    "editor.wordWrap": "off",
+    "[markdown]": {
+        "editor.wordWrap": "off",
+    }
+    ```
+
 #### Clean Up History
 
 > Press `Cmd + P` on macOS
