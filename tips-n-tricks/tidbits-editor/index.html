@@ -73,6 +73,24 @@
 <li>new <code>ide.tabbedPane.dragOutMultiplier -&gt; 2</code></li>
 </ul>
 <h3 id="vs-code">VS Code</h3>
+<h4 id="turn-off-line-wrapping">Turn Off Line Wrapping</h4>
+<blockquote>
+<p>for Markdown files</p>
+</blockquote>
+<ul>
+<li>Press <code>Command + Shift + P</code> (macOS)</li>
+<li>
+<p>Enter <em>Preferences: Open Settings (JSON)</em></p>
+<blockquote>
+<p>The 2nd one is essential as it was set to <code>on</code> by default by VS Code! 😬</p>
+</blockquote>
+<p><code>json
+"editor.wordWrap": "off",
+"[markdown]": {
+    "editor.wordWrap": "off",
+}</code></p>
+</li>
+</ul>
 <h4 id="clean-up-history">Clean Up History</h4>
 <blockquote>
 <p>Press <code>Cmd + P</code> on macOS</p>
