@@ -49,56 +49,6 @@
 - On [*Network*](./tips-n-tricks/tidbits-network)
 - On [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine)
 
-### Build Your Own <sup>Work in Progress</sup>
-
-### **Amateurish** System Design <sup>Work in Progress</sup>
-
-#### On *Authentication and Authorization*
-
-- [API Gateway with Auth](./system-design/authentication-and-authorization/design-api-gateway-with-auth)
-- [User Authentication Strategies](./system-design/authentication-and-authorization/design-user-authentication-strategies)
-- [Role-Based Authorization](./system-design/authentication-and-authorization/design-role-based-authorization)
-
-#### On *Data Management*
-
-- [Large Dataset Sorting Algorithm](./system-design/data-management/design-large-dataset-sorting-algorithm)
-- [Partitioned File Storage](./system-design/data-management/design-partitioned-file-storage)
-- [Scalable Big Data Loading](./system-design/data-management/design-scalable-big-data-loading)
-
-#### On *Distributed Systems*
-
-- [Distributed ID Generator](./system-design/distributed-systems/design-distributed-id-generator)
-- [Distributed Task Scheduler](./system-design/distributed-systems/design-distributed-task-scheduler)
-- [Microservices Architecture Patterns](./system-design/distributed-systems/design-microservices-architecture-patterns)
-
-#### On *E-Commerce Systems*
-
-- [Payment Processing System](./system-design/e-commerce-systems/design-payment-processing-system)
-- [Shopping Cart System](./system-design/e-commerce-systems/design-shopping-cart-system)
-
-#### On *Messaging Systems*
-
-- [Event-Driven Notification System](./system-design/messaging-systems/design-event-driven-notification-system)
-- [Message Queue Reliability](./system-design/messaging-systems/design-message-queue-reliability)
-
-#### On *Scalability and Performance*
-
-- [Concurrency Control Mechanisms](./system-design/scalability-and-performance/design-concurrency-control-mechanisms)
-- [Handling Hotspot Traffic](./system-design/scalability-and-performance/design-handling-hotspot-traffic)
-- [Rate Limiting Implementation](./system-design/scalability-and-performance/design-rate-limiting-implementation)
-
-#### On *Social Media Systems*
-
-- [Microblogging Platform Features](./system-design/social-media-systems/design-microblogging-platform-features)
-- [Social Media Like System](./system-design/social-media-systems/design-social-media-like-system)
-
-#### On *System Utilities*
-
-- [Real-Time User Online Tracking](./system-design/system-utilities/design-real-time-user-online-tracking)
-- [Trending Keywords Analysis](./system-design/system-utilities/design-trending-keywords-analysis)
-- [URL Shortening Service](./system-design/system-utilities/design-url-shortening-service)
-```
-
 ## Project layout
 
 > Built via `mkdocs gh-deploy --site-dir build-output`
@@ -113,7 +63,6 @@ docs/
     system-design/      # Transforming needs into solutions.
     tips-n-tricks/      # Tips n tricks for tech/programming.
     facts-n-quotes/     # Random facts and quotes (very subjective).
-    build-your-own/     # DIY-ed version established stuff and implementations.
     concept-explained/  # Concepts explained from the ground up (very subjective).
 ```
 
