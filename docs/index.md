@@ -48,6 +48,7 @@
 - On [*Android*](./tips-n-tricks/tidbits-android)
 - On [*Network*](./tips-n-tricks/tidbits-network)
 - On [*Virtual Machine*](./tips-n-tricks/tidbits-virtual-machine)
+```
 
 ## Project layout
 
