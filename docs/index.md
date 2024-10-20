@@ -5,6 +5,10 @@
 ## Posts
 
 ```markmap
+### 废案
+
+- On [*Operating System*](./废案/temporary-operatingsystem)
+
 ### Hands-on
 
 - On [*Security*](./hands-on/core-security)
@@ -60,6 +64,7 @@ hands-on/               # Bits of code examples 👨‍💻
 docs/
     index               # Homepage.
     assets/             # Images and other assets.
+    废案/                # Temporarily on
     hands-on/           # Concepts in practice.
     system-design/      # Transforming needs into solutions.
     tips-n-tricks/      # Tips n tricks for tech/programming.
