@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Temporary operatingsystem - Human</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Human</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#kernel-and-user" class="nav-link">Kernel and User</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#_1" class="nav-link">内存</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#_3" class="nav-link">多任务</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#process-and-thread" class="nav-link">Process and Thread</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#_8" class="nav-link">文件系统</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#ipc-inter-process-communication" class="nav-link">IPC (Inter-Process Communication)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#csapp" class="nav-link">CSAPP</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#cpu-land" class="nav-link">CPU Land</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="kernel-and-user">Kernel and User</h2>
+<blockquote>
+<p>如今用户几乎所有操作都依靠 system call</p>
+</blockquote>
+<h3 id="difference">Difference</h3>
+<ul>
+<li>Operating mode for each is Ring 0 and Ring 3</li>
+<li>Operations like File Handling, Network Request all needs to operate under kernel mode</li>
+<li>There were each of its space in the memory</li>
+<li>The kernel has access to all the memory, the user does not</li>
+</ul>
+<h3 id="switching">Switching</h3>
+<blockquote>
+<p>Ref: <a href="https://old.reddit.com/r/arduino/comments/416cs0/eli5_what_are_interrupts_what_do_i_need_them_for/">1</a></p>
+</blockquote>
+<ol>
+<li>Normal execution under Ring 3</li>
+<li>.. needs system call</li>
+<li>Interrupt .. to do system call</li>
+<li>Interrupt.. I’ve finished system call</li>
+<li>Normal execution under Ring 3</li>
+</ol>
+<h2 id="_1">内存</h2>
+<h3 id="_2">虚拟内存</h3>
+<blockquote>
+<p>Ref: <a href="https://stackoverflow.com/a/70551110/6273859">1</a></p>
+</blockquote>
+<ul>
+<li>每个进程有各自虚拟地址空间 (Virtual Address Space)</li>
+<li>系统 划分物内存为页 不足swap转硬盘</li>
+<li>系统 维护页表 含虚拟地址&lt;&gt;物理地址</li>
+<li>系统 划分多级页表省内 重为一 其他存</li>
+</ul>
+<h2 id="_3">多任务</h2>
+<h3 id="_4">类型</h3>
+<ul>
+<li><em>并发</em>：Concurrency 单时单务 迅速切换</li>
+<li><em>并行</em>：Parallelism 不同核处理不同程序</li>
+</ul>
+<h2 id="process-and-thread">Process and Thread</h2>
+<h3 id="_5">线程进程 之 <strong>异同</strong></h3>
+<blockquote>
+<p>Ref: <a href="https://stackoverflow.com/a/5201879/6273859">1</a>, <a href="https://old.reddit.com/r/explainlikeimfive/comments/1awbdz/eli5_registers_and_instructions_in_assembly/">2</a>, <a href="https://stackoverflow.com/a/200543/6273859">3</a>, <a href="https://stackoverflow.com/a/1808710/6273859">4</a>, <a href="https://www.hanselman.com/blog/microsoft-ie8-and-google-chrome-processes-are-the-new-threads">5</a></p>
+</blockquote>
+<ul>
+<li>均非实物 而是代码数据处理的抽象</li>
+<li>线程 于进程 享码数内件 分栈寄器等</li>
+<li>线程 并发 Concurrency 基石 (多线程</li>
+<li>系统 告线程何时运 分进程资源(内,文)</li>
+<li>线程 启动销毁成本较进程\~小 因隔离</li>
+</ul>
+<h3 id="_6">线程进程 之 <strong>切换</strong></h3>
+<blockquote>
+<p>线程进程在这里几乎等同，恢复体量不一样 (though 线需换非共享物)</p>
+</blockquote>
+<ul>
+<li>对于进程切换，需要保存和恢复的是进程的全部状态，包括进程的地址空间、上下文、寄存器值、打开的文件、信号处理程序、进程状态等。</li>
+<li>线程切换时需要保存和恢复的是非共享的资源。这是因为线程共享相同的地址空间和其他系统资源，所以在线程切换时不需要切换地址空间和其他共享资源。相反，需要保存和恢复的是非共享资源，例如线程自身的寄存器、程序计数器和堆栈等</li>
+<li>处理 进程 1</li>
+<li>保存 进程 1 上下文</li>
+<li>加载 进程 2 上下文</li>
+<li>处理 进程 2</li>
+<li>…</li>
+</ul>
+<h3 id="process-states">Process <em>States</em></h3>
+<ul>
+<li>创建 (new</li>
+<li>死亡 (exit</li>
+<li>占用 CPU (running</li>
+<li>待占用 CPU (ready</li>
+<li>等待外界因素 (blocked</li>
+</ul>
+<h3 id="process-types">Process <em>Types</em></h3>
+<ul>
+<li>Orphan and Zombie 孤儿进程与僵尸进程</li>
+</ul>
+<blockquote>
+<p>Ref: <a href="https://stackoverflow.com/a/42303528">1</a></p>
+</blockquote>
+<ul>
+<li>👶 Still execute on its own (cpu/mm</li>
+<li>🧟‍♀️ No execution, occupy entry (!cpu/mm</li>
+</ul>
+<h3 id="thread-types">Thread <em>Types</em></h3>
+<blockquote>
+<p>Ref: <a href="https://stackoverflow.com/a/15984127/6273859">1</a>, <a href="http://www.it.uu.se/education/course/homepage/os/vt18/module-4/implementing-threads/">2</a>, <a href="https://en.wikipedia.org/wiki/Green_thread">3</a>, <a href="https://stackoverflow.com/a/5713198/6273859">4</a>, <a href="https://stackoverflow.com/q/72313714/6273859">5</a></p>
+</blockquote>
+<ul>
+<li>所有线程 以内核线程为始</li>
+<li>两者区别 谁管理(OS or Language)</li>
+<li>内核线程 又名 Native/OS-level 线程</li>
+<li>内核线程 处理只涉及系统级的代码</li>
+<li>用户线程 处理用户级,亦能作系调用</li>
+<li>Green 线程 可看作语规的User Thread</li>
+<li>Green 线程 语言作规 类户线 多核不利</li>
+</ul>
+<h3 id="_7">线程共享区的资源同步</h3>
+<ul>
+<li><strong><em>临界区</em></strong> = 对共享资源访问的代码</li>
+<li>以<strong><em>信号量</em></strong> 限资被访次 用减完规</li>
+<li>
+<p>以<strong><em>锁</em></strong> 互斥 对将访享资码锁 完解</p>
+<blockquote>
+<p>锁 (一种同步机制-对于共享资源), here are some scenarios you do <em>not</em> want to encounter</p>
+</blockquote>
+</li>
+<li>
+<p>Starvation &amp; Livelock 活锁与饥饿锁
+    &gt; Ref: <a href="https://stackoverflow.com/a/6411905/6273859">1</a>, <a href="https://stackoverflow.com/a/6155978/6273859">2</a>, <a href="https://stackoverflow.com/a/1162610/6273859">3</a></p>
+<ul>
+<li><em>活锁</em>：两者为防死锁作同 左右 无进</li>
+<li><em>饥饿锁</em>：多个高优先级程占 得无资</li>
+</ul>
+</li>
+<li>
+<p>Deadlock 死锁
+    &gt; Ref: <a href="https://www.youtube.com/watch?v=Z7iHodl1jsM">1</a>, <a href="https://www.scaler.com/topics/operating-system/deadlock-prevention-in-operating-system/">2</a>, <a href="https://old.reddit.com/r/explainlikeimfive/comments/1nq4a6/eli5the_dining_philosophers_problem/">3</a>
+    &gt;&gt; <img height="auto" src="./_assets/handdrawn-system-thread-deadlock.png" width="60%"/></p>
+<ul>
+<li>条件</li>
+<li>此资只可被此线程用 Mutual Excl</li>
+<li>主体持有 且申等新资 Hold&amp;Wait</li>
+<li>资源不可被抢 仅等 No Preemption</li>
+<li>P1 P2 等待为永久循环 Circular Wait</li>
+<li>避免</li>
+<li>线程 提前申请所需所有资源 (不HdWt)</li>
+<li>若申不到新 主释当前资 再申新</li>
+<li>于申请划定优先级 愈高先得</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h2 id="_8">文件系统</h2>
+<h3 id="_9">软链接 与 硬链接</h3>
+<blockquote>
+<p>Ref: <a href="https://askubuntu.com/a/801191/1650652">1</a>, <a href="https://unix.stackexchange.com/a/23251/549763">2</a></p>
+</blockquote>
+<ul>
+<li>一切文录都有自己的 inode 编号</li>
+<li>指向 普文件 -&gt; inode</li>
+<li>指向 硬链接 -&gt; inode</li>
+<li>指向 软链接 -&gt; 文件 -&gt; inode</li>
+<li>改映 两者均可 硬链复多份 允删</li>
+<li>区别 软链可文录跨盘 硬文不跨</li>
+</ul>
+<h3 id="io-zerocopy">I/O 零拷贝 (ZeroCopy)</h3>
+<blockquote>
+<p>Ref: <a href="https://old.reddit.com/r/learnprogramming/comments/3t1znc/eli5_why_mmap_is_faster_than_read/">1</a>, <a href="https://old.reddit.com/r/programming/comments/je3av8/why_mmap_is_faster_than_system_calls/">2</a>, <a href="https://stocktonsols.com/article/sendfile-system-call">3</a>, <a href="https://blog.devgenius.io/linux-zero-copy-d61d712813fe">4</a></p>
+</blockquote>
+<ul>
+<li>提高性能 需减异态切和内存拷贝次</li>
+<li>MmAp 文于内存 将其内址映至进程 少写</li>
+<li>sendfile() 或同写读 或不切然系内直写</li>
+</ul>
+<h3 id="io-">I/O 同步-阻塞/非阻塞/多路复用 异步</h3>
+<blockquote>
+<p>Ref: <a href="https://www.cs.toronto.edu/~krueger/csc209h/f05/lectures/Week11-Select.pdf">1</a></p>
+</blockquote>
+<ul>
+<li><code>read</code> 线阻 待内核调读 待拷回 返容</li>
+<li><code>read</code> 立返 继执它务 频询内核 然拷</li>
+<li><code>read</code> 立返 继执它务 内核通程 然拷</li>
+<li><code>aio_read</code> 立返 继执它务 内核作拷</li>
+</ul>
+<h3 id="io-multiplexing">I/O 多路复用 Multiplexing</h3>
+<blockquote>
+<p>Ref: <a href="https://stackoverflow.com/a/40864759/6273859">1</a>, <a href="https://wiyi.org/linux-file-descriptor.html">2</a>, <a href="https://jvns.ca/blog/2017/06/03/async-io-on-linux--select--poll--and-epoll/">3</a>, <a href="https://stackoverflow.com/questions/5256599/what-are-file-descriptors-explained-in-simple-terms">4</a></p>
+</blockquote>
+<ul>
+<li>基础 复用即分单线专处理</li>
+<li>基础 原 CPU询 有新处新</li>
+<li>基础 现 予三系call察态 机略别</li>
+<li>基础 fd文述符 单态 表详态 源inod</li>
+<li>三调 select 核拷众fd 察标返 且忘</li>
+<li>三调 poll 数构链突fd限 余同select</li>
+<li>三调 epoll fd态 如变可读信通 (优)</li>
+</ul>
+<h2 id="ipc-inter-process-communication">IPC (Inter-Process Communication)</h2>
+<h3 id="what">What</h3>
+<ul>
+<li>a way to for different things to communicate</li>
+<li>like File. I write, you read</li>
+<li>like Shared Memory. I write, you read</li>
+<li>like Message Queue. I sent, you process later (when to use? e.g. buyer do something on e-commerce)</li>
+<li>like Socket, a remote file-like connection, I write, you read (when to use? (e.g. different services making calls to each other)</li>
+</ul>
+<p>Types of IPCs</p>
+<h4 id="pipe-io"><em>Pipe</em>: 重定向IO 匿名单亲缘 有名任两程</h4>
+<ul>
+<li>Pipe: System call (OS) - TCP/IP sockets (networking)</li>
+</ul>
+<blockquote>
+<p>Pipe: A system call for inter-process communication (IPC) that allows processes to communicate by connecting the output of one process to the input of another process. In the Networking sense, pipes can be implemented using TCP/IP sockets to enable communication between processes running on different computers.</p>
+</blockquote>
+<ul>
+<li>IO redirection: Shell commands (OS) - Network proxies or traffic interception devices (networking)</li>
+</ul>
+<blockquote>
+<p>IO redirection: A feature of operating systems that allows input and output streams to be redirected from the standard input/output (stdin/stdout) to a file or another process. In the Networking sense, IO redirection can be used to redirect network traffic from one port to another or to a different destination IP address.</p>
+</blockquote>
+<h4 id="signal"><em>Signal</em>: 发信号 系统接 找程 通其处理</h4>
+<ul>
+<li>Signal: System call (OS) - SNMP (networking)</li>
+</ul>
+<blockquote>
+<p>Signal: A system call for delivering software interrupts to a process that can be used to notify the process of an event or to request that the process terminate. In the Networking sense, signals can be sent over a network using protocols such as SNMP to indicate specific events or conditions.</p>
+</blockquote>
+<h4 id="msgqueue"><em>MsgQueue</em>: 程事件 系统接 另程取之列</h4>
+<ul>
+<li>Message Queue: POSIX message queue API (OS) - Message-oriented middleware such as JMS or AMQP (networking)</li>
+</ul>
+<blockquote>
+<p>Message Queue: A mechanism for inter-process communication (IPC) that allows processes to send and receive messages asynchronously. In the Networking sense, message queues can be implemented using message-oriented middleware such as JMS or AMQP to enable communication between processes running on different computers.</p>
+</blockquote>
+<h4 id="sharedmem"><em>SharedMem</em>: 共实体内存通信 易冲突</h4>
+<ul>
+<li>Shared Memory: System V shared memory API (OS) - Distributed memory caching systems such as Memcached (networking)</li>
+</ul>
+<blockquote>
+<p>Shared Memory: A mechanism for inter-process communication (IPC) that allows multiple processes to access the same region of memory. In the Networking sense, shared memory can be implemented using distributed memory caching systems such as Memcached to enable multiple computers on a network to access the same data.</p>
+</blockquote>
+<h4 id="semaphore"><em>Semaphore</em>: 告程限资访 厕匙进减出增</h4>
+<ul>
+<li>Semaphore: POSIX semaphore API (OS) - Distributed concurrency control protocols such as Paxos or Raft (networking)</li>
+</ul>
+<blockquote>
+<p>Semaphore: A synchronization mechanism that allows multiple processes to access a shared resource without interfering with each other. In the Networking sense, semaphores can be implemented using distributed concurrency control protocols such as Paxos or Raft to ensure that multiple computers on a network can access a shared resource without conflicts.</p>
+</blockquote>
+<h4 id="socket-"><em>Socket</em>: 两物发连-类文件存读 多网络流</h4>
+<ul>
+<li>Socket: Berkeley sockets API (OS) - TCP, UDP, or HTTP (networking)</li>
+</ul>
+<blockquote>
+<p>Socket: A system call that enables processes to communicate with each other over a network using protocols such as TCP, UDP, or HTTP. In the Networking sense, sockets are used to establish connections between computers on a network, enabling data to be exchanged between them.</p>
+</blockquote>
+<hr/>
+<h2 id="csapp">CSAPP</h2>
+<h3 id="how-do-we-get-from-0s-and-1s-to-a-code-file">How do we get from 0s and 1s to a code file</h3>
+<ul>
+<li>Zeros and ones represent binary data, which can be grouped into sets of eight bits called bytes.</li>
+<li>Each byte, composed of zeros and ones, can be converted to a decimal value.</li>
+<li>The decimal value corresponds to a specific character in the ASCII table, allowing us to map binary data to ASCII characters.</li>
+<li>By repeating this process for each byte, we can transform multiple sets of zeros and ones into multiple ASCII characters.</li>
+<li>These ASCII characters are then encoded and written into a file, creating a sequence of characters that can be interpreted by text-based applications.</li>
+</ul>
+<h3 id="0s-and-1s-in-different-context">0s and 1s in Different Context</h3>
+<ul>
+<li>
+<p>The very same sets/bunch of bits (0s and 1s) might be an integer, a character or machine instructions.</p>
+</li>
+<li>
+<p>Therefore, information or program or data you might say, were literally just bits in THIS CONTEXT and bits in THAT CONTEXT</p>
+</li>
+</ul>
+<h3 id="from-helloc-to-the-executable-hello">From hello.c to the executable ./hello</h3>
+<ul>
+<li>
+<p><em>Preprocessing Phase</em>: add/insert implicit imported code, like the import in Python, the #include in C, in the end, produce a different file, typically ended with .i, a hello.i file.</p>
+</li>
+<li>
+<p><em>Compilation Phase</em>: translate C code into assembly instructions, which all non-assembly really are underneath 😉, normally ended with .s, aka. hello.s.</p>
+</li>
+<li>
+<p><em>Assembly Phase</em>: translate Assembly code into actual machine instructions (0s and 1s), though this time it was packaged in the form of <em>relocatable object program</em> (this time the context of those bytes were machine instructions instead of characters), typically ended with .o, aka. hello.o.</p>
+</li>
+<li>
+<p><em>Linking Phase</em>: the linker ld do the merging between the imported stuff (like the stdio.h for basic printing) and the previously generated hello.o, the eventual output is an executable object, i.e. ./hello.</p>
+</li>
+</ul>
+<h3 id="abstractions-for-the-actual-implementations">Abstractions for the Actual Implementations</h3>
+<blockquote>
+<p>Might be software or hardware</p>
+</blockquote>
+<ul>
+<li>Virtual Machine (abstraction for entire PC)</li>
+<li>Operating System</li>
+<li>Processes (abstractions for these three)<ul>
+<li>Processor &lt;- Instruction Set</li>
+<li>Main Memory (+Files) &lt;- Virtual Memory</li>
+<li>I/O Devices &lt;- Files</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h2 id="cpu-land">CPU Land</h2>
+<ul>
+<li>Machine code are 0s and 1s</li>
+<li>Machine code have both binary (0001) and hex formats (0xA3)</li>
+<li>
+<p>The machine codes in hex formats were individually mapped to Assembly instructions.</p>
+</li>
+<li>
+<p>Different CPUs hold different architectures</p>
+</li>
+<li>Different architectures diff in the mappings between the hex (machine) code and (assembly) instructions.</li>
+<li>
+<p>Things like ADD, SUB were called as OPCODE</p>
+</li>
+<li>
+<p>One CPU can only hold one architecture</p>
+</li>
+<li>
+<p>One CPU can do emulation and/or translations more than the architecture of its own (like how you run x86 apps on Apple M3 machines via the <em>Rosetta 2</em> translation layers)</p>
+</li>
+<li>
+<p>Machine instructions were loaded onto RAM</p>
+</li>
+<li>Machine instructions were ran via CPU executing instructions loaded onto RAM</li>
+<li>
+<p>Machine instructions can only be ran when loading onto RAM</p>
+</li>
+<li>
+<p>RAM acts like a workspace for CPU, which holds data and instructions, ready for access</p>
+</li>
+<li>RAM is like a book with multiple pages, that you find data via something like <em>PageA :: LINE 19 :: POS 2:10</em></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
