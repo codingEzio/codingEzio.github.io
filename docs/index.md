@@ -36,11 +36,10 @@
 - About [*Love*](./facts-n-quotes/facts-n-quotes-about-love)
 - About [*Organism*](./facts-n-quotes/facts-n-quotes-about-organism)
 
-### Algorithms <sup>Work in Progress</sup>
+### Algorithms
 
+- [*Fun*](./algorithms/algo-for-fun)
 - [*Data Structure*](./algorithms/algo-data-structure)
-- [*For Fun*](./algorithms/algo-for-fun)
-- [*Sort*](./algorithms/algo-sort)
 
 ### Tidbit Notes
 

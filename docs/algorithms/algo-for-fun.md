@@ -71,11 +71,6 @@ def find_shortest_route(places):
 
 ```
 
-### Identification
-
-- x
-- x
-
 ## 0 到 9999 之间有多少个 7
 
 > [source code](https://github.com/codingEzio/codingezio.github.io/blob/master/hands-on/algo-fun-count-7s.py)
