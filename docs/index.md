@@ -2,6 +2,8 @@
 
 # 🤔
 
+> Status: **无限期暂停更新** (refactoring the whole thing)
+
 ## Posts
 
 ```markmap
