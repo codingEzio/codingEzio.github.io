@@ -7,6 +7,10 @@
 ## Posts
 
 ```markmap
+### Certificate
+
+- [**MB330**](./cert/microsoft-mb330-scm)
+
 ### 废案
 
 - On [*Operating System*](./废案/temporary-operatingsystem)
