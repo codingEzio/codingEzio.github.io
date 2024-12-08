@@ -1,7 +1,5 @@
 ## RESONANCE
 
-> origin: Sense 8 TV series
-
 The first time I tasted 1847, I was brushing my teeth in 2024.
 
 Suddenly my mouth was full of rough bread and thin soup, eaten from a wooden bowl in a London workhouse. The taste of poverty and coal dust. Sarah's hunger became my hunger, her desperation my own.
