@@ -2,8 +2,6 @@
 
 # 🤔
 
-> Status: **无限期暂停更新** (refactoring the whole thing)
-
 ## Posts
 
 ```markmap
@@ -11,9 +9,9 @@
 
 - [**MB330**](./cert/microsoft-mb330-scm)
 
-### 废案
+### Stories
 
-- On [*Operating System*](./废案/temporary-operatingsystem)
+- [*Distributed*][./stories/story-2024-12-08-distributed]
 
 ### Hands-on
 
