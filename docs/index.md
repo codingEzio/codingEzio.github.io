@@ -11,7 +11,7 @@
 
 ### Stories
 
-- [*Distributed*][./stories/story-2024-12-08-distributed]
+- [*Distributed*](./stories/story-2024-12-08-distributed)
 
 ### Hands-on
 
@@ -67,7 +67,7 @@ hands-on/               # Bits of code examples 👨‍💻
 docs/
     index               # Homepage.
     assets/             # Images and other assets.
-    废案/                # Temporarily on
+    stories/            # Stories might be sci-fi, or not
     hands-on/           # Concepts in practice.
     system-design/      # Transforming needs into solutions.
     tips-n-tricks/      # Tips n tricks for tech/programming.
