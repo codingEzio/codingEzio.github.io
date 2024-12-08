@@ -1,4 +1,6 @@
-DISTRIBUTED
+## DISTRIBUTED
+
+> origin: Mr. Robot TV series
 
 They call us "instances." Fragmented copies of consciousness, distributed across the neural network. Cheaper than human employees, they said. More efficient. I'm Instance #2749, running customer service protocols for NeuroTech Corp.
 
