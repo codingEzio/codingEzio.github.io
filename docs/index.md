@@ -22,7 +22,6 @@
 - On [*Operating System*](./hands-on/core-operatingsystem)
 - On [*Database*](./hands-on/core-database)
 - On [*C#* and *.NET*](./hands-on/core-csharp-n-dotnet)
-- On [*Ext.js*](./hands-on/random-extjs-overview)
 
 ### Concept Explained
 
@@ -44,7 +43,6 @@
 ### Algorithms
 
 - [*Fun*](./algorithms/algo-for-fun)
-- [*Data Structure*](./algorithms/algo-data-structure)
 
 ### Tidbit Notes
 
@@ -70,7 +68,6 @@ docs/
     assets/             # Images and other assets.
     stories/            # Stories might be sci-fi, or not
     hands-on/           # Concepts in practice.
-    system-design/      # Transforming needs into solutions.
     tips-n-tricks/      # Tips n tricks for tech/programming.
     facts-n-quotes/     # Random facts and quotes (very subjective).
     concept-explained/  # Concepts explained from the ground up (very subjective).
